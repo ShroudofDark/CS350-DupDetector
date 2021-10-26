@@ -29,6 +29,7 @@ public class Report {
 	 */
 	public void printReport() {
 		printRefactoringReport();
+		printFilePaths();
 	}
 	
 	/**
@@ -44,5 +45,30 @@ public class Report {
 	 */
 	private void sortRefactorings() {
 		
-	}	
+	}
+	
+	/**
+	 * Prints out the full file with file paths declared or found
+	 */
+	private void printFilePaths() {
+		System.out.println(sortedFilePaths());
+	}
+
+	/**
+	 * Sorts the file paths alphabetically
+	 */
+	private String sortFilePaths() {
+
+		/**
+		 * Call In Array Containing File Paths
+		 * 
+		 * Call built in sort function Arrays.sort(Filepaths);
+		 * 
+		 * for (while not the end of the array) {
+		 * 		Return the Sorted array
+		 * }
+		 */
+
+	}
+	
 }
