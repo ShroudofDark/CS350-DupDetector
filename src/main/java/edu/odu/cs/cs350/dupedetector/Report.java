@@ -11,14 +11,16 @@ package edu.odu.cs.cs350.dupedetector;
  * @author Jacob McFadden: created the suggested refactorings output
  */
 
-public class Report {
-
+public class Report {	
+	
+	private SuggestedRefactoring[] refactoringList;
+	
 	/**
 	 * Creates a report object
 	 * 
-	 * @param exampleNumber
+	 * @param providedRefactorings a list of suggested refactorings that are deep copied
 	 */
-	public Report() {
+	public Report(SuggestedRefactoring[] providedRefactorings) {
 		
 	}
 	
@@ -26,16 +28,20 @@ public class Report {
 	 * Prints the entire report for the program when called.
 	 * 
 	 * Wrapper for more specific print functions.
+	 * 
+	 * @param nSuggestions how many total suggestions should be printed in the report
 	 */
-	public void printReport() {
-		printRefactoringReport();
+	public void printReport(int nSuggestions) {
+		printRefactoringReport(nSuggestions);
 	}
 	
 	/**
 	 * Organizes and prints a the refactoring suggestions part of the
 	 * report.
+	 * 
+	 * @param nSuggestions how many total suggestions should be printed in the report
 	 */
-	private void printRefactoringReport() {
+	private void printRefactoringReport(int nSuggestions) {
 		
 	}
 	
