@@ -26,12 +26,13 @@ class SuggestedRefactoringTest {
 				+ "/home/zeil/projects/cppProject1/src/headers/bar.h:056:4\r\n"
 				+ "a b 2\r\n";
 		
-		SuggestedRefactoring sugRef = new SuggestedRefactoring(12, 24, data1);
-		SuggestedRefactoring sugRefSame = new SuggestedRefactoring(12, 24, data1);
-		SuggestedRefactoring sugRefDif = new SuggestedRefactoring(16, 16, data2);
+		SuggestedRefactoring sugRef = new SuggestedRefactoring(12, 24, 3, data1);
+		SuggestedRefactoring sugRefSame = new SuggestedRefactoring(12, 24, 3, data1);
+		SuggestedRefactoring sugRefDif = new SuggestedRefactoring(16, 16, 3, data2);
 		
 		assertThat(sugRef.getTotalTokens(), is(12));
 		assertThat(sugRef.getOpportunity(), is(24));
+		assertThat(sugRef.getTotalSubs(), is(3));
 		assertThat(sugRef.toString(), equalTo(data1));
 		
 		assertThat(sugRef.toString(), not(equalTo(data2)));

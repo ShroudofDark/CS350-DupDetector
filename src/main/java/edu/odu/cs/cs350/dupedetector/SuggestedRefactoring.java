@@ -14,6 +14,8 @@ public class SuggestedRefactoring {
 	private int opportunityAmount;
 	//Determines the total amount of tokens found in this suggestion
 	private int totalTokenAmount;
+	//Determines total number of lexemes that will be subbed out
+	private int totalSubstitutions;
 	//Stand in variable that represents compiled data
 	private String refactorSuggestion;
 	
@@ -24,9 +26,10 @@ public class SuggestedRefactoring {
 	 * @param int to set opportunity
 	 * @param string to set fake data
 	 */
-	public SuggestedRefactoring(int totalTokens, int opportunity, String data) {
+	public SuggestedRefactoring(int totalTokens, int opportunity, int totalSubs, String data) {
 		totalTokenAmount = totalTokens;
 		opportunityAmount = opportunity;
+		totalSubstitutions = totalSubs;
 		refactorSuggestion = data;
 	}
 	
@@ -38,6 +41,11 @@ public class SuggestedRefactoring {
 	//Returns the total amount of tokens associated with refactoring
 	public int getTotalTokens() {
 		return totalTokenAmount;
+	}
+	
+	//Returns total amount of substitutions associated with refactoring
+	public int getTotalSubs() {
+		return totalSubstitutions;
 	}
 	
 	//Returns the string of the compiled data
