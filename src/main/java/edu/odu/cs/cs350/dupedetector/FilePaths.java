@@ -1,6 +1,8 @@
 package edu.odu.cs.cs350.dupedetector;
 
+import java.util.Collections;
 import java.util.Vector;
+
 
 /**
  * The FilePaths sorts the file paths alphabetically and provides a way for the report class to print 
@@ -32,13 +34,12 @@ public class FilePaths {
     *  @param positiveInt
     */ 
 	public void printFilePaths(int count) {
-
+        /* setting fileCount Value */
         fileCount = count;
-
+        /* output file path position */
         System.out.println(sortedFilePaths.get(fileCount));
     
     }
-    
 
     /* Sorts the file Paths Alphabetically 
     *  No Parameters
@@ -52,7 +53,7 @@ public class FilePaths {
         fileToBeSorted.addAll(filePaths);
 
         /* alphabetically sorts file paths */
-       /* collections.sort(fileToBeSorted);*/
+        Collections.sort(fileToBeSorted);
 
         /* stores sorted files into final holding place */
         sortedFilePaths.addAll(fileToBeSorted);
@@ -61,5 +62,3 @@ public class FilePaths {
 
 
 }
-
-/* https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#sort(java.util.List) */
