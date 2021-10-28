@@ -11,21 +11,33 @@ package edu.odu.cs.cs350.dupedetector;
  * @author Jacob McFadden: created the suggested refactorings output
  */
 
-public class Report {	
+import java.util.*;
+
+public class Report implements Comparator<SuggestedRefactoring> {	
 	
-	private SuggestedRefactoring[] refactoringList;
+	private ArrayList<SuggestedRefactoring> refactoringList;
 	
 	/**
-	 * Creates a report object
+	 * Creates a report object with a list of Refactorings
 	 * 
 	 * @param providedRefactorings a list of suggested refactorings that are deep copied
 	 */
-	public Report(SuggestedRefactoring[] providedRefactorings) {
+	public Report(ArrayList<SuggestedRefactoring> providedRefactorings) {
 		
-		//Deep copy of refactorings
-		refactoringList = new SuggestedRefactoring[providedRefactorings.length];
-		for(int i = 0; i < providedRefactorings.length; i++) {
-			refactoringList[i] = providedRefactorings[i];
+		/**
+		 * Deep copy the refactorings
+		 * 
+		 * https://www.javaprogramto.com/2020/04/java-arraylist-clone-deep-copy.html
+		 */
+		refactoringList = new ArrayList<>();
+		//Get iterator from original list
+		Iterator<SuggestedRefactoring> it = providedRefactorings.iterator();
+		//Iterate through and start adding suggestions to new list
+		while (it.hasNext()) {
+			SuggestedRefactoring curr = it.next();
+			SuggestedRefactoring newRef 
+				= new SuggestedRefactoring(curr.getTotalTokens(),curr.getOpportunity(), curr.getTotalSubs(), curr.toString());
+			refactoringList.add(newRef);
 		}
 	}
 	
@@ -70,7 +82,7 @@ public class Report {
 	 * Helpful for tests.
 	 */
 	public SuggestedRefactoring getRefactoring(int loc) {
-		return refactoringList[loc];
+		return refactoringList.get(loc);
 	}
 	
 	/**
@@ -78,7 +90,7 @@ public class Report {
 	 * Helpful for tests.
 	 */
 	public int totalRefactorings() {
-		return refactoringList.length;
+		return refactoringList.size();
 	}
 	
 	/**
@@ -95,5 +107,15 @@ public class Report {
 			return false;
 		
 		return true;
+	}
+	
+	/**
+	 * Compares suggested refactorings by opportunity for sorting
+	 * 
+	 * https://www.baeldung.com/java-comparator-comparable code assisted by this article
+	 */
+	@Override
+	public int compare(SuggestedRefactoring firstRef, SuggestedRefactoring secondRef) {
+		return Integer.compare(firstRef.getOpportunity(), secondRef.getOpportunity());
 	}
 }
