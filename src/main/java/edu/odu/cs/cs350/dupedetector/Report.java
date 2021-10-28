@@ -11,6 +11,13 @@ package edu.odu.cs.cs350.dupedetector;
  * @author Jacob McFadden: created the suggested refactorings output
  */
 
+/**
+ * Jacob -> I'm leaving a comment here to track my thoughts about a subject to be addressed for how to handle
+ * some of the report functions. Should functions like trimRefactorings and sortRefactorings be public methods
+ * that are called within the main class while the printReport functions only focus on printing the output. Also
+ * considered making the PrintReport like toString methods, though there is concern that it would make a singular
+ * string that is too large instead of printing out multiple strings.
+ */
 import java.util.*;
 
 public class Report implements Comparator<SuggestedRefactoring> {	
@@ -56,10 +63,12 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	}
 	
 	/**
-	 * Organizes and prints a the refactoring suggestions part of the
-	 * report.
+	 * Prepares the suggested refactorings by removing suggestions that don't meet criteria to be printed 
+	 * defined by the parameters and sorting the list in descending order by opportunity. Once done it outputs
+	 * the report.
 	 * 
 	 * Uses:
+	 * trimReport
 	 * sortRefactorings
 	 * 
 	 * @param nSuggestions how many total suggestions should be printed in the report
@@ -71,10 +80,23 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	}
 	
 	/**
+	 * Removes suggestions that don't meet criteria to be printed as defined by the parameters.
+	 * 
+	 * @param maxSubs if the refactoring exceeds this number of lexeme substituions, will not be printed
+	 * @param minSeqLength if the refactoring total sequence tokens is under this number, will not be printed
+	 */
+	private void trimRefactorings(int maxSubs, int minSeqLength) {
+		
+	}
+	
+	/**
 	 * Sorts the refactorings from greatest opportunity to least opportunity
 	 */
-	private void sortRefactorings() {
-		
+	private void sortRefactorings() {	
+		//Don't bother if the list size is 0 or 1, it is already technically sorted
+		if(refactoringList.size() == 0 || refactoringList.size() == 1) {
+			
+		}
 	}
 	
 	/**
