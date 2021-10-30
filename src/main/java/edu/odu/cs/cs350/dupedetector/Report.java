@@ -54,12 +54,37 @@ public class Report {
 	}
 	
 	/**
-	 * Prints the report the by printing the refactoring suggestions and notes how many could have been printed
+	 * Prints the report the by printing the refactoring suggestions and 
+	 * notes how many could have been printed if more could of been printed
 	 * 
 	 * @param nSuggestions how many total suggestions should be printed in the report
 	 */
 	private void printRefactoringReport(int nSuggestions) {
 		
+		//Get the iterator for the ArrayList
+		Iterator<SuggestedRefactoring> it = refactoringList.iterator();
+		//This acts a sentinel 
+		int count = 0;
+		while(it.hasNext() && count < nSuggestions) {
+			SuggestedRefactoring curr = it.next();
+			/**
+			 * Count will iterate after check, so say count is 2 nSug is 3, count is now 3 and this is third loop
+			 * thus it should no longer print. Which is why we have < instead of <=.
+			 */
+			count++;
+			
+			//Print out the information about the current suggestion
+			System.out.println("Opportunity " + curr.getOpportunity() + ", " + curr.getTotalTokens() + " tokens");
+			System.out.print(curr.toString());
+			//new line to break the suggestions apart
+			System.out.println("");
+		}
+		
+		/**
+		 * count is total suggestions printed, which is going to be either nSuggestions or the list size
+		 * and the list size is always going to be the possible amount of suggestions that could of been printed
+		 */
+		System.out.println("Printed " + count + " of " + refactoringList.size() + " suggestions.");	
 	}
 	
 	/* Extra note: it may be more useful/less resource intensive for the class that makes the suggestions

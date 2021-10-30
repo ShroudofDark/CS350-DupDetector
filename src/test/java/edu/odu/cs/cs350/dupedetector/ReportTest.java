@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat; 
 import static org.hamcrest.Matchers.*;
 
+//Other important imports
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.*;
 
 class ReportTest {
@@ -50,6 +53,15 @@ class ReportTest {
 	ArrayList<SuggestedRefactoring> refactoringList3;
 	
 	/**
+	 * For println testing. Information intepreted from these results:
+	 * 
+	 * https://stackoverflow.com/questions/32241057/how-to-test-a-print-method-in-java-using-junit/32241300
+	 * https://stackoverflow.com/questions/1119385/junit-test-for-system-out-println
+	 */
+	ByteArrayOutputStream outContent;
+	PrintStream originalOut = System.out;
+	
+	/**
 	 * Setup data to be used/reset after each function
 	 */
 	@BeforeEach
@@ -61,6 +73,10 @@ class ReportTest {
 			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring3));
 		refactoringList3 
 			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4));
+		
+		//Output streams
+		outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
 	}
 	
 	/**
@@ -71,6 +87,10 @@ class ReportTest {
 		refactoringList1.clear();
 		refactoringList2.clear();
 		refactoringList3.clear();
+		
+		//Clean up streams
+		outContent.reset();
+		System.setOut(originalOut);
 	}
 	
 	/**
@@ -111,11 +131,80 @@ class ReportTest {
 	}
 	
 	/**
-	 * Test method printReport (making sure it doesn't change anything)
+	 * Test method printReport
 	 */
 	@Test
 	void testPrintReport() {
-		fail("not implemented");
+		Report rep = new Report(refactoringList1);
+		
+		//Prints report, with suggestion count of 3
+		rep.printReport(3);
+		
+		//Check that printReport didn't change things it shouldn't
+		assertThat(rep.totalRefactorings(), is(3));
+		assertThat(rep.getRefactoring(0), equalTo(refactoring1));
+		assertThat(rep.getRefactoring(1), equalTo(refactoring2));
+		assertThat(rep.getRefactoring(2), equalTo(refactoring3));
+		
+		//Catch the output, converting it to a string
+		String output = new String(outContent.toByteArray());
+		
+		//Assert that the output contains the expected data
+		assertThat(output, containsString("Opportunity"));
+		assertThat(output, containsString(data1));
+		assertThat(output, containsString(data2));
+		assertThat(output, containsString(data3));
+		assertThat(output, not(containsString(data4)));
+		
+		//Format was grabbed from specifications, so there should be a line like this
+		assertThat(output, containsString("Printed 3 of 3 suggestions."));
+		
+		/**
+		 * Test Divide 1
+		 */
+		
+		//Reset the stream output to do another test
+		outContent.reset();
+		
+		//Should print only 2 of the 3 total suggestions
+		rep.printReport(2);
+		
+		//Sets output to new string
+		output = new String(outContent.toByteArray());
+		
+		//Assert that the output contains the expected data
+		assertThat(output, containsString("Opportunity"));
+		assertThat(output, containsString(data1));
+		assertThat(output, containsString(data2));
+		assertThat(output, not(containsString(data3)));
+		assertThat(output, not(containsString(data4)));
+		
+		//Format was grabbed from specifications, so there should be a line like this
+		assertThat(output, containsString("Printed 2 of 3 suggestions."));
+		
+		
+		/**
+		 * Test Divide 2
+		 */
+		
+		//Reset the stream output to do another test
+		outContent.reset();
+		
+		//Should print only 3 of the 3 total suggestions, given that there is only 3 items
+		rep.printReport(4);
+		
+		//Sets output to new string
+		output = new String(outContent.toByteArray());
+		
+		//Assert that the output contains the expected data
+		assertThat(output, containsString("Opportunity"));
+		assertThat(output, containsString(data1));
+		assertThat(output, containsString(data2));
+		assertThat(output, containsString(data3));
+		assertThat(output, not(containsString(data4)));
+		
+		//Format was grabbed from specifications, so there should be a line like this
+		assertThat(output, containsString("Printed 3 of 3 suggestions."));
 	}
 	
 	/**
@@ -147,7 +236,7 @@ class ReportTest {
 		assertThat(rep2.getRefactoring(3), equalTo(refactoring4));
 		
 		/**
-		 * Test Divide
+		 * Test Divide 1
 		 */
 		
 		//Should remove refactoring3 only
@@ -164,7 +253,7 @@ class ReportTest {
 		assertThat(rep2, not(equalTo(rep)));
 		
 		/**
-		 * Test Divide
+		 * Test Divide 2
 		 */
 		
 		//Should remove refactoring4 only
@@ -181,7 +270,7 @@ class ReportTest {
 		assertThat(rep3, not(equalTo(rep)));
 		
 		/**
-		 * Test Divide
+		 * Test Divide 3
 		 */
 		
 		//Should remove everything except refactoring2
