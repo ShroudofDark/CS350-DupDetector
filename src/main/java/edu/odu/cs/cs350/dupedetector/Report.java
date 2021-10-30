@@ -11,13 +11,6 @@ package edu.odu.cs.cs350.dupedetector;
  * @author Jacob McFadden: created the suggested refactorings output
  */
 
-/**
- * Jacob -> I'm leaving a comment here to track my thoughts about a subject to be addressed for how to handle
- * some of the report functions. Should functions like trimRefactorings and sortRefactorings be public methods
- * that are called within the main class while the printReport functions only focus on printing the output. Also
- * considered making the PrintReport like toString methods, though there is concern that it would make a singular
- * string that is too large instead of printing out multiple strings.
- */
 import java.util.*;
 
 public class Report implements Comparator<SuggestedRefactoring> {	
@@ -55,29 +48,24 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	 * printRefactoringReport
 	 * 
 	 * @param nSuggestions how many total suggestions should be printed in the report
-	 * @param maxSubs if the refactoring exceeds this number of lexeme substituions, will not be printed
-	 * @param minSeqLength if the refactoring total sequence tokens is under this number, will not be printed
 	 */
-	public void printReport(int nSuggestions, int maxSubs, int minSeqLength) {
-		printRefactoringReport(nSuggestions, maxSubs, minSeqLength);
+	public void printReport(int nSuggestions) {
+		printRefactoringReport(nSuggestions);
 	}
 	
 	/**
-	 * Prepares the suggested refactorings by removing suggestions that don't meet criteria to be printed 
-	 * defined by the parameters and sorting the list in descending order by opportunity. Once done it outputs
-	 * the report.
-	 * 
-	 * Uses:
-	 * trimReport
-	 * sortRefactorings
+	 * Prints the report the by printing the refactoring suggestions and notes how many could have been printed
 	 * 
 	 * @param nSuggestions how many total suggestions should be printed in the report
-	 * @param maxSubs if the refactoring exceeds this number of lexeme substituions, will not be printed
-	 * @param minSeqLength if the refactoring total sequence tokens is under this number, will not be printed
 	 */
-	private void printRefactoringReport(int nSuggestions, int maxSubs, int minSeqLength) {
+	private void printRefactoringReport(int nSuggestions) {
 		
 	}
+	
+	/* Extra note: it may be more useful/less resource intensive for the class that makes the suggestions
+	 * to instead have these parameters and just straight up not add to the collection of suggestions that
+	 * is passed to the report. This way we don't have to trim in the first place.
+	 */
 	
 	/**
 	 * Removes suggestions that don't meet criteria to be printed as defined by the parameters.
@@ -85,14 +73,29 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	 * @param maxSubs if the refactoring exceeds this number of lexeme substituions, will not be printed
 	 * @param minSeqLength if the refactoring total sequence tokens is under this number, will not be printed
 	 */
-	private void trimRefactorings(int maxSubs, int minSeqLength) {
+	public void trimRefactorings(int maxSubs, int minSeqLength) {
 		
+		//Get the iterator for the ArrayList
+		Iterator<SuggestedRefactoring> it = refactoringList.iterator();
+		
+		while(it.hasNext()) {
+			SuggestedRefactoring curr = it.next();
+			
+			if(curr.getTotalSubs() > maxSubs || curr.getTotalTokens() < minSeqLength) {
+				/**
+				 * Found this while researching array lists and figure it would be best to implement it:
+				 * 
+				 * https://www.java67.com/2018/12/how-to-remove-objects-or-elements-while-iterating-Arraylist-java.html
+				 */
+				it.remove();
+			}
+		}
 	}
 	
 	/**
 	 * Sorts the refactorings from greatest opportunity to least opportunity
 	 */
-	private void sortRefactorings() {	
+	public void sortRefactorings() {	
 		//Don't bother if the list size is 0 or 1, it is already technically sorted
 		if(refactoringList.size() == 0 || refactoringList.size() == 1) {
 			
@@ -125,8 +128,10 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	public boolean equals(Object obj) {
 		Report other = (Report)obj;
 		
-		if(refactoringList != other.refactoringList)
+		//!= does not work here as found out in tests, need to use .equals
+		if(!(refactoringList.equals(other.refactoringList))) {
 			return false;
+		}
 		
 		return true;
 	}

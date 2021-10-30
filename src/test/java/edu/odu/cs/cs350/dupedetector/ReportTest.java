@@ -39,7 +39,7 @@ class ReportTest {
 			+ "/home/zeil/projects/cppProject1/src/headers/bar.h:086:8\r\n"
 			+ "a b p q t l s\r\n";
 	
-	//Suggested refactorings go tokenAmount, Opportunity, totalSug, data currently
+	//Suggested refactorings go tokenAmount, Opportunity, totalSubs, data currently
 	SuggestedRefactoring refactoring1 = new SuggestedRefactoring(12, 24, 3, data1);
 	SuggestedRefactoring refactoring2 = new SuggestedRefactoring(16, 16, 3, data2);
 	SuggestedRefactoring refactoring3 = new SuggestedRefactoring(6, 18, 2, data3);
@@ -78,13 +78,18 @@ class ReportTest {
 	 */
 	@Test
 	void testReport() {
-		//Note when I come back to this, make sure to check deep copy by changing the original and seeing if still equal
 		Report rep = new Report(refactoringList1);
 		
 		//Check that information is as expected
 		assertThat(rep.totalRefactorings(), is(3));
 		assertThat(rep.getRefactoring(0), equalTo(refactoring1));
+		assertThat(rep.getRefactoring(1), equalTo(refactoring2));
+		assertThat(rep.getRefactoring(2), equalTo(refactoring3));
 		assertThat(rep.getRefactoring(1), not(equalTo(refactoring3)));
+		
+		//Checks to make sure equal works as intended
+		Report repSame = new Report(refactoringList1);
+		assertThat(rep, equalTo(repSame));
 		
 		//Check that Report isn't just initializing the same list despite different input
 		Report rep2 = new Report(refactoringList2);
@@ -106,9 +111,100 @@ class ReportTest {
 	}
 	
 	/**
-	 * Test method printReport
+	 * Test method printReport (making sure it doesn't change anything)
 	 */
+	@Test
 	void testPrintReport() {
+		fail("not implemented");
+	}
+	
+	/**
+	 * Test method trimRefactorings
+	 */
+	//= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4));
+	@Test 
+	void testTrimRefactorings() {
+		//Original list
+		Report rep = new Report(refactoringList3);
+		//Lists to compare to (need new list because the ()-> nots local variables must be final reinitializing)
+		Report rep2 = new Report(refactoringList3);
+		Report rep3 = new Report(refactoringList3);
+		Report rep4 = new Report(refactoringList3);
+		
+		//Confirm they are equal
+		assertThat(rep2, equalTo(rep));
+		assertThat(rep3, equalTo(rep));
+		assertThat(rep4, equalTo(rep));
+		
+		//Max Subs/Min Sequence Length
+		
+		//Should not remove anything
+		rep2.trimRefactorings(999, 0);
+		
+		assertThat(rep2.totalRefactorings(), is(4));
+		assertThat(rep2.getRefactoring(0), equalTo(refactoring1));
+		assertThat(rep2.getRefactoring(1), equalTo(refactoring2));
+		assertThat(rep2.getRefactoring(2), equalTo(refactoring3));
+		assertThat(rep2.getRefactoring(3), equalTo(refactoring4));
+		
+		/**
+		 * Test Divide
+		 */
+		
+		//Should remove refactoring3 only
+		rep2.trimRefactorings(999, 12);
+		
+		assertThat(rep2.totalRefactorings(), is(3));
+		assertThat(rep2.getRefactoring(0), equalTo(refactoring1));
+		assertThat(rep2.getRefactoring(1), equalTo(refactoring2));
+		assertThat(rep2.getRefactoring(2), equalTo(refactoring4));
+		//This should no longer exist, thus throw out of bounds
+		assertThrows(IndexOutOfBoundsException.class, ()-> rep2.getRefactoring(3));
+		
+		//These two should no longer be equal
+		assertThat(rep2, not(equalTo(rep)));
+		
+		/**
+		 * Test Divide
+		 */
+		
+		//Should remove refactoring4 only
+		rep3.trimRefactorings(3, 0);
+		
+		assertThat(rep3.totalRefactorings(), is(3));
+		assertThat(rep3.getRefactoring(0), equalTo(refactoring1));
+		assertThat(rep3.getRefactoring(1), equalTo(refactoring2));
+		assertThat(rep3.getRefactoring(2), equalTo(refactoring3));
+		//This should no longer exist, thus throw out of bounds
+		assertThrows(IndexOutOfBoundsException.class, ()-> rep3.getRefactoring(3));
+		
+		//These two should no longer be equal
+		assertThat(rep3, not(equalTo(rep)));
+		
+		/**
+		 * Test Divide
+		 */
+		
+		//Should remove everything except refactoring2
+		rep4.trimRefactorings(3, 14);
+		
+		assertThat(rep4.totalRefactorings(), is(1));
+		assertThat(rep4.getRefactoring(0), equalTo(refactoring2));
+		//This should no longer exist, thus throw out of bounds
+		assertThrows(IndexOutOfBoundsException.class, ()-> rep4.getRefactoring(1));
+		
+		//These two should no longer be equal
+		assertThat(rep4, not(equalTo(rep)));
 		
 	}
+	
+	/**
+	 * Test method sortRefactorings
+	 */
+	@Test 
+	void testSortRefactorings() {
+		fail("not implemented");
+	}
+	
+	
 }
