@@ -15,7 +15,7 @@ import java.util.*;
 
 class ReportTest {
 
-	//Data for SuggestedRefactoring until class is implemented (tests will need to be reviewed afterwords)
+	//Data for SuggestedRefactoring until class is implemented (tests will need to be reviewed afterwards)
 	String data1 = "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"
 			+ "x y 1\r\n"
 			+ "/home/zeil/projects/cppProject1/src/foo.cpp:156:4\r\n"
@@ -121,7 +121,6 @@ class ReportTest {
 	/**
 	 * Test method trimRefactorings
 	 */
-	//= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4));
 	@Test 
 	void testTrimRefactorings() {
 		//Original list
@@ -203,7 +202,42 @@ class ReportTest {
 	 */
 	@Test 
 	void testSortRefactorings() {
-		fail("not implemented");
+		//Original list, unsorted
+		Report rep = new Report(refactoringList3);
+		//Second list to compare against
+		Report rep2 = new Report(refactoringList3);
+		
+		//Confirm equal
+		assertThat(rep2, equalTo(rep));
+		
+		//Do the sort, which sorts from greatest opportunity to lowest
+		rep2.sortRefactorings();
+		
+		//Expected order should now be refactoring 4, 1, 3, 2
+		assertThat(rep2.totalRefactorings(), is(4));
+		assertThat(rep2.getRefactoring(0), equalTo(refactoring4));
+		assertThat(rep2.getRefactoring(1), equalTo(refactoring1));
+		assertThat(rep2.getRefactoring(2), equalTo(refactoring3));
+		assertThat(rep2.getRefactoring(3), equalTo(refactoring2));
+		
+		//Shouldn't be equal because ordering
+		assertThat(rep2, not(equalTo(rep)));
+		
+		//add duplicate opportunity to refactoring list3
+		refactoringList3.add(refactoring3);
+		assertThat(refactoringList3.size(), is(5));
+		
+		//Check how it handles same Opportunity
+		Report rep3 = new Report(refactoringList3);
+		rep3.sortRefactorings();
+		
+		//Expected order should be refactoring 4, 1, 3, 3, 2
+		assertThat(rep3.totalRefactorings(), is(5));
+		assertThat(rep3.getRefactoring(0), equalTo(refactoring4));
+		assertThat(rep3.getRefactoring(1), equalTo(refactoring1));
+		assertThat(rep3.getRefactoring(2), equalTo(refactoring3));
+		assertThat(rep3.getRefactoring(3), equalTo(refactoring3));
+		assertThat(rep3.getRefactoring(4), equalTo(refactoring2));
 	}
 	
 	

@@ -13,7 +13,7 @@ package edu.odu.cs.cs350.dupedetector;
 
 import java.util.*;
 
-public class Report implements Comparator<SuggestedRefactoring> {	
+public class Report {	
 	
 	private ArrayList<SuggestedRefactoring> refactoringList;
 	
@@ -97,8 +97,22 @@ public class Report implements Comparator<SuggestedRefactoring> {
 	 */
 	public void sortRefactorings() {	
 		//Don't bother if the list size is 0 or 1, it is already technically sorted
-		if(refactoringList.size() == 0 || refactoringList.size() == 1) {
+		if(!(refactoringList.size() == 0 || refactoringList.size() == 1)) {
+			/**
+			 * Below is a example of a lambda way of making a comparator without making an entire class
+			 * for the function. Also includes helpful link about lambdas in Java.
+			 * 
+			 * https://howtodoinjava.com/java-sorting-guide/
+			 * https://howtodoinjava.com/java8/lambda-expressions/
+			 * 
+			 * Also had assistance from:
+			 * https://www.baeldung.com/java-comparator-comparable
+			 */
+			Comparator<SuggestedRefactoring> refactorSorter 
+				= (firstRef, secondRef) -> Integer.compare(firstRef.getOpportunity(), secondRef.getOpportunity());
 			
+			//Because the above comparator uses default Integer compare, it will sort lowest to go greatest, so we reverse
+			Collections.sort(refactoringList, refactorSorter.reversed());
 		}
 	}
 	
@@ -134,15 +148,5 @@ public class Report implements Comparator<SuggestedRefactoring> {
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Compares suggested refactorings by opportunity for sorting
-	 * 
-	 * https://www.baeldung.com/java-comparator-comparable code assisted by this article
-	 */
-	@Override
-	public int compare(SuggestedRefactoring firstRef, SuggestedRefactoring secondRef) {
-		return Integer.compare(firstRef.getOpportunity(), secondRef.getOpportunity());
 	}
 }
