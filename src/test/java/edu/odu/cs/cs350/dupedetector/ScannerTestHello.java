@@ -11,7 +11,7 @@ import java.util.Iterator;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Test;
 
-import edu.odu.cs.cs350.tokentest.TokensHelloWorld;
+import edu.odu.cs.cs350.dupedetector.tokentest.TokensHelloWorld;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat; 

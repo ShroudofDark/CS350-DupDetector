@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350.tokentest;
+package edu.odu.cs.cs350.dupedetector.tokentest;
 
 import java.util.ArrayList;
 import java.util.List;
