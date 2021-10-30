@@ -102,6 +102,22 @@ public class Token {
         return columnNumber;
     }
 
+    /**
+     * Does not account for lexeme
+     */
+    public boolean equals(Object rhs) {
+        if (rhs.getClass() != this.getClass()) {
+            return false;
+        }
+        Token other = (Token) rhs;
+        return (
+            kind == other.kind &&
+            // lexeme == other.lexeme &&
+            lineNumber == other.lineNumber &&
+            columnNumber == other.columnNumber
+        );
+    }
+
 
 
 }

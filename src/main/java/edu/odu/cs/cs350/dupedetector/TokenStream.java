@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @author zeil
- * start copied code
+ * start copied and adapted code
  */
 public class TokenStream implements Iterable<Token> {
     
@@ -28,8 +28,10 @@ public class TokenStream implements Iterable<Token> {
     * @param input input source for this stream
     */
     public TokenStream(final Reader input) {
+        // NOTE: using the %standalone setting in jflex will render starter code
+        // similar to but not as complete as this.
         tokens = new LinkedList<Token>();
-        GeneratedScanner scanner = new GeneratedScanner (input);
+        Scanner scanner = new Scanner (input);
         try {
             Token token = scanner.yylex();
             while (token != null && token.getKind() != TokenKinds.EOF) {
