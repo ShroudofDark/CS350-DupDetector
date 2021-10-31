@@ -1,7 +1,7 @@
 //CLI Parameters Class
 //Will be used to find the initial directory/filepath for refactoring files
 //Also will give rating to files to see whether or not they should be refactored
-package edu.odu.cs.cs350;
+package edu.odu.cs.cs350.dupedetector;
 import java.util.Scanner;
 /**
  * @author cs_rpami001
