@@ -6,22 +6,49 @@ package edu.odu.cs.cs350.dupedetector;
 import java.util.*;
 
 public class App {
+	private int numSuggestions; // TODO: Raphael to review and see if this aligns
+								// with his implementation
+
     public String getGreeting() {
         return "Hello World!";
     }
 
+	private void parseArgs(String[] args) {
+		numSuggestions = 20; // TODO: set real value here and for others
+		return;
+	}
+
     public static void main(String[] args) {
-        App testApp = new App();   	
-    	System.out.println(testApp.getGreeting());
+        App app = new App(); // for config, etc., per design discussions
+		app.parseArgs(args);
+
+		SuppliedCode theCode = new SuppliedCode();
+		theCode.setNumSuggestions(app.numSuggestions);
+
+		// Get list of files from supplied files/directories
+		theCode.setSuppliedFilesAndDirs(new ArrayList<String>());
+		// Of the dirs supplied, if any, search recursively for eligible SourceCodeFiles
+		theCode.findSourceCodeFiles();
+		ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions();
+
+		// TODO: print files read report here.
+
+		// Report
+		Report report = new Report(refactorings);
+		report.sortRefactorings(); // TODO: make this a private concern of the class
+		report.printReport(app.numSuggestions);
     	
-        testApp.reportSystemTest();
     }
     
     /**
      * Going to spit out a bunch of information testing the Report class.
+	 * @deprecated - we should move this to a unit test after merging with the
+	 * tokenizing branch.
      * 
      * Will use functions and information currently have.
+	 * EDIT: we should have more once we merge in the tokenizing branch.
      */
+	@Deprecated
     public void reportSystemTest() {
     	System.out.println("Now Doing Report System Test\n");
     	
