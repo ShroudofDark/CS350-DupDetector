@@ -6,16 +6,33 @@ package edu.odu.cs.cs350.dupedetector;
 import java.util.*;
 
 public class App {
-	private int numSuggestions; // TODO: Raphael to review and see if this aligns
-								// with his implementation
+	private int numSuggestions;
+	private String[] suppliedPaths;
+	private String propertiesFile;
+
 
     public String getGreeting() {
         return "Hello World!";
     }
 
 	private void parseArgs(String[] args) {
+
+		// TODO: call printForInvalidInvocation when needed
 		numSuggestions = 20; // TODO: set real value here and for others
-		return;
+
+		int startPathindex = 3;
+		// if 2nd arg has ".ini" extension
+			// propertiesFile = args[3]
+			// ++startPathindex;
+
+		for (int i = startPathindex; i < args.length; ++i) {
+			// push suppliedPaths
+		}
+	
+	}
+
+	private void printForInvalidInvocation() {
+		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
 	}
 
     public static void main(String[] args) {
