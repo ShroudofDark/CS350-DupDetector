@@ -7,7 +7,7 @@ package edu.odu.cs.cs350.dupedetector;
  * @author zeil, original
  *
  */
-public class Token {
+public class Token implements Cloneable{
 
     /**
      * What kind of token is this?
@@ -88,6 +88,19 @@ public class Token {
     }
 
     /**
+     * Gets lexeme with C++ quotation marks for char and string constants if applicable
+     * @return the lexeme, with quotes if it is a char or string literal.
+     */
+    public String getLexemeQuoted() {
+        if (kind == TokenKinds.CHARACTER_LITERAL) {
+            return new String("'" + lexeme + "'");
+        } else if (kind == TokenKinds.STRING_LITERAL) {
+            return new String("\"" + lexeme + "\"");
+        }
+        return lexeme;
+    }
+
+    /**
      * @return the lineNumber
      */
     public int getLineNumber() {
@@ -118,7 +131,9 @@ public class Token {
         );
     }
 
-
+    public final Token clone() {
+        return new Token(kind, lineNumber, columnNumber, new String(lexeme));
+    }
 
 }
 // end code copied and adapted from zeil.
