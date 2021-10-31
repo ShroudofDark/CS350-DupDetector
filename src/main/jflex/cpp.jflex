@@ -116,98 +116,169 @@ SingleCharacter = [^\r\n\'\\]
 
 <YYINITIAL> {
 
-  /* keywords */
-  "abstract"                     { return symbol(TokenKinds.ABSTRACT); }
-  "boolean"                      { return symbol(TokenKinds.BOOLEAN); }
-  "break"                        { return symbol(TokenKinds.BREAK); }
-  "byte"                         { return symbol(TokenKinds.BYTE); }
-  "case"                         { return symbol(TokenKinds.CASE); }
-  "catch"                        { return symbol(TokenKinds.CATCH); }
-  "char"                         { return symbol(TokenKinds.CHAR); }
-  "class"                        { return symbol(TokenKinds.CLASS); }
-  "const"                        { return symbol(TokenKinds.CONST); }
-  "continue"                     { return symbol(TokenKinds.CONTINUE); }
-  "do"                           { return symbol(TokenKinds.DO); }
-  "double"                       { return symbol(TokenKinds.DOUBLE); }
-  "else"                         { return symbol(TokenKinds.ELSE); }
-  "extends"                      { return symbol(TokenKinds.EXTENDS); }
-  "final"                        { return symbol(TokenKinds.FINAL); }
-  "finally"                      { return symbol(TokenKinds.FINALLY); }
-  "float"                        { return symbol(TokenKinds.FLOAT); }
-  "for"                          { return symbol(TokenKinds.FOR); }
-  "default"                      { return symbol(TokenKinds.DEFAULT); }
-  "implements"                   { return symbol(TokenKinds.IMPLEMENTS); }
-  "import"                       { return symbol(TokenKinds.IMPORT); }
-  "instanceof"                   { return symbol(TokenKinds.INSTANCEOF); }
-  "int"                          { return symbol(TokenKinds.INT); }
-  "interface"                    { return symbol(TokenKinds.INTERFACE); }
-  "long"                         { return symbol(TokenKinds.LONG); }
-  "native"                       { return symbol(TokenKinds.NATIVE); }
-  "new"                          { return symbol(TokenKinds.NEW); }
-  "goto"                         { return symbol(TokenKinds.GOTO); }
-  "if"                           { return symbol(TokenKinds.IF); }
-  "public"                       { return symbol(TokenKinds.PUBLIC); }
-  "short"                        { return symbol(TokenKinds.SHORT); }
-  "super"                        { return symbol(TokenKinds.SUPER); }
-  "switch"                       { return symbol(TokenKinds.SWITCH); }
-  "synchronized"                 { return symbol(TokenKinds.SYNCHRONIZED); }
-  "package"                      { return symbol(TokenKinds.PACKAGE); }
-  "private"                      { return symbol(TokenKinds.PRIVATE); }
-  "protected"                    { return symbol(TokenKinds.PROTECTED); }
-  "transient"                    { return symbol(TokenKinds.TRANSIENT); }
-  "return"                       { return symbol(TokenKinds.RETURN); }
-  "void"                         { return symbol(TokenKinds.VOID); }
-  "static"                       { return symbol(TokenKinds.STATIC); }
-  "while"                        { return symbol(TokenKinds.WHILE); }
-  "this"                         { return symbol(TokenKinds.THIS); }
-  "throw"                        { return symbol(TokenKinds.THROW); }
-  "throws"                       { return symbol(TokenKinds.THROWS); }
-  "try"                          { return symbol(TokenKinds.TRY); }
-  "volatile"                     { return symbol(TokenKinds.VOLATILE); }
-  "strictfp"                     { return symbol(TokenKinds.STRICTFP); }
-  
+  /* keywords
+   * alternative operators share the TokenKind with their normal operator counterparts
+   * but will have different lexemes. DupeDetector will not count them the same
+   * on account of their lexemes, so this works. 
+   * https://en.cppreference.com/w/cpp/language/operator_alternative
+   *
+   * Complete keyword list retrieved from
+   * https://en.cppreference.com/w/cpp/keyword
+   */
+
+  "alignas"                          { return symbol(TokenKinds.ALIGNAS); }
+  "alignof"                          { return symbol(TokenKinds.ALIGNOF); }
+  "asm"                              { return symbol(TokenKinds.ASM); }
+  "atomic_cancel"                    { return symbol(TokenKinds.ATOMIC_CANCEL); }
+  "atomic_commit"                    { return symbol(TokenKinds.ATOMIC_COMMIT); }
+  "atomic_noexcept"                  { return symbol(TokenKinds.ATOMIC_NOEXCEPT); }
+  "auto"                             { return symbol(TokenKinds.AUTO); }
+  "bool"                             { return symbol(TokenKinds.BOOL); }
+  "break"                            { return symbol(TokenKinds.BREAK); }
+  "case"                             { return symbol(TokenKinds.CASE); }
+  "catch"                            { return symbol(TokenKinds.CATCH); }
+  "char"                             { return symbol(TokenKinds.CHAR); }
+  "char8_t"                          { return symbol(TokenKinds.CHAR8_T); }
+  "char16_t"                         { return symbol(TokenKinds.CHAR16_T); }
+  "char32_t"                         { return symbol(TokenKinds.CHAR32_T); }
+  "class"                            { return symbol(TokenKinds.CLASS); }
+
+  "concept"                          { return symbol(TokenKinds.CONCEPT); }
+  "const"                            { return symbol(TokenKinds.CONST); }
+  "consteval"                        { return symbol(TokenKinds.CONSTEVAL); }
+  "constexpr"                        { return symbol(TokenKinds.CONSTEXPR); }
+  "constinit"                        { return symbol(TokenKinds.CONSTINIT); }
+  "const_cast"                       { return symbol(TokenKinds.CONST_CAST); }
+  "continue"                         { return symbol(TokenKinds.CONTINUE); }
+  "co_await"                         { return symbol(TokenKinds.CO_AWAIT); }
+  "co_return"                        { return symbol(TokenKinds.CO_RETURN); }
+  "co_yield"                         { return symbol(TokenKinds.CO_YIELD); }
+  "decltype"                         { return symbol(TokenKinds.DECLTYPE); }
+  "default"                          { return symbol(TokenKinds.DEFAULT); }
+  "delete"                           { return symbol(TokenKinds.DELETE); }
+  "do"                               { return symbol(TokenKinds.DO); }
+  "double"                           { return symbol(TokenKinds.DOUBLE); }
+  "dynamic_cast"                     { return symbol(TokenKinds.DYNAMIC_CAST); }
+  "else"                             { return symbol(TokenKinds.ELSE); }
+  "enum"                             { return symbol(TokenKinds.ENUM); }
+  "explicit"                         { return symbol(TokenKinds.EXPLICIT); }
+  "export"                           { return symbol(TokenKinds.EXPORT); }
+  "extern"                           { return symbol(TokenKinds.EXTERN); }
+  "float"                            { return symbol(TokenKinds.FLOAT); }
+  "for"                              { return symbol(TokenKinds.FOR); }
+  "friend"                           { return symbol(TokenKinds.FRIEND); }
+  "goto"                             { return symbol(TokenKinds.GOTO); }
+  "if"                               { return symbol(TokenKinds.IF); }
+  "inline"                           { return symbol(TokenKinds.INLINE); }
+  "int"                              { return symbol(TokenKinds.INT); }
+  "long"                             { return symbol(TokenKinds.LONG); }
+  "mutable"                          { return symbol(TokenKinds.MUTABLE); }
+  "namespace"                        { return symbol(TokenKinds.NAMESPACE); }
+  "new"                              { return symbol(TokenKinds.NEW); }
+  "noexcept"                         { return symbol(TokenKinds.NOEXCEPT); }
+
+  "nullptr"                          { return symbol(TokenKinds.NULLPTR); }
+  "operator"                         { return symbol(TokenKinds.OPERATOR); }
+  "private"                          { return symbol(TokenKinds.PRIVATE); }
+  "protected"                        { return symbol(TokenKinds.PROTECTED); }
+  "public"                           { return symbol(TokenKinds.PUBLIC); }
+  "reflexpr"                         { return symbol(TokenKinds.REFLEXPR); }
+  "register"                         { return symbol(TokenKinds.REGISTER); }
+  "reinterpret_cast"                 { return symbol(TokenKinds.REINTERPRET_CAST); }
+  "requires"                         { return symbol(TokenKinds.REQUIRES); }
+  "return"                           { return symbol(TokenKinds.RETURN); }
+  "short"                            { return symbol(TokenKinds.SHORT); }
+  "signed"                           { return symbol(TokenKinds.SIGNED); }
+  "sizeof"                           { return symbol(TokenKinds.SIZEOF); }
+  "static"                           { return symbol(TokenKinds.STATIC); }
+  "static_assert"                    { return symbol(TokenKinds.STATIC_ASSERT); }
+  "static_cast"                      { return symbol(TokenKinds.STATIC_CAST); }
+  "struct"                           { return symbol(TokenKinds.STRUCT); }
+  "switch"                           { return symbol(TokenKinds.SWITCH); }
+  "synchronized"                     { return symbol(TokenKinds.SYNCHRONIZED); }
+  "template"                         { return symbol(TokenKinds.TEMPLATE); }
+  "this"                             { return symbol(TokenKinds.THIS); }
+  "thread_local"                     { return symbol(TokenKinds.THREAD_LOCAL); }
+  "throw"                            { return symbol(TokenKinds.THROW); }
+  "try"                              { return symbol(TokenKinds.TRY); }
+  "typedef"                          { return symbol(TokenKinds.TYPEDEF); }
+  "typeid"                           { return symbol(TokenKinds.TYPEID); }
+  "typename"                         { return symbol(TokenKinds.TYPENAME); }
+  "union"                            { return symbol(TokenKinds.UNION); }
+  "unsigned"                         { return symbol(TokenKinds.UNSIGNED); }
+  "using"                            { return symbol(TokenKinds.USING); }
+  "virtual"                          { return symbol(TokenKinds.VIRTUAL); }
+  "void"                             { return symbol(TokenKinds.VOID); }
+  "volatile"                         { return symbol(TokenKinds.VOLATILE); }
+  "wchar_t"                          { return symbol(TokenKinds.WCHAR_T); }
+  "while"                            { return symbol(TokenKinds.WHILE); }
+
   /* boolean literals */
   "true"                         { return symbol(TokenKinds.BOOLEAN_LITERAL, true); }
   "false"                        { return symbol(TokenKinds.BOOLEAN_LITERAL, false); }
   
-  /* null literal */
-  "null"                         { return symbol(TokenKinds.NULL_LITERAL); }
-  
-  
   /* separators */
+  "#"                            { return symbol(TokenKinds.POUND); }
   "("                            { return symbol(TokenKinds.LPAREN); }
   ")"                            { return symbol(TokenKinds.RPAREN); }
   "{"                            { return symbol(TokenKinds.LBRACE); }
   "}"                            { return symbol(TokenKinds.RBRACE); }
+  "<%"                            { return symbol(TokenKinds.LBRACE); }
+  "%>"                            { return symbol(TokenKinds.RBRACE); }
   "["                            { return symbol(TokenKinds.LBRACK); }
   "]"                            { return symbol(TokenKinds.RBRACK); }
+  "<:"                            { return symbol(TokenKinds.LBRACK); } /* Could cause issues with `::`?*/
+  ":>"                            { return symbol(TokenKinds.RBRACK); }
   ";"                            { return symbol(TokenKinds.SEMICOLON); }
   ","                            { return symbol(TokenKinds.COMMA); }
   "."                            { return symbol(TokenKinds.DOT); }
+  "->"                           { return symbol(TokenKinds.DEREF); }
+  "::"                           { return symbol(TokenKinds.SCOPE); }
   
+
+  /* keywords
+   * alternative operators (above) share the TokenKind with their normal operator counterparts
+   * but will have different lexemes. DupeDetector will not count them the same
+   * on account of their lexemes, so this works. 
+   * https://en.cppreference.com/w/cpp/language/operator_alternative
+   *
+   * Complete operator list retrieved from
+   * https://en.cppreference.com/w/cpp/language/operators
+   */
   /* operators */
+  "new"                          { return symbol(TokenKinds.NEW); }
+  "delete"                       { return symbol(TokenKinds.DELETE); }
+  "sizeof"                       { return symbol(TokenKinds.SIZEOF); }
   "="                            { return symbol(TokenKinds.EQ); }
   ">"                            { return symbol(TokenKinds.GT); }
   "<"                            { return symbol(TokenKinds.LT); }
   "!"                            { return symbol(TokenKinds.NOT); }
-  "~"                            { return symbol(TokenKinds.COMP); }
+  "not"                          { return symbol(TokenKinds.NOT); }
+  "~"                            { return symbol(TokenKinds.COMPL); }
+  "compl"                        { return symbol(TokenKinds.COMPL); }
   "?"                            { return symbol(TokenKinds.QUESTION); }
   ":"                            { return symbol(TokenKinds.COLON); }
   "=="                           { return symbol(TokenKinds.EQEQ); }
   "<="                           { return symbol(TokenKinds.LTEQ); }
   ">="                           { return symbol(TokenKinds.GTEQ); }
   "!="                           { return symbol(TokenKinds.NOTEQ); }
-  "&&"                           { return symbol(TokenKinds.ANDAND); }
-  "||"                           { return symbol(TokenKinds.OROR); }
+  "not_eq"                       { return symbol(TokenKinds.NOTEQ); }
+  "&&"                           { return symbol(TokenKinds.AND); }
+  "and"                          { return symbol(TokenKinds.AND); }
+  "||"                           { return symbol(TokenKinds.OR); }
+  "or"                           { return symbol(TokenKinds.OR); }
   "++"                           { return symbol(TokenKinds.PLUSPLUS); }
   "--"                           { return symbol(TokenKinds.MINUSMINUS); }
   "+"                            { return symbol(TokenKinds.PLUS); }
   "-"                            { return symbol(TokenKinds.MINUS); }
   "*"                            { return symbol(TokenKinds.MULT); }
   "/"                            { return symbol(TokenKinds.DIV); }
-  "&"                            { return symbol(TokenKinds.AND); }
-  "|"                            { return symbol(TokenKinds.OR); }
+  "&"                            { return symbol(TokenKinds.BITAND); }
+  "bitand"                       { return symbol(TokenKinds.BITAND); }
+  "|"                            { return symbol(TokenKinds.BITOR); }
+  "bitor"                        { return symbol(TokenKinds.BITOR); }
   "^"                            { return symbol(TokenKinds.XOR); }
+  "xor"                          { return symbol(TokenKinds.XOR); }
   "%"                            { return symbol(TokenKinds.MOD); }
   "<<"                           { return symbol(TokenKinds.LSHIFT); }
   ">>"                           { return symbol(TokenKinds.RSHIFT); }
@@ -216,13 +287,16 @@ SingleCharacter = [^\r\n\'\\]
   "-="                           { return symbol(TokenKinds.MINUSEQ); }
   "*="                           { return symbol(TokenKinds.MULTEQ); }
   "/="                           { return symbol(TokenKinds.DIVEQ); }
-  "&="                           { return symbol(TokenKinds.ANDEQ); }
-  "|="                           { return symbol(TokenKinds.OREQ); }
-  "^="                           { return symbol(TokenKinds.XOREQ); }
-  "%="                           { return symbol(TokenKinds.MODEQ); }
+  "&="                           { return symbol(TokenKinds.AND_EQ); }
+  "and_eq"                       { return symbol(TokenKinds.AND_EQ); }
+  "|="                           { return symbol(TokenKinds.OR_EQ); }
+  "or_eq"                        { return symbol(TokenKinds.OR_EQ); }
+  "^="                           { return symbol(TokenKinds.XOR_EQ); }
+  "xor_eq"                       { return symbol(TokenKinds.XOR_EQ); }
+  "%="                           { return symbol(TokenKinds.MOD_EQ); }
   "<<="                          { return symbol(TokenKinds.LSHIFTEQ); }
   ">>="                          { return symbol(TokenKinds.RSHIFTEQ); }
-  ">>>="                         { return symbol(TokenKinds.URSHIFTEQ); }
+  ">>>="                         { return symbol(TokenKinds.URSHIFTEQ); } /*not sure if this is in the language. */
   
   /* string literal */
   \"                             { yybegin(STRING); string.setLength(0); }

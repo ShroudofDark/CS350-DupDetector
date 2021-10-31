@@ -4,8 +4,8 @@ import java.util.List;
 import edu.odu.cs.cs350.dupedetector.Token;
 import edu.odu.cs.cs350.dupedetector.TokenKinds;
 
-public class TokensHelloWorld extends TokensProvider {
-    public TokensHelloWorld() {
+public class TokensInvalid extends TokensProvider {
+    public TokensInvalid() {
         tokens = List.of(
             new Token(TokenKinds.POUND, 1, 1),
             new Token(TokenKinds.IDENTIFIER, 1, 2, "include"),
@@ -36,10 +36,16 @@ public class TokensHelloWorld extends TokensProvider {
             new Token(TokenKinds.LSHIFT, 7, 29),
             new Token(TokenKinds.IDENTIFIER, 7, 32, "endl"),
             new Token(TokenKinds.SEMICOLON, 7, 36),
-            new Token(TokenKinds.RETURN, 8, 5),
-            new Token(TokenKinds.INTEGER_LITERAL, 8, 12, "0"),
-            new Token(TokenKinds.SEMICOLON, 8, 13),
-            new Token(TokenKinds.RBRACE, 9, 1)
+            new Token(TokenKinds.IDENTIFIER, 9, 5, "Couldnt"),
+            new Token(TokenKinds.THIS, 9, 13),
+            new Token(TokenKinds.IDENTIFIER, 9, 18, "be"),
+            new Token(TokenKinds.IDENTIFIER, 9, 21, "done"),
+            new Token(TokenKinds.IDENTIFIER, 9, 26, "better"),
+            new Token(TokenKinds.QUESTION, 9, 32),
+            new Token(TokenKinds.RETURN, 11, 5),
+            new Token(TokenKinds.INTEGER_LITERAL, 11, 12, "0"),
+            new Token(TokenKinds.SEMICOLON, 11, 13),
+            new Token(TokenKinds.RBRACE, 12, 1)
         );
     }
 }
