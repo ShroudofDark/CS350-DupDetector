@@ -65,7 +65,7 @@ public class App {
 		
 		for (int i = startPathindex; i < args.length; ++i) {
 			// push suppliedPaths
-			suppliedPaths.add[args.get(i)];
+			suppliedPaths.add(args[i]);
 					}
 		
 	
