@@ -23,7 +23,6 @@ public class App {
 		// TODO: print files read report here.
 
 		//Files
-		suppliedPaths ssP = new suppliedPaths();
 		System.out.println("Supplied Paths: "+(suppPath));
 		
 		
@@ -35,10 +34,14 @@ public class App {
     }
 	
 	private int numSuggestions;
-	private String[] suppliedPaths;
+	private ArrayList[] suppliedPaths;
 	private String propertiesFile;
 
-
+	private App()
+	{
+		suppliedPaths = new ArrayList<String>();
+	}
+	
     public String getGreeting() {
         return "Hello World!";
     }
@@ -47,7 +50,14 @@ public class App {
 
 		// TODO: call printForInvalidInvocation when needed
 		
-		numSuggestions = 20; // TODO: set real value here and for others
+		try {
+			numSuggestions = Integer.parseInt(args[2]);
+		}
+		
+		catch(NumberFormatException e)
+		{
+			printForInvalidInvocation();
+		}
 
 		int startPathindex = 3;
 		if(args[2] == ".ini")
@@ -56,14 +66,10 @@ public class App {
 			++startPathindex;
 		}
 		
-		else {
-			printForInvalidInvocation();
-		}
 		
 		for (int i = startPathindex; i < args.length; ++i) {
 			// push suppliedPaths
-			suppliedPaths sP = new suppliedPaths();
-			sP suppPath = args.get(i);
+			suppliedPaths.add(args.get(i));
 					}
 		
 	
