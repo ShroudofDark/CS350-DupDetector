@@ -30,10 +30,10 @@ public class App {
     }
 	
 	private int numSuggestions;
-	public ArrayList<String> suppliedPaths;
+	private ArrayList<String> suppliedPaths;
 	private String propertiesFile;
 
-	private App()
+	public App()
 	{
 		suppliedPaths = new ArrayList<String>();
 	}
