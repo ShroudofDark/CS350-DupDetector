@@ -6,36 +6,8 @@ package edu.odu.cs.cs350.dupedetector;
 import java.util.*;
 
 public class App {
-	private int numSuggestions;
-	private String[] suppliedPaths;
-	private String propertiesFile;
-
-
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
-	private void parseArgs(String[] args) {
-
-		// TODO: call printForInvalidInvocation when needed
-		numSuggestions = 20; // TODO: set real value here and for others
-
-		int startPathindex = 3;
-		// if 2nd arg has ".ini" extension
-			// propertiesFile = args[3]
-			// ++startPathindex;
-
-		for (int i = startPathindex; i < args.length; ++i) {
-			// push suppliedPaths
-		}
 	
-	}
-
-	private void printForInvalidInvocation() {
-		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
-	}
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         App app = new App(); // for config, etc., per design discussions
 		app.parseArgs(args);
 
@@ -50,12 +22,58 @@ public class App {
 
 		// TODO: print files read report here.
 
+		//Files
+		suppliedPaths ssP = new suppliedPaths();
+		System.out.println("Supplied Paths: "+(suppPath));
+		
+		
 		// Report
 		Report report = new Report(refactorings);
 		report.sortRefactorings(); // TODO: make this a private concern of the class
 		report.printReport(app.numSuggestions);
     	
     }
+	
+	private int numSuggestions;
+	private String[] suppliedPaths;
+	private String propertiesFile;
+
+
+    public String getGreeting() {
+        return "Hello World!";
+    }
+
+	private void parseArgs(String[] args) {
+
+		// TODO: call printForInvalidInvocation when needed
+		
+		numSuggestions = 20; // TODO: set real value here and for others
+
+		int startPathindex = 3;
+		if(args[2] == ".ini")
+		{
+			propertiesFile = args[3];
+			++startPathindex;
+		}
+		
+		else {
+			printForInvalidInvocation();
+		}
+		
+		for (int i = startPathindex; i < args.length; ++i) {
+			// push suppliedPaths
+			suppliedPaths sP = new suppliedPaths();
+			sP suppPath = args.get(i);
+					}
+		
+	
+	}
+
+	private void printForInvalidInvocation() {
+		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
+	}
+
+
     
     /**
      * Going to spit out a bunch of information testing the Report class.
