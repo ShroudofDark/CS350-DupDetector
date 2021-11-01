@@ -21,10 +21,6 @@ public class App {
 		ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions();
 
 		// TODO: print files read report here.
-
-		//Files
-		System.out.println("Supplied Paths: "+(suppPath));
-		
 		
 		// Report
 		Report report = new Report(refactorings);
@@ -34,7 +30,7 @@ public class App {
     }
 	
 	private int numSuggestions;
-	private ArrayList[] suppliedPaths;
+	private ArrayList<String> suppliedPaths;
 	private String propertiesFile;
 
 	private App()
@@ -69,7 +65,7 @@ public class App {
 		
 		for (int i = startPathindex; i < args.length; ++i) {
 			// push suppliedPaths
-			suppliedPaths.add(args.get(i));
+			suppliedPaths.add[args.get(i)];
 					}
 		
 	
@@ -88,5 +84,4 @@ public class App {
 		reportTest.test();
 		*/
 
-    }
 }
