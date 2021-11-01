@@ -30,7 +30,7 @@ public class App {
     }
 	
 	private int numSuggestions;
-	private ArrayList<String> suppliedPaths;
+	public ArrayList<String> suppliedPaths;
 	private String propertiesFile;
 
 	private App()
