@@ -9,7 +9,12 @@ public class App {
 	
 	public static void main(String[] args) {
         App app = new App(); // for config, etc., per design discussions
-		app.parseArgs(args);
+		try {
+			app.parseArgs(args);
+		} catch(Exception e) {
+			app.printForInvalidInvocation();
+			return;
+		}
 
 		SuppliedCode theCode = new SuppliedCode();
 		theCode.setNumSuggestions(app.numSuggestions);
@@ -42,31 +47,28 @@ public class App {
         return "Hello World!";
     }
 
-	private void parseArgs(String[] args) {
+	private void parseArgs(String[] args) throws Exception {
+		
+		numSuggestions = Integer.parseInt(args[0]);
 
-		// TODO: call printForInvalidInvocation when needed
-		
-		try {
-			numSuggestions = Integer.parseInt(args[2]);
-		}
-		
-		catch(NumberFormatException e)
-		{
-			printForInvalidInvocation();
+		if (args.length < 2) { // holds with or without properties file
+			throw new Exception("Too few arguments.");
 		}
 
 		int startPathindex = 3;
-		if(args[2] == ".ini")
+		if (args[1].endsWith(".ini"))
 		{
-			propertiesFile = args[3];
+			propertiesFile = args[1];
 			++startPathindex;
+			if (args.length < 3) { // with properties file
+				throw new Exception("Too few arguments.");
+			}
 		}
-		
 		
 		for (int i = startPathindex; i < args.length; ++i) {
 			// push suppliedPaths
 			suppliedPaths.add(args[i]);
-					}
+		}
 		
 	
 	}
