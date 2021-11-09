@@ -53,3 +53,50 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+
+// Commands to run programs as subprocesses adapted from code at
+// https://www.baeldung.com/run-shell-command-in-java.
+//
+// Code for reporting tasks adapted from course material for CS350, Zeil.
+
+task reports (dependsOn: ['javadoc', 'test']) {
+    description 'Generate reports for this project'
+}
+
+task copyDocs (type: Copy, dependsOn: ['reports', 'gitWorktree']) {
+    from 'build/docs'
+    into '_site/docs'
+}
+
+task copyReports (type: Copy, dependsOn: ['reports', 'gitWorktree']) {
+    from 'build/reports'
+    into '_site/reports'
+}
+
+task gitWorktree() {
+    description 'Adds a worktree for the gh-pages branch to the _site directory'
+    Process process;
+    process = Runtime.getRuntime()
+        .exec(String.format("git worktree add _site gh-pages"));
+    int exitCode = process.waitFor();
+}
+
+task deployReports (dependsOn: ['reports', 'gitWorktree', 'copyDocs', 'copyReports' ]) {
+    description 'Adds and commits the project website assets in the _site worktree'
+    doLast {
+        ProcessBuilder addCommandbuilder = new ProcessBuilder();
+        addCommandbuilder.directory(new File(System.getProperty("user.dir") + "/_site")); // TODO: windows?
+        addCommandbuilder.command("git", "add", ".");
+        Process addProcess = addCommandbuilder.start();
+        int addExitCode = addProcess.waitFor();
+
+        ProcessBuilder commitCommandBuilder = new ProcessBuilder();
+        commitCommandBuilder.directory(new File(System.getProperty("user.dir") + "/_site")); // TODO: windows?
+        commitCommandBuilder.command("git", "commit", "-m", "Updates website from Gradle task");
+        Process commitProcess = commitCommandBuilder.start();
+        int commitExitCode = commitProcess.waitFor();
+    }
+}
+
+build.dependsOn deployReports

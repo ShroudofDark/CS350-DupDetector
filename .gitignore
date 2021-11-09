@@ -41,3 +41,7 @@ bin
 # Eclipse users might need this.
 .settings/org.eclipse.buildship.core.prefs
 .settings/org.eclipse.jdt.core.prefs
+
+
+# Git worktree directory for project website publish
+_site
