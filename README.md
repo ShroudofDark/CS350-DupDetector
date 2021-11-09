@@ -4,6 +4,7 @@ CS350, Old Dominion Univ., Fall 2021
 
 Team W7-4
 
+* [Project Website on GH Pages](https://john-hix.github.io/CS350-dupe-detector/)
 * [Stories](https://trello.com/b/XxTMxuGT/refactor-project-management)
 
 
