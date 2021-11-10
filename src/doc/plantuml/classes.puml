@@ -1,0 +1,91 @@
+@startuml
+
+class SuppliedCode {
+    # ArrayList<SourceCodeFile> files
+    + getFiles(ArrayList<SourceCodeFile>)
+    + setFiles(ArrayList<SourceCodeFile>)
+    + setMinSeqLength(int)
+    + int getMinSeqLength()
+    + produceSuggestions(): ArrayList<SuggestedRefactoring>
+
+}
+
+class SuppliedFilePaths {
+    ArrayList<String> cppExtensions
+    + ArrayList<SourceCodeFile> findEligibleSourceCode(String[])
+}
+
+class SuggestedRefactoring {
+  
+}
+
+SuggestedRefactoring o-- TokenSequence
+
+class SourceCodeFile {
+    Path path
+    int totalTokens
+    + void tokenize()
+    + TokenStream getTokens()
+}
+
+class TokenSequence {
+    + int startLineNum
+    + int startColNum
+    # TokenStream stream
+}
+
+class TokenStream {
+    + int startLineNum
+    + int startColumnNum
+}
+
+class Token {
+    TokenKind type
+    String lexeme
+    int lineNumber
+    int columnNumber
+}
+
+TokenStream o-- Token
+
+class FilesReport {
+    + ArrayList<SourceCodeFile> filePaths
+    + setFiles(ArrayList<SourceCodeFile>)
+    + ArrayList<SourceCodeFile> getFiles()
+    + ArrayList<SourceCodeFile> getFilePaths()
+    + void printReport()
+}
+
+SuppliedFilePaths o-- SourceCodeFile
+SuppliedCode o-- SourceCodeFile
+FilesReport o-- SourceCodeFile
+
+class Report {
+
+}
+
+Report o-- SuggestedRefactoring
+
+class App {
+
+}
+
+class Cli {
+
+}
+
+class Properties {
+
+}
+
+class Scanner {
+
+}
+
+class Directory {
+
+}
+
+
+
+@enduml
