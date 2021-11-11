@@ -7,13 +7,13 @@ import java.util.LinkedList;
  * @author John Hicks
  * To hold a sequence of tokens, as part of a SuggestedRefactoring.
  * Distinct from the `TokenStream`, which reads tokens from source code.
- * @see TokenStream
  * @see SuggestedRefactoring
+ * @see TokenStream
  */
 public class TokenSequence {
     // Implementation: this LinkedList will hold only printable Tokens, ie those
     // that are either constants or identifiers.
-    private LinkedList<Token> printableTokens;
+    private LinkedList<Token> tokensToSubstitute;
     private int numTokens; // The actual number of tokens in the detected sequence
     private String filePath;
     private int startingLine;
@@ -23,8 +23,8 @@ public class TokenSequence {
         numTokens = 0;
         startingLine = -1;
         startingColumn = -1;
-        filePath = "No File path specified."; // shouldn't ever need this.
-        printableTokens = new LinkedList<Token>();
+        filePath = "No File path specified."; // For humans during debugging; shouldn't ever see this.
+        tokensToSubstitute = new LinkedList<Token>();
     }
 
     public String getFilePath() {
@@ -39,17 +39,22 @@ public class TokenSequence {
         return numTokens;
     }
 
+    public int getNumSubstitutions() {
+        return tokensToSubstitute.size();
+    }
+
     /**
-     * 
-     * @param t the token to add.
+     * Logically adds a token to the TokenSequence
+     * @param t 
+     * .
      */
     public void add(Token t) {
-        if (printableTokens.isEmpty()) {
+        if (tokensToSubstitute.isEmpty()) {
             startingLine = t.getLineNumber();
             startingColumn = t.getColumnNumber();
         }
         if (shouldAddToList(t)) {
-            printableTokens.add(t);
+            tokensToSubstitute.add(t);
         }
         numTokens++;
     }
@@ -73,7 +78,7 @@ public class TokenSequence {
     
     /**
      * 
-     * @return -1 if no tokens in the sequence
+     * @return -1 if no tokens are in the sequence
      */
     public int getStartingLine() {
         return startingLine;
@@ -81,12 +86,15 @@ public class TokenSequence {
 
     /**
      * 
-     * @return -1 if no tokens in the sequence
+     * @return -1 if no tokens are in the sequence
      */
     public int getStartingColumn() {
         return startingColumn;
     }
 
+    /**
+     * Will only print characters eligible for substitution in a refactor
+     */
     public String toString() {
         StringBuilder out = new StringBuilder();
         out.append(filePath);
@@ -96,7 +104,7 @@ public class TokenSequence {
         out.append(Integer.toString(getStartingLine()));
         out.append("\r\n");
         // print tokens separated by spaces
-        Iterator<Token> it = printableTokens.iterator();
+        Iterator<Token> it = tokensToSubstitute.iterator();
         while(it.hasNext()) {
             Token t = it.next();
             out.append(t.getLexemeQuoted());
