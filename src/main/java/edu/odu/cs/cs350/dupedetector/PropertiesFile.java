@@ -67,6 +67,10 @@ public class PropertiesFile {
 	 */
 	private void extractProperties(File propFile) {
 		//Personal note on return the reading should be able to handle a line that doesn't necessarily have a newline character
+		//Sets defaults so at minimum they are set if something isn't found in the file.
+		cppExtensions = new ArrayList<String>(Arrays.asList("cpp","h"));
+		minSequenceLength = 10;
+		maxSubstitutions = 8;
 	}
 	
 	public ArrayList<String> getCppExtensions() {
