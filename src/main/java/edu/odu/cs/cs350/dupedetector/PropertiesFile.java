@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350.dupedetector;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -39,16 +41,25 @@ public class PropertiesFile {
 	 * Will provide default values if a property is not found.
 	 * 
 	 * @param propFilePath path of file with defined property values.
+	 * @throws FileNotFoundException
 	 */
-	public PropertiesFile(String propFilePath) {
-		//File testFile1 = new File("src/test/ini/empty.ini");
+	public PropertiesFile(String propFilePath) throws FileNotFoundException {
+		File testFile1 = new File(propFilePath);
+		
+		if(testFile1.exists()) {
+			//Continue as normal
+		}
+		else {
+			throw new FileNotFoundException("File " + testFile1.getAbsolutePath() + " does not exist.");
+		}
+
 	}
 	
 	/**
 	 * Pulls the properties from the file and sets them
 	 */
 	private void extractProperties() {
-		
+		//Personal note on return the reading should be able to handle a line that doesn't necessarily have a newline character
 	}
 	
 	public ArrayList<String> getCppExtensions() {
@@ -68,5 +79,34 @@ public class PropertiesFile {
 	
 	public int getMaxSubstitutions() {
 		return maxSubstitutions;
+	}
+}
+
+/**
+ * Set of custom exceptions that can be thrown by the class and be used.
+ * 
+ * https://www.javatpoint.com/custom-exception
+ */
+class InvalidFileTypeException extends Exception {
+	private static final long serialVersionUID = 1L; //Removes warning / default generated
+
+	public InvalidFileTypeException(String str) {
+		super(str);
+	}
+}
+
+class DuplicatePropertiesException extends Exception {
+	private static final long serialVersionUID = 1L;
+
+	public DuplicatePropertiesException(String str) {
+		super(str);
+	}
+}
+
+class InvalidPropertyFormatException extends Exception {
+	private static final long serialVersionUID = 1L;
+
+	public InvalidPropertyFormatException(String str) {
+		super(str);
 	}
 }
