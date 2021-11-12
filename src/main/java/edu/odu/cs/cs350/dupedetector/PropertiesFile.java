@@ -49,7 +49,14 @@ public class PropertiesFile {
 	}
 	
 	public ArrayList<String> getCppExtensions() {
-		return cppExtensions;
+		//We want to return a deep copy of the List provided by this object as to not modify it
+		ArrayList<String> returnList = new ArrayList<String>();
+		Iterator<String> it = cppExtensions.iterator();
+		while (it.hasNext()) {
+			String curr = it.next();
+			returnList.add(curr);
+		}
+		return returnList;
 	}
 	
 	public int getMinSequenceLength() {
