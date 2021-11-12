@@ -37,8 +37,9 @@ class PropertiesFileTest {
 		 */
 		ArrayList<String> diffOrderCppExten = new ArrayList<String>(Arrays.asList("h","cpp"));
 		
-		assertThat(propFile.getCppExtensions(), containsInAnyOrder(defaultCppExten));
-		assertThat(propFile.getCppExtensions(), containsInAnyOrder(diffOrderCppExten));
+		//assertThat(propFile.getCppExtensions(), equalTo(defaultCppExten));
+		assertThat(propFile.getCppExtensions(), containsInAnyOrder(defaultCppExten.toArray()));
+		assertThat(propFile.getCppExtensions(), containsInAnyOrder(diffOrderCppExten.toArray()));
 		
 		//Check that cpp extens provided is deep copy
 		ArrayList<String> propExten = propFile.getCppExtensions();
@@ -46,8 +47,8 @@ class PropertiesFileTest {
 		ArrayList<String> expectedPropExten = new ArrayList<String>(Arrays.asList("cpp","h", "notExten"));
 		
 		assertThat(propExten, equalTo(expectedPropExten));
-		assertThat(propFile.getCppExtensions(), containsInAnyOrder(defaultCppExten));
-		assertThat(propFile.getCppExtensions(), not(containsInAnyOrder(propExten)));	
+		assertThat(propFile.getCppExtensions(), containsInAnyOrder(defaultCppExten.toArray()));
+		assertThat(propFile.getCppExtensions(), not(containsInAnyOrder(propExten.toArray())));	
 	}
 
 	/**

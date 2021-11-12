@@ -1,6 +1,7 @@
 package edu.odu.cs.cs350.dupedetector;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -28,7 +29,9 @@ public class PropertiesFile {
 	 * Provides default values.
 	 */
 	public PropertiesFile() {
-		
+		cppExtensions = new ArrayList<String>(Arrays.asList("cpp","h"));
+		minSequenceLength = 10;
+		maxSubstitutions = 8;
 	}
 	
 	/**
