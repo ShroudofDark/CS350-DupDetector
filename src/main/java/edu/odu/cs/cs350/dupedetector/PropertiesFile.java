@@ -41,7 +41,7 @@ public class PropertiesFile {
 	 * @param propFilePath path of file with defined property values.
 	 */
 	public PropertiesFile(String propFilePath) {
-		
+		//File testFile1 = new File("src/test/ini/empty.ini");
 	}
 	
 	/**
