@@ -1,0 +1,62 @@
+package edu.odu.cs.cs350.dupedetector;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * Holds and process's data that are used for the programs properties. These are
+ * either provided by an .ini file on the CLI or resorts to defaults if not provided. 
+ * They follow a format of propertyName = propertyValue
+ * There exist three primary properties in: 
+ * 
+ * CppExtensions
+ * MinSequenceLength
+ * MaxSubstitutions
+ * 
+ * @author Jacob
+ */
+public class PropertiesFile {
+
+	//properties is an optional path to a properties file, with file extension .ini, containing properties identified below in the format: 
+	
+	private ArrayList<String> cppExtensions;
+	private int minSequenceLength;
+	private int maxSubstitutions;
+	
+	/**
+	 * Creates a property file with no .ini file.
+	 * Provides default values.
+	 */
+	public PropertiesFile() {
+		
+	}
+	
+	/**
+	 * Creates a property file with values provided by .ini file.
+	 * Will provide default values if a property is not found.
+	 * 
+	 * @param propFilePath path of file with defined property values.
+	 */
+	public PropertiesFile(String propFilePath) {
+		
+	}
+	
+	/**
+	 * Pulls the properties from the file and sets them
+	 */
+	private void extractProperties() {
+		
+	}
+	
+	public ArrayList<String> getCppExtensions() {
+		return cppExtensions;
+	}
+	
+	public int getMinSequenceLength() {
+		return minSequenceLength;
+	}
+	
+	public int getMaxSubstitutions() {
+		return maxSubstitutions;
+	}
+}
