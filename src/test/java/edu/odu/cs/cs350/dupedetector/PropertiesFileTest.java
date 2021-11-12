@@ -57,6 +57,7 @@ class PropertiesFileTest {
 	@Test
 	void testPropertiesFileString() {
 		fail("Not yet implemented");
+		//Need to figure out how to set up input files for this part here
 	}
 
 }
