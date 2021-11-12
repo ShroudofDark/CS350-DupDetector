@@ -41,24 +41,31 @@ public class PropertiesFile {
 	 * Will provide default values if a property is not found.
 	 * 
 	 * @param propFilePath path of file with defined property values.
+	 * 
 	 * @throws FileNotFoundException
+	 * @throws InvalidFileTypeException 
 	 */
-	public PropertiesFile(String propFilePath) throws FileNotFoundException {
-		File testFile1 = new File(propFilePath);
-		
-		if(testFile1.exists()) {
-			//Continue as normal
+	public PropertiesFile(String propFilePath) throws FileNotFoundException, InvalidFileTypeException {
+		//https://stackoverflow.com/questions/30913799/is-there-a-new-java-8-way-of-retrieving-the-file-extension
+		String extCheck = propFilePath.substring(propFilePath.lastIndexOf('.') + 1);
+		if(extCheck.equals("ini")) {
+			File testFile1 = new File(propFilePath);
+			if(testFile1.exists()) {
+				extractProperties(testFile1);
+			}
+			else {
+				throw new FileNotFoundException("File " + testFile1.getAbsolutePath() + " does not exist.");
+			}
 		}
 		else {
-			throw new FileNotFoundException("File " + testFile1.getAbsolutePath() + " does not exist.");
+			throw new InvalidFileTypeException("File path " + propFilePath + " does not lead to an .ini file.");
 		}
-
 	}
 	
 	/**
 	 * Pulls the properties from the file and sets them
 	 */
-	private void extractProperties() {
+	private void extractProperties(File propFile) {
 		//Personal note on return the reading should be able to handle a line that doesn't necessarily have a newline character
 	}
 	

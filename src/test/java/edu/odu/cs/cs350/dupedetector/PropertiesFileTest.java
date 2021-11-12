@@ -55,9 +55,10 @@ class PropertiesFileTest {
 	/**
 	 * Test method for PropertiesFile constructor with String param
 	 * @throws FileNotFoundException 
+	 * @throws InvalidFileTypeException 
 	 */
 	@Test
-	void testPropertiesFileString() throws FileNotFoundException {
+	void testPropertiesFileString() throws FileNotFoundException, InvalidFileTypeException {
 		//Empty file should act like default constructor
 		String testFilePath1 = "src/test/resources/ini/empty.ini";
 		PropertiesFile propFile = new PropertiesFile(testFilePath1);
