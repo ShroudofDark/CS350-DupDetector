@@ -9,9 +9,7 @@ import static org.hamcrest.Matchers.*;
 
 //Important libraries
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Arrays;
-import java.io.File;
 import java.io.FileNotFoundException;
 
 class PropertiesFileTest {
@@ -62,9 +60,6 @@ class PropertiesFileTest {
 	@Test
 	void testPropertiesFileString() 
 			throws FileNotFoundException, InvalidFileTypeException, InvalidPropertyFormatException, DuplicatePropertiesException {
-		//Temp thing for me to check something
-		//String invalidProps1 = "src/test/resources/ini/invalidProps1.ini";
-		//PropertiesFile dummyFile = new PropertiesFile(invalidProps1);
 		
 		//Empty file should act like default constructor
 		String testFilePath1 = "src/test/resources/ini/empty.ini";
@@ -133,7 +128,6 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), containsInAnyOrder(expectedExten.toArray()));
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
-		//Following tests are for error files or problem files
 		/**
 		 * If a file extension being added is as a repeat it is expected to ignore adding it again (letter case matters)
 		 */
@@ -168,6 +162,9 @@ class PropertiesFileTest {
 		
 		String invalidProps2 = "src/test/resources/ini/invalidProps2.ini";
 		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps2);});
+		
+		String invalidProps3 = "src/test/resources/ini/invalidProps3.ini";
+		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps3);});
 	}
 	
 	/**

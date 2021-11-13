@@ -21,8 +21,6 @@ import java.util.Scanner;
  * @author Jacob
  */
 public class PropertiesFile {
-
-	//properties is an optional path to a properties file, with file extension .ini, containing properties identified below in the format: 
 	
 	private ArrayList<String> cppExtensions;
 	private int minSequenceLength;
@@ -149,6 +147,7 @@ public class PropertiesFile {
 	 * @param propertyDecLength the property declaration that is to be removed
 	 * 
 	 * @return String values that occur after an equal sign
+	 * 
 	 * @throws InvalidPropertyFormatException 
 	 */
 	private String extractPropertyValue(String propertyStatement, String declaredProperty) throws InvalidPropertyFormatException {
@@ -174,7 +173,7 @@ public class PropertiesFile {
 	 * 
 	 * @param intAsString string that we want to convert into integer
 	 * 
-	 * @return retValue is the integer interpreted from the string
+	 * @return int where int interpreted from the string
 	 * 
 	 * @throws InvalidPropertyFormatException when the value cannot be interpreted as integer.
 	 */
@@ -189,7 +188,17 @@ public class PropertiesFile {
 		return retValue;
 	}
 	
-	private ArrayList<String> extractExtensions(String extenValuesAsString) {
+	/**
+	 * Extracts the extensions and ignores duplicates. Extensions are separated by a comma.
+	 * Ignores multiple empty commas and trailing commas.
+	 * 
+	 * @param extenValuesAsString The string of values that needs to be broken into individual components
+	 * 
+	 * @return ArrayList<String> Individual extension components
+	 * 
+	 * @throws InvalidPropertyFormatException 
+	 */
+	private ArrayList<String> extractExtensions(String extenValuesAsString) throws InvalidPropertyFormatException {
 		ArrayList<String> retValueList = new ArrayList<String>();
 		//https://www.geeksforgeeks.org/split-string-java-examples/
 		String[] splitValuesArray = extenValuesAsString.split(",", 0);
@@ -200,6 +209,11 @@ public class PropertiesFile {
 		 * https://www.geeksforgeeks.org/how-to-prevent-the-addition-of-duplicate-elements-to-the-java-arraylist/
 		 */
 		HashSet<String> dupeChecker = new HashSet<>();
+		
+		if(splitValuesArray.length == 0) {
+			throw new InvalidPropertyFormatException("Invalid property type after CppExtensions. "
+					+ "Indicates a string of commas, but no listed extensions.");
+		}
 		
 		for(String extenValue : splitValuesArray) {
 			//Remove leading / trailing white spaces from extension for conistency checking
