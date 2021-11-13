@@ -56,9 +56,16 @@ class PropertiesFileTest {
 	 * Test method for PropertiesFile constructor with String param
 	 * @throws FileNotFoundException 
 	 * @throws InvalidFileTypeException 
+	 * @throws InvalidPropertyFormatException 
+	 * @throws DuplicatePropertiesException 
 	 */
 	@Test
-	void testPropertiesFileString() throws FileNotFoundException, InvalidFileTypeException {
+	void testPropertiesFileString() 
+			throws FileNotFoundException, InvalidFileTypeException, InvalidPropertyFormatException, DuplicatePropertiesException {
+		//Temp thing for me to check something
+		//String invalidProps1 = "src/test/resources/ini/invalidProps1.ini";
+		//PropertiesFile dummyFile = new PropertiesFile(invalidProps1);
+		
 		//Empty file should act like default constructor
 		String testFilePath1 = "src/test/resources/ini/empty.ini";
 		PropertiesFile propFile = new PropertiesFile(testFilePath1);
@@ -109,7 +116,7 @@ class PropertiesFileTest {
 		//Mixed properties should be read fine ignoring order/empty lines so long as they are formatted correctly
 		String testFilePath6 = "src/test/resources/ini/mixProp1.ini";
 		propFile = new PropertiesFile(testFilePath6);
-		expectedExten = new ArrayList<String>(Arrays.asList("C,cpp,h,hpp,H"));
+		expectedExten = new ArrayList<String>(Arrays.asList("C","cpp","h","hpp","H"));
 		
 		assertThat(propFile.getMinSequenceLength(), is(22));
 		assertThat(propFile.getMaxSubstitutions(), is(8));
@@ -119,7 +126,7 @@ class PropertiesFileTest {
 		//========
 		String testFilePath7 = "src/test/resources/ini/mixProp2.ini";
 		propFile = new PropertiesFile(testFilePath7);
-		expectedExten = new ArrayList<String>(Arrays.asList("C,cpp,h,hpp,H"));
+		expectedExten = new ArrayList<String>(Arrays.asList("C","cpp","h","hpp","H"));
 		
 		assertThat(propFile.getMinSequenceLength(), is(15));
 		assertThat(propFile.getMaxSubstitutions(), is(6));
@@ -156,8 +163,11 @@ class PropertiesFileTest {
 	 */
 	@Test
 	void testPropertiesFileStringThrowsInvalidPropertyFormatException() {
-		String invalidProps = "src/test/resources/ini/invalidProps.ini";
-		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps);});
+		String invalidProps1 = "src/test/resources/ini/invalidProps1.ini";
+		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps1);});
+		
+		String invalidProps2 = "src/test/resources/ini/invalidProps2.ini";
+		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps2);});
 	}
 	
 	/**
