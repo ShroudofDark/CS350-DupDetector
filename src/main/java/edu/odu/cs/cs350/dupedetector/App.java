@@ -47,7 +47,8 @@ public class App {
 		// TODO: print files read report here, using projectFiles variable.
 		
 		// Report
-		Report report = new Report(refactorings);
+		Report report = new Report(projectFiles, refactorings);
+		report.sortSourceFiles();
 		report.trimRefactorings(propFile.getMaxSubstitutions(), propFile.getMinSequenceLength());
 		report.sortRefactorings(); // TODO: make this a private concern of the class
 		report.printReport(app.numSuggestions);

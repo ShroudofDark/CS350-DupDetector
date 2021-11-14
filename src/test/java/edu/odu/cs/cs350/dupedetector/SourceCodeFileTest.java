@@ -15,6 +15,19 @@ public class SourceCodeFileTest {
     }
 
     @Test
+    void testEquals() {
+        SourceCodeFile a = new SourceCodeFile("foo.txt");
+        SourceCodeFile a2 = new SourceCodeFile("foo.txt");
+        SourceCodeFile b = new SourceCodeFile("bar.txt");
+
+        assertThat(a.equals(b), is(false));
+        assertThat(a.equals(a2), is(true));
+
+        Object c = new Token(TokenKinds.AND, 0, 0);
+        assertThat(a.equals(c), is(false));
+    }
+
+    @Test
     void lazyLoadTokens() {
         SourceCodeFile file = new SourceCodeFile("/tmp/foo/bar.txt");
         assertThat(file.getTotalTokens(), is(128)); // hard-coded value for stub.
