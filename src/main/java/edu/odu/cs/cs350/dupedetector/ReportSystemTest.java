@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350.dupedetector;
-
+/*
+ * Commenting out this class in order to prep moving contents later
+ */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -9,15 +11,15 @@ public class ReportSystemTest {
 	public ReportSystemTest() {
 		
 	}
-	
-	/**
-     * Going to spit out a bunch of information testing the Report class.
-	 * @deprecated - we should move this to a unit test after merging with the
-	 * tokenizing branch.
-     * 
-     * Will use functions and information currently have.
-	 * EDIT: we should have more once we merge in the tokenizing branch.
-     */
+	/*
+	///
+     //Going to spit out a bunch of information testing the Report class.
+	 //@deprecated - we should move this to a unit test after merging with the
+	 //tokenizing branch.
+     //
+     //Will use functions and information currently have.
+	 // EDIT: we should have more once we merge in the tokenizing branch.
+     //
     public void test() {
     	System.out.println("Now Doing Report System Test\n");
     	
@@ -152,10 +154,10 @@ public class ReportSystemTest {
     	System.out.println("------------------------------------------------------");
     	rep2.printReport(7);
     	
-    	/**
-    	 * Print list [3-large] after trimmed, then sorted. Information here will be convuluted obviously (not accurate/fake output)
-    	 * but is here to show it working for large sets of data
-    	 */
+    	//
+    	// Print list [3-large] after trimmed, then sorted. Information here will be convuluted obviously (not accurate/fake output)
+    	// but is here to show it working for large sets of data
+    	//
     	System.out.println("======================================================");
     	System.out.println("Generating 200 Random Suggestions to Showcase Large Dataset. The random numbers range from 1-200");
     	System.out.println("======================================================");
@@ -218,5 +220,5 @@ public class ReportSystemTest {
     	//End of system test
     	System.out.println("------------------------------------------------------");
     	System.out.println("End of Report System Test\n");
-    }
+    } */
 }

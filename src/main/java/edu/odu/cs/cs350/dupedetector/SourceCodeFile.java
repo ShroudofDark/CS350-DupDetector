@@ -38,4 +38,23 @@ public class SourceCodeFile {
         // set tokens member
         totalTokens = 128;
     }
+    
+	/**
+	 * Compares source code files to see if they are equal. They are considered
+	 * equal if all functions on them return equal
+	 * 
+	 * @param obj object to be compared to this suggested refactoring
+	 * @return true if provided object is equal to this one
+	 */
+	public boolean equals(Object obj) {
+		
+		SourceCodeFile other = (SourceCodeFile)obj;
+		
+		if(path != other.path)
+			return false;
+		if(totalTokens != other.totalTokens)
+			return false;
+		
+		return true;
+	}
 }

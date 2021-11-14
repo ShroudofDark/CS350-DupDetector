@@ -1,5 +1,10 @@
 package edu.odu.cs.cs350.dupedetector;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
 /**
  *  The report is where information is compiled together and printed out. It is
  * divided into 3 primary sections of: 
@@ -10,8 +15,6 @@ package edu.odu.cs.cs350.dupedetector;
  * 
  * @author Jacob McFadden
  */
-
-import java.util.*;
 
 public class Report {	
 	
@@ -31,15 +34,28 @@ public class Report {
 		 * 
 		 * https://www.javaprogramto.com/2020/04/java-arraylist-clone-deep-copy.html
 		 */
-		refactoringList = new ArrayList<>();
-		//Get iterator from original list
-		Iterator<SuggestedRefactoring> it = providedRefactorings.iterator();
-		//Iterate through and start adding suggestions to new list
-		while (it.hasNext()) {
-			SuggestedRefactoring curr = it.next();
-			SuggestedRefactoring newRef 
-				= new SuggestedRefactoring(curr.getTotalTokens(),curr.getOpportunity(), curr.getTotalSubs(), curr.toString());
-			refactoringList.add(newRef);
+		sourceFileList = new ArrayList<SourceCodeFile>();
+		if(providedSourceFiles != null) {
+			Iterator<SourceCodeFile> sourceIt = providedSourceFiles.iterator();
+			while(sourceIt.hasNext()) {
+				SourceCodeFile curr = sourceIt.next();
+				SourceCodeFile newSource = 
+						new SourceCodeFile(curr.getPath());
+				sourceFileList.add(newSource);
+			}
+		}
+		
+		refactoringList = new ArrayList<SuggestedRefactoring>();
+		if(providedRefactorings != null) {
+			//Get iterator from original list
+			Iterator<SuggestedRefactoring> refIt = providedRefactorings.iterator();
+			//Iterate through and start adding suggestions to new list
+			while (refIt.hasNext()) {
+				SuggestedRefactoring curr = refIt.next();
+				SuggestedRefactoring newRef 
+					= new SuggestedRefactoring(curr.getTotalTokens(),curr.getOpportunity(), curr.getTotalSubs(), curr.toString());
+				refactoringList.add(newRef);
+			}
 		}
 	}
 	
@@ -62,6 +78,16 @@ public class Report {
 	 */
 	private void printSourceFileReport() {
 		
+		System.out.println("Files scanned:");
+		
+		Iterator<SourceCodeFile> it = sourceFileList.iterator();
+		
+		while(it.hasNext()) {
+			SourceCodeFile curr = it.next();
+			System.out.println("	" + curr.getPath() + ", " + curr.getTotalTokens());
+		}
+		
+		System.out.println();
 	}
 	
 	/**
@@ -202,6 +228,9 @@ public class Report {
 		Report other = (Report)obj;
 		
 		//!= does not work here as found out in tests, need to use .equals
+		if(!(sourceFileList.equals(other.sourceFileList))) {
+			return false;
+		}
 		if(!(refactoringList.equals(other.refactoringList))) {
 			return false;
 		}

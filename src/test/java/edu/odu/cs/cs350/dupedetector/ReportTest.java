@@ -193,7 +193,6 @@ class ReportTest {
 	@Test
 	void testPrintReport() {
 		Report rep = new Report(sourceFileList1, refactoringList1);
-		
 		//Prints report, with suggestion count of 3
 		rep.printReport(3);
 		
@@ -288,7 +287,7 @@ class ReportTest {
 	 * Test method sortSourceFiles
 	 */
 	@Test 
-	void testsortSourceFiles() {
+	void testSortSourceFiles() {
 		//Original list, unsorted
 		Report rep = new Report(sourceFileList2, refactoringList2);
 		//Second list to compare against

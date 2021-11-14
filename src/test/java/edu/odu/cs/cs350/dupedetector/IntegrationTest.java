@@ -20,6 +20,8 @@ import org.junit.jupiter.api.Test;
 class IntegrationTest {
 	
 	//Data usage / values may need to be changed or shifted as systems are updated.
+	SuppliedFilePaths project = new SuppliedFilePaths();
+	ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode();
 	
 	String sequence1 = 
 			  "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"
@@ -117,7 +119,7 @@ class IntegrationTest {
 					refactoring5, refactoring6, refactoring7));
 		
     	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
-    	Report unpreppedRep = new Report(refListControlled);
+    	Report unpreppedRep = new Report(projectFiles, refListControlled);
 		Report preppedRep = prepReport(unpreppedRep,
 				defaultProps.getMaxSubstitutions(), 
 				defaultProps.getMinSequenceLength());
@@ -138,7 +140,7 @@ class IntegrationTest {
 			System.out.println("---------------------------------------------------------\n");
 			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
-	    	unpreppedRep = new Report(refListControlled);
+	    	unpreppedRep = new Report(projectFiles, refListControlled);
 			preppedRep = prepReport(unpreppedRep,
 				blankProps.getMaxSubstitutions(), 
 				blankProps.getMinSequenceLength());
@@ -164,7 +166,7 @@ class IntegrationTest {
 			System.out.println("---------------------------------------------------------\n");
 			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
-	    	unpreppedRep = new Report(refListControlled);
+	    	unpreppedRep = new Report(projectFiles, refListControlled);
 			preppedRep = prepReport(unpreppedRep,
 				cppProps.getMaxSubstitutions(), 
 				cppProps.getMinSequenceLength());
@@ -190,7 +192,7 @@ class IntegrationTest {
 			System.out.println("---------------------------------------------------------\n");
 			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
-	    	unpreppedRep = new Report(refListControlled);
+	    	unpreppedRep = new Report(projectFiles, refListControlled);
 			preppedRep = prepReport(unpreppedRep,
 				allProps.getMaxSubstitutions(), 
 				allProps.getMinSequenceLength());
@@ -200,7 +202,7 @@ class IntegrationTest {
 			System.out.println("---------------------------------------------------------\n");
 			ArrayList<SuggestedRefactoring> refListRand = randRefactoringList(200); //Simulate refactor list
 			numSuggestions = 3;
-			unpreppedRep = new Report(refListRand);
+			unpreppedRep = new Report(projectFiles, refListRand);
 			preppedRep = prepReport(unpreppedRep,
 					allProps.getMaxSubstitutions(), 
 					allProps.getMinSequenceLength());
