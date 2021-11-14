@@ -50,6 +50,11 @@ public class SuppliedFilePaths {
         files.add(new SourceCodeFile("/foo/bar/baz.cpp"));
         files.add(new SourceCodeFile("/whos/on/first/base.cpp"));
         files.add(new SourceCodeFile("/cs/three/fifty.cpp"));
+        files.add(new SourceCodeFile("/home/zeil/projects/cppProject1/src/foo.cpp"));
+        files.add(new SourceCodeFile("/home/zeil/projects/cppProject1/src/headers/bar.h"));
+        files.add(new SourceCodeFile("H:\\\\cygwin\\\\home\\\\Jacob\\\\someCpp.cpp"));
+        files.add(new SourceCodeFile("/home/fakeZeil/projects/cppProject1/src/foo.cp"));
+        files.add(new SourceCodeFile("/coolhome/fakeZeil/cppProject1/src/tool.cpp"));
         return files;
     }
 }

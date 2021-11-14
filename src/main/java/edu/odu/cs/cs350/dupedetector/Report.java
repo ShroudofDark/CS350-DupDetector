@@ -84,7 +84,7 @@ public class Report {
 		
 		while(it.hasNext()) {
 			SourceCodeFile curr = it.next();
-			System.out.println("	" + curr.getPath() + ", " + curr.getTotalTokens());
+			System.out.println("   " + curr.getPath() + ", " + curr.getTotalTokens());
 		}
 		
 		System.out.println();

@@ -48,6 +48,7 @@ public class App {
 		
 		// Report
 		Report report = new Report(projectFiles, refactorings);
+		report.sortSourceFiles();
 		report.trimRefactorings(propFile.getMaxSubstitutions(), propFile.getMinSequenceLength());
 		report.sortRefactorings(); // TODO: make this a private concern of the class
 		report.printReport(app.numSuggestions);
