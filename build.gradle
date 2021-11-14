@@ -9,6 +9,8 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'groovy'
+    id "org.xbib.gradle.plugin.git" version "2.0.0"
     id "org.xbib.gradle.plugin.jflex" version "1.4.0"
 }
 
@@ -64,38 +66,36 @@ task reports (dependsOn: ['javadoc', 'test']) {
     description 'Generate reports for this project'
 }
 
-task copyDocs (type: Copy, dependsOn: ['reports', 'gitWorktree']) {
+task copyDocs (type: Copy, dependsOn: ['reports' ]) {
     from 'build/docs'
-    into '_site/docs'
+    into 'build/gh-pages/docs'
 }
 
-task copyReports (type: Copy, dependsOn: ['reports', 'gitWorktree']) {
+task copyReports (type: Copy, dependsOn: ['reports']) {
     from 'build/reports'
-    into '_site/reports'
+    into 'build/gh-pages/reports'
 }
 
-task gitWorktree() {
-    description 'Adds a worktree for the gh-pages branch to the _site directory'
-    Process process;
-    process = Runtime.getRuntime()
-        .exec(String.format("git worktree add _site gh-pages"));
-    int exitCode = process.waitFor();
-}
-
-task deployReports (dependsOn: ['reports', 'gitWorktree', 'copyDocs', 'copyReports' ]) {
-    description 'Adds and commits the project website assets in the _site worktree'
+task deployReports (dependsOn: ['reports', 'copyDocs', 'copyReports' ]) {
+    group = "Reporting"
+    description  'Copies reports to the gh-pages build dir in preparation for a future push to GitHub'
     doLast {
-        ProcessBuilder addCommandbuilder = new ProcessBuilder();
-        addCommandbuilder.directory(new File(System.getProperty("user.dir") + "/_site")); // TODO: windows?
-        addCommandbuilder.command("git", "add", ".");
-        Process addProcess = addCommandbuilder.start();
-        int addExitCode = addProcess.waitFor();
-
-        ProcessBuilder commitCommandBuilder = new ProcessBuilder();
-        commitCommandBuilder.directory(new File(System.getProperty("user.dir") + "/_site")); // TODO: windows?
-        commitCommandBuilder.command("git", "commit", "-m", "Updates website from Gradle task");
-        Process commitProcess = commitCommandBuilder.start();
-        int commitExitCode = commitProcess.waitFor();
+        exec {
+            workingDir "$buildDir/gh-pages/reports"
+            commandLine '/bin/sh', '-c', 'date > date.txt'
+        }
+        def pagesDir = "$buildDir/gh-pages"
+        def grgit = git.open {
+            dir = pagesDir + "/.git"
+        }
+        grgit.add (update: false, patterns: ['reports/', 'docs/', 'index.md'])
+        grgit.add (update: true, patterns: ['reports/', 'docs/', 'index.md'])
+        grgit.commit {
+            message = "Updating web pages"
+        }
+        // There is no push here.
+        // Ci will handle this; gives local author room to fix
+        // VC mistakes like prematurely committed documentation.
     }
 }
 
