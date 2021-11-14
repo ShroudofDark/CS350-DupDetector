@@ -51,9 +51,12 @@ public class SourceCodeFile {
 	 * @return true if provided object is equal to this one
 	 */
 	public boolean equals(Object obj) {
-		
+		if (obj.getClass() != this.getClass()) {
+            return false;
+        }
 		SourceCodeFile other = (SourceCodeFile)obj;
-		
+		if(other == this)
+            return true;
 		if(path != other.path)
 			return false;
 		if(totalTokens != other.totalTokens)
