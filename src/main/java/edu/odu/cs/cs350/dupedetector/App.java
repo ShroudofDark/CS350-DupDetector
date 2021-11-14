@@ -30,17 +30,21 @@ public class App {
 			//Set default if not provided
 			propFile = new PropertiesFile();
 		}
+
+		// Set up project file system interface and identify all files
+		// the user wants us to analyze
+		SuppliedFilePaths project = new SuppliedFilePaths();
+		project.setEligibleExtensions(propFile.getCppExtensions());
+		project.setSuppliedFilesAndDirs(app.suppliedPaths);
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode();
 		
+		// Take the eligible files and analyze them 
 		SuppliedCode theCode = new SuppliedCode();
 		theCode.setNumSuggestions(app.numSuggestions);
+		// TODO: set minSequenceLength parameter
+		ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions(projectFiles);
 
-		// Get list of files from supplied files/directories
-		theCode.setSuppliedFilesAndDirs(new ArrayList<String>());
-		// Of the dirs supplied, if any, search recursively for eligible SourceCodeFiles
-		theCode.findSourceCodeFiles();
-		ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions();
-
-		// TODO: print files read report here.
+		// TODO: print files read report here, using projectFiles variable.
 		
 		// Report
 		Report report = new Report(refactorings);

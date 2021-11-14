@@ -1,12 +1,11 @@
 @startuml
 
 class SuppliedCode {
-    # ArrayList<SourceCodeFile> files
     + getFiles(ArrayList<SourceCodeFile>)
     + setFiles(ArrayList<SourceCodeFile>)
     + setMinSeqLength(int)
     + int getMinSeqLength()
-    + produceSuggestions(): ArrayList<SuggestedRefactoring>
+    + produceSuggestions(ArrayList<SourceCodeFile> files): ArrayList<SuggestedRefactoring>
 
 }
 

@@ -12,8 +12,6 @@ public class SuppliedCode {
 
     private int numSuggestions;
     // private ArrayList<SourceCodeFile> files; // TODO: implement class
-    // private ArrayList<Directory> dirs; // TODO: implement class
-    private ArrayList<String> eligibleExtensions;
 
     public int getNumSuggestions() {
         return numSuggestions;
@@ -23,26 +21,8 @@ public class SuppliedCode {
         numSuggestions = nSuggestions;
     }
 
-    public void setEligibleExtensions(ArrayList<String> exts) {
-        eligibleExtensions = exts;
-    }
 
-    public ArrayList<String> getEligibleExtensions() {
-        return (ArrayList<String>)eligibleExtensions.clone();
-    }
-
-    public void setSuppliedFilesAndDirs(ArrayList<String> userInput) {
-        // TODO: parse out whether input is a file or is a dir; add to internal list
-        // of files and directories
-        return;
-    }
-
-    public void findSourceCodeFiles() {
-        // TODO: implement recursive file search
-        return;
-    }
-
-    public ArrayList<SuggestedRefactoring> produceSuggestions() {
+    public ArrayList<SuggestedRefactoring> produceSuggestions(ArrayList<SourceCodeFile> files) {
         ArrayList<SuggestedRefactoring> refactoringList3 = new ArrayList<SuggestedRefactoring>(); //Init empty to be filled randomly later
 
         // TODO: Temporary, until we merge with ftr-eligible-cpp-tokens
