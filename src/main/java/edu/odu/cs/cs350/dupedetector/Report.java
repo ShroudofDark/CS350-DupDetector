@@ -8,7 +8,7 @@ package edu.odu.cs.cs350.dupedetector;
  * Suggested refactorings
  * Possible number of refactorings
  * 
- * @author Jacob McFadden: created the suggested refactorings output
+ * @author Jacob McFadden
  */
 
 import java.util.*;
@@ -16,13 +16,15 @@ import java.util.*;
 public class Report {	
 	
 	private ArrayList<SuggestedRefactoring> refactoringList;
+	private ArrayList<SourceCodeFile> sourceFileList;
 	
 	/**
 	 * Creates a report object with a list of Refactorings
 	 * 
+	 * @param providedSourceFiles a list of source code files that are deep copied
 	 * @param providedRefactorings a list of suggested refactorings that are deep copied
 	 */
-	public Report(ArrayList<SuggestedRefactoring> providedRefactorings) {
+	public Report(ArrayList<SourceCodeFile> providedSourceFiles, ArrayList<SuggestedRefactoring> providedRefactorings) {
 		
 		/**
 		 * Deep copy the refactorings
@@ -45,12 +47,21 @@ public class Report {
 	 * Prints the entire report for the program when called.
 	 * 
 	 * Wrapper for:
+	 * printSourceFileReport
 	 * printRefactoringReport
 	 * 
 	 * @param nSuggestions how many total suggestions should be printed in the report
 	 */
 	public void printReport(int nSuggestions) {
+		printSourceFileReport();
 		printRefactoringReport(nSuggestions);
+	}
+	
+	/**
+	 * Prints the source code files for the project.
+	 */
+	private void printSourceFileReport() {
+		
 	}
 	
 	/**
@@ -87,10 +98,12 @@ public class Report {
 		System.out.println("Printed " + count + " of " + refactoringList.size() + " suggestions.");	
 	}
 	
-	/* Extra note: it may be more useful/less resource intensive for the class that makes the suggestions
-	 * to instead have these parameters and just straight up not add to the collection of suggestions that
-	 * is passed to the report. This way we don't have to trim in the first place.
+	/**
+	 * Sorts the source files of the report alphabetically
 	 */
+	public void sortSourceFiles() {
+		
+	}
 	
 	/**
 	 * Removes suggestions that don't meet criteria to be printed as defined by the parameters.
@@ -142,8 +155,28 @@ public class Report {
 	}
 	
 	/**
+	 * Get a source code file from specified location in list.
+	 * 
+	 * @param loc specified part of list
+	 * @return a SourceCodeFile
+	 */
+	public SourceCodeFile getSourceCodeFile(int loc) {
+		return sourceFileList.get(loc);
+	}
+	/**
+	 * Get number of source code files provided by the report class.
+	 * 
+	 * @return size of source code file list as int
+	 */
+	public int totalSourceCodeFiles( ) {
+		return sourceFileList.size();
+	}
+	
+	/**
 	 * Get a refactored suggestion at specified location in the list.
-	 * Helpful for tests.
+	 * 
+	 * @param loc specified part of list
+	 * @return a SuggestedRefactoring
 	 */
 	public SuggestedRefactoring getRefactoring(int loc) {
 		return refactoringList.get(loc);
@@ -151,7 +184,8 @@ public class Report {
 	
 	/**
 	 * Get number of refactorings provided to the report class.
-	 * Helpful for tests.
+	 * 
+	 * @return size of refactoring list as int
 	 */
 	public int totalRefactorings() {
 		return refactoringList.size();

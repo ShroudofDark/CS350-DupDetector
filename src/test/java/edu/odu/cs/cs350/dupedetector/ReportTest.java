@@ -18,6 +18,16 @@ import java.util.*;
 
 class ReportTest {
 
+	//Data for SourceCodeFile until class is implemented
+	SourceCodeFile file1 = new SourceCodeFile("/home/zeil/projects/cppProject1/src/foo.cpp");
+	SourceCodeFile file2 = new SourceCodeFile("/home/zeil/projects/cppProject1/src/headers/bar.h");
+	SourceCodeFile file3 = new SourceCodeFile("H:\\cygwin\\home\\Jacob\\someCpp.cpp");
+	SourceCodeFile file4 = new SourceCodeFile("/home/fakeZeil/projects/cppProject1/src/foo.cpp");
+	SourceCodeFile file5 = new SourceCodeFile("/coolhome/fakeZeil/cppProject1/src/tool.cpp");
+	
+	ArrayList<SourceCodeFile> sourceFileList1;
+	ArrayList<SourceCodeFile> sourceFileList2;
+	
 	//Data for SuggestedRefactoring until class is implemented (tests will need to be reviewed afterwards)
 	String data1 = "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"
 			+ "x y 1\r\n"
@@ -52,6 +62,7 @@ class ReportTest {
 	ArrayList<SuggestedRefactoring> refactoringList2;
 	ArrayList<SuggestedRefactoring> refactoringList3;
 	
+	
 	/**
 	 * For println testing. Information intepreted from these results:
 	 * 
@@ -62,11 +73,17 @@ class ReportTest {
 	PrintStream originalOut = System.out;
 	
 	/**
-	 * Setup data to be used/reset after each function
+	 * Setup data to be used
 	 */
 	@BeforeEach
 	public void setUp() {
 		//https://howtodoinjava.com/java/collections/arraylist/initialize-arraylist/ -> way to initialize ArrayList
+		
+		sourceFileList1 =
+				new ArrayList<SourceCodeFile>(Arrays.asList(file1, file2, file3));
+		sourceFileList2 = 
+				new ArrayList<SourceCodeFile>(Arrays.asList(file1, file2, file3, file4, file5));
+		
 		refactoringList1 
 			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3)); 
 		refactoringList2 
@@ -80,10 +97,13 @@ class ReportTest {
 	}
 	
 	/**
-	 * Deallocate information once a test is done
+	 * Clean up data/reset streams
 	 */
 	@AfterEach
 	public void cleanUp() {
+		sourceFileList1.clear();
+		sourceFileList2.clear();
+		
 		refactoringList1.clear();
 		refactoringList2.clear();
 		refactoringList3.clear();
@@ -98,7 +118,7 @@ class ReportTest {
 	 */
 	@Test
 	void testReport() {
-		Report rep = new Report(refactoringList1);
+		Report rep = new Report(sourceFileList1, refactoringList1);
 		
 		//Check that information is as expected
 		assertThat(rep.totalRefactorings(), is(3));
@@ -108,11 +128,11 @@ class ReportTest {
 		assertThat(rep.getRefactoring(1), not(equalTo(refactoring3)));
 		
 		//Checks to make sure equal works as intended
-		Report repSame = new Report(refactoringList1);
+		Report repSame = new Report(sourceFileList1, refactoringList1);
 		assertThat(rep, equalTo(repSame));
 		
 		//Check that Report isn't just initializing the same list despite different input
-		Report rep2 = new Report(refactoringList2);
+		Report rep2 = new Report(sourceFileList1, refactoringList2);
 		
 		assertThat(rep2.totalRefactorings(), is(2));
 		assertThat(rep, not(equalTo(rep2)));
@@ -135,7 +155,7 @@ class ReportTest {
 	 */
 	@Test
 	void testPrintReport() {
-		Report rep = new Report(refactoringList1);
+		Report rep = new Report(sourceFileList1, refactoringList1);
 		
 		//Prints report, with suggestion count of 3
 		rep.printReport(3);
@@ -213,11 +233,11 @@ class ReportTest {
 	@Test 
 	void testTrimRefactorings() {
 		//Original list
-		Report rep = new Report(refactoringList3);
+		Report rep = new Report(sourceFileList1, refactoringList3);
 		//Lists to compare to (need new list because the ()-> nots local variables must be final reinitializing)
-		Report rep2 = new Report(refactoringList3);
-		Report rep3 = new Report(refactoringList3);
-		Report rep4 = new Report(refactoringList3);
+		Report rep2 = new Report(sourceFileList1, refactoringList3);
+		Report rep3 = new Report(sourceFileList1, refactoringList3);
+		Report rep4 = new Report(sourceFileList1, refactoringList3);
 		
 		//Confirm they are equal
 		assertThat(rep2, equalTo(rep));
@@ -292,9 +312,9 @@ class ReportTest {
 	@Test 
 	void testSortRefactorings() {
 		//Original list, unsorted
-		Report rep = new Report(refactoringList3);
+		Report rep = new Report(sourceFileList1, refactoringList3);
 		//Second list to compare against
-		Report rep2 = new Report(refactoringList3);
+		Report rep2 = new Report(sourceFileList1, refactoringList3);
 		
 		//Confirm equal
 		assertThat(rep2, equalTo(rep));
@@ -317,7 +337,7 @@ class ReportTest {
 		assertThat(refactoringList3.size(), is(5));
 		
 		//Check how it handles same Opportunity
-		Report rep3 = new Report(refactoringList3);
+		Report rep3 = new Report(sourceFileList1, refactoringList3);
 		rep3.sortRefactorings();
 		
 		//Expected order should be refactoring 4, 1, 3, 3, 2
