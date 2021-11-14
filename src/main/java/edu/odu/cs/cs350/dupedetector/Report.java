@@ -128,7 +128,12 @@ public class Report {
 	 * Sorts the source files of the report alphabetically
 	 */
 	public void sortSourceFiles() {
-		
+		if(!(sourceFileList.size() == 0 || sourceFileList.size() == 1)) {
+			
+			Comparator<SourceCodeFile> sourceFileSorter 
+				= (firstRef, secondRef) -> firstRef.getPath().compareTo(secondRef.getPath());
+			Collections.sort(sourceFileList, sourceFileSorter);
+		}
 	}
 	
 	/**
