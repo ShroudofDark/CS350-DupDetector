@@ -1,0 +1,1 @@
+Nothing special here. This is for property file testing where if given not a .ini file it should throw a fit.

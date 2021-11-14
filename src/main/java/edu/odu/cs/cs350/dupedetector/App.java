@@ -16,6 +16,21 @@ public class App {
 			return;
 		}
 
+		PropertiesFile propFile;
+		if(app.propertiesFile != null) {
+			try {
+				propFile = new PropertiesFile(app.propertiesFile);
+			}
+			catch(Exception e) {
+				System.out.println(e.toString());
+				return; //Exit on error
+			}
+		}
+		else {
+			//Set default if not provided
+			propFile = new PropertiesFile();
+		}
+		
 		SuppliedCode theCode = new SuppliedCode();
 		theCode.setNumSuggestions(app.numSuggestions);
 
@@ -29,6 +44,7 @@ public class App {
 		
 		// Report
 		Report report = new Report(refactorings);
+		report.trimRefactorings(propFile.getMaxSubstitutions(), propFile.getMinSequenceLength());
 		report.sortRefactorings(); // TODO: make this a private concern of the class
 		report.printReport(app.numSuggestions);
   
@@ -76,14 +92,4 @@ public class App {
 	private void printForInvalidInvocation() {
 		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
 	}
-
-
-    
-
-		/*
-		// System test thing maybe
-		ReportSystemTest reportTest = new ReportSystemTest();
-		reportTest.test();
-		*/
-
 }
