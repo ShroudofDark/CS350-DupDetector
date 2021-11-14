@@ -3,12 +3,97 @@
  */
 package edu.odu.cs.cs350.dupedetector;
 
+import java.util.*;
+
 public class App {
+	
+	public static void main(String[] args) {
+        App app = new App(); // for config, etc., per design discussions
+		try {
+			app.parseArgs(args);
+		} catch(Exception e) {
+			app.printForInvalidInvocation();
+			return;
+		}
+
+		PropertiesFile propFile;
+		if(app.propertiesFile != null) {
+			try {
+				propFile = new PropertiesFile(app.propertiesFile);
+			}
+			catch(Exception e) {
+				System.out.println(e.toString());
+				return; //Exit on error
+			}
+		}
+		else {
+			//Set default if not provided
+			propFile = new PropertiesFile();
+		}
+
+		// Set up project file system interface and identify all files
+		// the user wants us to analyze
+		SuppliedFilePaths project = new SuppliedFilePaths();
+		project.setEligibleExtensions(propFile.getCppExtensions());
+		project.setSuppliedFilesAndDirs(app.suppliedPaths);
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode();
+		
+		// Take the eligible files and analyze them 
+		SuppliedCode theCode = new SuppliedCode();
+		theCode.setNumSuggestions(app.numSuggestions);
+		// TODO: set minSequenceLength parameter
+		ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions(projectFiles);
+
+		// TODO: print files read report here, using projectFiles variable.
+		
+		// Report
+		Report report = new Report(refactorings);
+		report.trimRefactorings(propFile.getMaxSubstitutions(), propFile.getMinSequenceLength());
+		report.sortRefactorings(); // TODO: make this a private concern of the class
+		report.printReport(app.numSuggestions);
+  
+    }
+	
+	private int numSuggestions;
+	private ArrayList<String> suppliedPaths;
+	private String propertiesFile;
+
+	public App()
+	{
+		suppliedPaths = new ArrayList<String>();
+	}
+	
     public String getGreeting() {
         return "Hello World!";
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+	private void parseArgs(String[] args) throws Exception {
+		
+		numSuggestions = Integer.parseInt(args[0]);
+
+		if (args.length < 2) { // holds with or without properties file
+			throw new Exception("Too few arguments.");
+		}
+
+		int startPathindex = 3;
+		if (args[1].endsWith(".ini"))
+		{
+			propertiesFile = args[1];
+			++startPathindex;
+			if (args.length < 3) { // with properties file
+				throw new Exception("Too few arguments.");
+			}
+		}
+		
+		for (int i = startPathindex; i < args.length; ++i) {
+			// push suppliedPaths
+			suppliedPaths.add(args[i]);
+		}
+		
+	
+	}
+
+	private void printForInvalidInvocation() {
+		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
+	}
 }
