@@ -212,7 +212,12 @@ class IntegrationTest {
 		catch(Exception e) {
 			System.out.println("Not fishing for specific exceptions, an issue happened when not expected.");
 			System.out.println(e);
-		}	
+		}
+		
+		System.out.println();
+		System.out.println("End of Property File Integration Test: Accepted Files");
+		System.out.println();
+		System.out.println();
 	}
 	
 	/**
@@ -285,7 +290,119 @@ class IntegrationTest {
 			System.out.println();
 		}
 		
+		System.out.println();
+		System.out.println("End of Property File Integration Test: Incorrect Files");
+		System.out.println();
+		System.out.println();
 	}
+	
+	@Test
+	void testReportPrintOuts() {
+		
+		System.out.println("Performing Report Output Test");
+		System.out.println("=========================================================");
+		
+		//Initialize a few list of refactoring suggestions
+    	ArrayList<SuggestedRefactoring> refactoringList1
+			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4));
+    	ArrayList<SuggestedRefactoring> refactoringList2
+    		= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4, 
+    															refactoring5, refactoring6, refactoring7));
+    	ArrayList<SuggestedRefactoring> refactoringList3 
+    		= new ArrayList<SuggestedRefactoring>(); //Init empty to be filled randomly later
+    	
+    	//Print list [1] with no changes (as many as it can print)
+    	Report rep1 = new Report(projectFiles, refactoringList1);
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing List1 of Suggested Refactors with nSuggestion: 4");
+    	System.out.println("Source Files Not Sorted");
+    	System.out.println("------------------------------------------------------");
+    	rep1.printReport(4);
+    	
+    	//Print list [1] after sorted
+       	rep1.sortSourceFiles();
+    	rep1.sortRefactorings();
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing Sorted List1 of Suggested Refactors with nSuggestion: 4");
+    	System.out.println("Source Files Sorted [and onwards in this test]");
+    	System.out.println("------------------------------------------------------");
+    	rep1.printReport(4);
+    	
+    	//Print list [1] after trimmed
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Trimming List1 based on maxSubstitutions of 3 and minimumSequence of 14");
+    	rep1.trimRefactorings(3, 14);
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing Sorted List1 of Suggested Refactors with nSuggestion: 4");
+    	System.out.println("------------------------------------------------------");
+    	rep1.printReport(4);
+    	
+    	//Print list [2] with no changes (sorts source files)
+    	Report rep2 = new Report(projectFiles, refactoringList2);
+    	rep2.sortSourceFiles();
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing List2 of Suggested Refactors with nSuggestion: 7");
+    	System.out.println("------------------------------------------------------");
+    	rep2.printReport(7);
+    	
+    	//Print list [2] with no changes (cut off the amount it prints with nSuggestions)
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing List2 of Suggested Refactors with nSuggestion: 3");
+    	System.out.println("------------------------------------------------------");
+    	rep2.printReport(3);
+    	
+    	//Print list [2] after trimmed
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Trimming List2 based on maxSubstitutions of 8 and minimumSequence of 2");
+    	rep2.trimRefactorings(8, 2);
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing List2 of Suggested Refactors with nSuggestion: 4");
+    	System.out.println("------------------------------------------------------");
+    	rep2.printReport(4);
+    	
+    	//Print list [2] after refactors sorted
+    	rep2.sortRefactorings();
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing Sorted List2 of Suggested Refactors with nSuggestion: 7");
+    	System.out.println("------------------------------------------------------");
+    	rep2.printReport(7);
+    	
+    	//
+    	// Print list [3-large] after trimmed, then sorted. Information here will be convuluted obviously (not accurate/fake output)
+    	// but is here to show it working for large sets of data
+    	//
+    	System.out.println("======================================================");
+    	System.out.println("Generating 200 Random Suggestions to Showcase Large Dataset. The random numbers range from 1-200");
+    	System.out.println("======================================================");
+    	
+    	refactoringList3 = randRefactoringList(200);
+    	
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Adding List to Report now");
+    	Report rep3 = new Report(projectFiles, refactoringList3);
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Trimming extremes from List3 based on maxSubstitutions of 175 and minimumSequence of 25");
+    	rep3.trimRefactorings(175, 25);
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now sorting suggestions of List3");
+    	rep3.sortRefactorings();
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now sorting file paths of List3");
+    	rep3.sortSourceFiles();
+    	System.out.println("------------------------------------------------------");
+    	System.out.println("Now Printing Sorted List3 of Suggested Refactors with nSuggestion: 100");
+    	System.out.println("------------------------------------------------------");
+    	rep3.printReport(100);
+    	
+    	//End of system test
+    	System.out.println("------------------------------------------------------");
+    	
+		System.out.println();
+    	System.out.println("End of Report Output Test\n");
+		System.out.println();
+		System.out.println();
+	}
+	
 	//Helper Methods Below
 	
 	/**
@@ -345,6 +462,7 @@ class IntegrationTest {
 	private Report prepReport(Report unpreppedReport, int maxSubs, int minSeqLength) {
 		Report retReport = unpreppedReport;
 		
+		retReport.sortSourceFiles();
 		retReport.trimRefactorings(maxSubs, minSeqLength);
 		retReport.sortRefactorings();
 		
