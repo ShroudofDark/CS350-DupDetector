@@ -56,10 +56,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-
-// Commands to run programs as subprocesses adapted from code at
-// https://www.baeldung.com/run-shell-command-in-java.
-//
 // Code for reporting tasks adapted from course material for CS350, Zeil.
 
 task reports (dependsOn: ['javadoc', 'test']) {
@@ -98,5 +94,3 @@ task deployReports (dependsOn: ['reports', 'copyDocs', 'copyReports' ]) {
         // VC mistakes like prematurely committed documentation.
     }
 }
-
-// build.dependsOn deployReports
