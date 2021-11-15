@@ -12,7 +12,8 @@ public class SuppliedFilePaths {
      * Sets the file extensions to use when searching for eligible
      * source code files within the directories supplied by the user
      * (if any). The file extension strings should not have periods (.) 
-     * @param exts
+     * @param exts the set of file extensions which identify source code files
+     *             when traversing directories 
      */
     public void setEligibleExtensions(ArrayList<String> exts) {
         eligibleExtensions = exts;

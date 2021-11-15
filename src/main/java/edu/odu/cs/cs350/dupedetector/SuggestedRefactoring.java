@@ -24,7 +24,7 @@ public class SuggestedRefactoring {
 	 * 
 	 * @param totalTokens to set token amount
 	 * @param opportunity to set opportunity
-	 * @param totalStubs to set fake data
+	 * @param totalSubs to set fake data
 	 * @param data a string that is returned by toString(). This is a stub.
 	 */
 	public SuggestedRefactoring(int totalTokens, int opportunity, int totalSubs, String data) {

@@ -41,10 +41,10 @@ public class PropertiesFile {
 	 * 
 	 * @param propFilePath path of file with defined property values.
 	 * 
-	 * @throws FileNotFoundException
-	 * @throws InvalidFileTypeException 
-	 * @throws InvalidPropertyFormatException 
-	 * @throws DuplicatePropertiesException 
+	 * @throws FileNotFoundException when the ini file cannot be found
+	 * @throws InvalidFileTypeException when the file is not properties file
+	 * @throws InvalidPropertyFormatException  when the properties file has an invalid format
+	 * @throws DuplicatePropertiesException when the properties file has duplicate entries
 	 */
 	public PropertiesFile(String propFilePath) 
 			throws FileNotFoundException, InvalidFileTypeException, InvalidPropertyFormatException, DuplicatePropertiesException {
