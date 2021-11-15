@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -131,6 +131,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Report</span>
 extends java.lang.Object</pre>
+<div class="block">The report is where information is compiled together and printed out. It is
+ divided into 3 primary sections of: 
+ 
+ Source files read
+ Suggested refactorings
+ Possible number of refactorings</div>
 </li>
 </ul>
 </div>
@@ -151,7 +157,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList)">Report</a></span>&#8203;(java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;providedRefactorings)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList,java.util.ArrayList)">Report</a></span>&#8203;(java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;providedSourceFiles,
+      java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;providedRefactorings)</code></th>
 <td class="colLast">
 <div class="block">Creates a report object with a list of Refactorings</div>
 </td>
@@ -189,27 +196,48 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSourceCodeFile(int)">getSourceCodeFile</a></span>&#8203;(int&nbsp;loc)</code></th>
+<td class="colLast">
+<div class="block">Get a source code file from specified location in list.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printReport(int)">printReport</a></span>&#8203;(int&nbsp;nSuggestions)</code></th>
 <td class="colLast">
 <div class="block">Prints the entire report for the program when called.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortRefactorings()">sortRefactorings</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Sorts the refactorings from greatest opportunity to least opportunity</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortSourceFiles()">sortSourceFiles</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Sorts the source files of the report alphabetically</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#totalRefactorings()">totalRefactorings</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get number of refactorings provided to the report class.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#totalSourceCodeFiles()">totalSourceCodeFiles</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get number of source code files provided by the report class.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#trimRefactorings(int,int)">trimRefactorings</a></span>&#8203;(int&nbsp;maxSubs,
                 int&nbsp;minSeqLength)</code></th>
@@ -241,16 +269,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.util.ArrayList)">
+<a id="&lt;init&gt;(java.util.ArrayList,java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Report</h4>
-<pre>public&nbsp;Report&#8203;(java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;providedRefactorings)</pre>
+<pre>public&nbsp;Report&#8203;(java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;providedSourceFiles,
+              java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;providedRefactorings)</pre>
 <div class="block">Creates a report object with a list of Refactorings</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>providedSourceFiles</code> - a list of source code files that are deep copied</dd>
 <dd><code>providedRefactorings</code> - a list of suggested refactorings that are deep copied</dd>
 </dl>
 </li>
@@ -275,11 +305,22 @@ extends java.lang.Object</pre>
 <div class="block">Prints the entire report for the program when called.
  
  Wrapper for:
+ printSourceFileReport
  printRefactoringReport</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>nSuggestions</code> - how many total suggestions should be printed in the report</dd>
 </dl>
+</li>
+</ul>
+<a id="sortSourceFiles()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sortSourceFiles</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;sortSourceFiles()</pre>
+<div class="block">Sorts the source files of the report alphabetically</div>
 </li>
 </ul>
 <a id="trimRefactorings(int,int)">
@@ -308,6 +349,36 @@ extends java.lang.Object</pre>
 <div class="block">Sorts the refactorings from greatest opportunity to least opportunity</div>
 </li>
 </ul>
+<a id="getSourceCodeFile(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSourceCodeFile</h4>
+<pre class="methodSignature">public&nbsp;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&nbsp;getSourceCodeFile&#8203;(int&nbsp;loc)</pre>
+<div class="block">Get a source code file from specified location in list.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>loc</code> - specified part of list</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a SourceCodeFile</dd>
+</dl>
+</li>
+</ul>
+<a id="totalSourceCodeFiles()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>totalSourceCodeFiles</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;totalSourceCodeFiles()</pre>
+<div class="block">Get number of source code files provided by the report class.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>size of source code file list as int</dd>
+</dl>
+</li>
+</ul>
 <a id="getRefactoring(int)">
 <!--   -->
 </a>
@@ -315,8 +386,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getRefactoring</h4>
 <pre class="methodSignature">public&nbsp;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&nbsp;getRefactoring&#8203;(int&nbsp;loc)</pre>
-<div class="block">Get a refactored suggestion at specified location in the list.
- Helpful for tests.</div>
+<div class="block">Get a refactored suggestion at specified location in the list.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>loc</code> - specified part of list</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a SuggestedRefactoring</dd>
+</dl>
 </li>
 </ul>
 <a id="totalRefactorings()">
@@ -326,8 +402,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>totalRefactorings</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;totalRefactorings()</pre>
-<div class="block">Get number of refactorings provided to the report class.
- Helpful for tests.</div>
+<div class="block">Get number of refactorings provided to the report class.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>size of refactoring list as int</dd>
+</dl>
 </li>
 </ul>
 <a id="equals(java.lang.Object)">

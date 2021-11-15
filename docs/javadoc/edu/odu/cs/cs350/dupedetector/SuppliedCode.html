@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -173,38 +173,18 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findSourceCodeFiles()">findSourceCodeFiles</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEligibleExtensions()">getEligibleExtensions</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumSuggestions()">getNumSuggestions</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#produceSuggestions()">produceSuggestions</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#produceSuggestions(java.util.ArrayList)">produceSuggestions</a></span>&#8203;(java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;files)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setEligibleExtensions(java.util.ArrayList)">setEligibleExtensions</a></span>&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;exts)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNumSuggestions(int)">setNumSuggestions</a></span>&#8203;(int&nbsp;nSuggestions)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSuppliedFilesAndDirs(java.util.ArrayList)">setSuppliedFilesAndDirs</a></span>&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -268,49 +248,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;setNumSuggestions&#8203;(int&nbsp;nSuggestions)</pre>
 </li>
 </ul>
-<a id="setEligibleExtensions(java.util.ArrayList)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setEligibleExtensions</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setEligibleExtensions&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;exts)</pre>
-</li>
-</ul>
-<a id="getEligibleExtensions()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getEligibleExtensions</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.String&gt;&nbsp;getEligibleExtensions()</pre>
-</li>
-</ul>
-<a id="setSuppliedFilesAndDirs(java.util.ArrayList)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setSuppliedFilesAndDirs</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setSuppliedFilesAndDirs&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</pre>
-</li>
-</ul>
-<a id="findSourceCodeFiles()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>findSourceCodeFiles</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;findSourceCodeFiles()</pre>
-</li>
-</ul>
-<a id="produceSuggestions()">
+<a id="produceSuggestions(java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>produceSuggestions</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;produceSuggestions()</pre>
+<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SuggestedRefactoring.html" title="class in edu.odu.cs.cs350.dupedetector">SuggestedRefactoring</a>&gt;&nbsp;produceSuggestions&#8203;(java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;files)</pre>
 </li>
 </ul>
 </li>
