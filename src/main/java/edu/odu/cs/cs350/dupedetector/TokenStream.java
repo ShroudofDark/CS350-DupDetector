@@ -53,6 +53,9 @@ public class TokenStream implements Iterable<Token> {
         return tokens.iterator();
     }
 
+    public int size() {
+        return tokens.size();
+    }
     
 }
 // end code copied and adapted from zeil.

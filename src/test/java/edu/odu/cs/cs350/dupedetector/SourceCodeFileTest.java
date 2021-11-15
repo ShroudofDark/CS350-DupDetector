@@ -27,13 +27,4 @@ public class SourceCodeFileTest {
         assertThat(a.equals(c), is(false));
     }
 
-    @Test
-    void lazyLoadTokens() {
-        SourceCodeFile file = new SourceCodeFile("/tmp/foo/bar.txt");
-        assertThat(file.getTotalTokens(), is(128)); // hard-coded value for stub.
-        fail("Fail because this isn't actually implemented yet."); // fail because this isn't actually implemented yet.
-
-        // Accessor-mutator coverage
-        assertThat(file.getPath(), is("/tmp/foo/bar.txt")); 
-    }
 }

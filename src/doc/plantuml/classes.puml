@@ -11,7 +11,7 @@ class SuppliedCode {
 
 class SuppliedFilePaths {
     ArrayList<String> cppExtensions
-    + ArrayList<SourceCodeFile> findEligibleSourceCode(String[])
+    + ArrayList<SourceCodeFile> findEligibleSourceCode(ArrayList<String> userInput)
 }
 
 class SuggestedRefactoring {
