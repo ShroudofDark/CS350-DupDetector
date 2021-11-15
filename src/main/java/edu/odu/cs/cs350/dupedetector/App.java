@@ -34,7 +34,7 @@ public class App {
   
     }
 	
-	private int numSuggestions;
+	public int numSuggestions;
 	private ArrayList<String> suppliedPaths;
 	private String propertiesFile;
 
@@ -47,7 +47,7 @@ public class App {
         return "Hello World!";
     }
 
-	private void parseArgs(String[] args) throws Exception {
+	public void parseArgs(String[] args) throws Exception {
 		
 		numSuggestions = Integer.parseInt(args[0]);
 
@@ -73,7 +73,7 @@ public class App {
 	
 	}
 
-	private void printForInvalidInvocation() {
+	public void printForInvalidInvocation() {
 		System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
 	}
 

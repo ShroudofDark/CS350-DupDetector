@@ -8,7 +8,7 @@ public class CLI {
 		App a = new App();
 		
 		try {
-			a.parseArgs(largs);
+			a.parseArgs(args);
 		}
 		
 		catch(Exception e)
@@ -18,15 +18,16 @@ public class CLI {
 		}
 		
 			SuppliedCode theCode = new SuppliedCode();
-			theCode.setNumSuggestions(app.numSuggestions);
+			theCode.setNumSuggestions(a.numSuggestions);
 			
 			// Get list of files from supplied files/directories
 			theCode.setSuppliedFilesAndDirs(new ArrayList<String>());
 			// Of the dirs supplied, if any, search recursively for eligible SourceCodeFiles
 			theCode.findSourceCodeFiles();
 			ArrayList<SuggestedRefactoring> refactorings = theCode.produceSuggestions();
-		
-			private int numSuggestions;
+	}
+	
+			public int numSuggestions;
 			private ArrayList<String> suppliedPaths;
 			private String propertiesFile;
 			
@@ -56,8 +57,7 @@ public class CLI {
 			
 			}
 
-			private void printForInvalidInvocation() {
+			public void printForInvalidInvocation() {
 				System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
 			}
-	}
 }
