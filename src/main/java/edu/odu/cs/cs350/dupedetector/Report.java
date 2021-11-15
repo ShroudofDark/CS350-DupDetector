@@ -34,16 +34,22 @@ public class Report {
 		 * 
 		 * https://www.javaprogramto.com/2020/04/java-arraylist-clone-deep-copy.html
 		 */
-		sourceFileList = new ArrayList<SourceCodeFile>();
-		if(providedSourceFiles != null) {
-			Iterator<SourceCodeFile> sourceIt = providedSourceFiles.iterator();
-			while(sourceIt.hasNext()) {
-				SourceCodeFile curr = sourceIt.next();
-				SourceCodeFile newSource = 
-						new SourceCodeFile(curr.getPath());
-				sourceFileList.add(newSource);
-			}
+		if (providedSourceFiles == null) {
+			sourceFileList = new ArrayList<SourceCodeFile>();
+		} else {
+			sourceFileList = providedSourceFiles;
 		}
+		// Commented by John 11/14.
+		// sourceFileList = new ArrayList<SourceCodeFile>();
+		// if(providedSourceFiles != null) {
+		// 	Iterator<SourceCodeFile> sourceIt = providedSourceFiles.iterator();
+		// 	while(sourceIt.hasNext()) {
+		// 		SourceCodeFile curr = sourceIt.next();
+		// 		SourceCodeFile newSource = 
+		// 				new SourceCodeFile(curr.getPath());
+		// 		sourceFileList.add(newSource);
+		// 	}
+		// }
 		
 		refactoringList = new ArrayList<SuggestedRefactoring>();
 		if(providedRefactorings != null) {

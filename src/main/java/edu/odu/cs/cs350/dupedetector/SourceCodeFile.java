@@ -1,6 +1,10 @@
 package edu.odu.cs.cs350.dupedetector;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Represents the source code file
@@ -31,19 +35,15 @@ public class SourceCodeFile {
      * Reads the file from disk and tokenizes its contents as C++ source code.
      * An instance of this class has been properly initialized after this method
      * has been called.
+     * @throws IOException
      */
-    public void tokenize() { // TODO: the whole thing :)
-        // Courtesy https://www.baeldung.com/junit-src-test-resources-directory-path
-        //  Read in the file from disk
-        // Path path = Paths.get("src","test","resources", "cpp", fileName);
-        // return Files.newBufferedReader(path, StandardCharsets.US_ASCII);
-
-        // scan
-
-        // set values
-
-        // set tokens member
-        totalTokens = 128;
+    public void tokenize() throws IOException {
+     // Courtesy https://www.baeldung.com/junit-src-test-resources-directory-path
+           //  Read in the file from disk
+        Path path = Paths.get(this.path);
+        tokens = new TokenStream(
+            Files.newBufferedReader(path, StandardCharsets.US_ASCII)
+        );
     }
 
     /**
@@ -62,7 +62,10 @@ public class SourceCodeFile {
      * @return the number of tokens in the file. -1 if tokens not read in yet.
      */
     public int getTotalTokens() {
-        return totalTokens;
+        if (tokens == null) {
+            return -1;
+        }
+        return tokens.size();
     }
 
     /**

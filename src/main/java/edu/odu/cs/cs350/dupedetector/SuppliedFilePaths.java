@@ -9,6 +9,10 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Has some tests that could go into integration tests, barring a mock of
+ * SourceCodeFile.tokenize()
+ */
 public class SuppliedFilePaths {
     private ArrayList<String> eligibleExtensions;
     // Internal
