@@ -21,7 +21,8 @@ class IntegrationTest {
 	
 	//Data usage / values may need to be changed or shifted as systems are updated.
 	SuppliedFilePaths project = new SuppliedFilePaths();
-	ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode();
+	// TODO: make sure findEligibleSourceCode is passed some "user" input
+	ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(new ArrayList<String>());
 	
 	String sequence1 = 
 			  "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"

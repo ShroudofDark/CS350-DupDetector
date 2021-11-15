@@ -35,8 +35,8 @@ public class App {
 		// the user wants us to analyze
 		SuppliedFilePaths project = new SuppliedFilePaths();
 		project.setEligibleExtensions(propFile.getCppExtensions());
-		project.setSuppliedFilesAndDirs(app.suppliedPaths);
-		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode();
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(
+			app.suppliedPaths);
 		
 		// Take the eligible files and analyze them 
 		SuppliedCode theCode = new SuppliedCode();
@@ -76,7 +76,7 @@ public class App {
 			throw new Exception("Too few arguments.");
 		}
 
-		int startPathindex = 3;
+		int startPathindex = 1;
 		if (args[1].endsWith(".ini"))
 		{
 			propertiesFile = args[1];
