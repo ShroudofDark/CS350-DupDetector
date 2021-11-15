@@ -8,9 +8,9 @@ class CLITest {
     @Test void CLItest() {
         CLI fileTest = new CLI();
         assertNotNull(fileTest.parseArgs(), "CLI should check property path and path index and iterate through");
-        assertNotNull(fileTest.suppliedPaths(), "CLI should create list of the path files");
-        assertNotNull(fileTest.numSuggestions(), "CLI shoudl check for number of path values");
-        assertNotNull(fileTest.printForInvalidInvocation(), "CLI should not check for Invalid Invocations");
+        assertThat(fileTest.suppliedPaths(), ArrayList<String>);
+        assertThat(fileTest.numSuggestions(), numSuggestions);
+        assertThat(fileTest.printForInvalidInvocation(), "");
         
     }
 }
