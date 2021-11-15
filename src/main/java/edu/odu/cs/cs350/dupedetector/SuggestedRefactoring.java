@@ -22,9 +22,10 @@ public class SuggestedRefactoring {
 	/**
 	 * Constructor for a stub SuggestedRefactoring
 	 * 
-	 * @param int to set token amount
-	 * @param int to set opportunity
-	 * @param string to set fake data
+	 * @param totalTokens to set token amount
+	 * @param opportunity to set opportunity
+	 * @param totalStubs to set fake data
+	 * @param data a string that is returned by toString(). This is a stub.
 	 */
 	public SuggestedRefactoring(int totalTokens, int opportunity, int totalSubs, String data) {
 		totalTokenAmount = totalTokens;
