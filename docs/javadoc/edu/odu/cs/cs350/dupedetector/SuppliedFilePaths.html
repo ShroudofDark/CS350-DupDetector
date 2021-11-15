@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -131,6 +131,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SuppliedFilePaths</span>
 extends java.lang.Object</pre>
+<div class="block">Has some tests that could go into integration tests, barring a mock of
+ SourceCodeFile.tokenize()</div>
 </li>
 </ul>
 </div>
@@ -174,8 +176,11 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findEligibleSourceCode()">findEligibleSourceCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findEligibleSourceCode(java.util.ArrayList)">findEligibleSourceCode</a></span>&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</code></th>
+<td class="colLast">
+<div class="block">Attempts to add the specified files and the eligible file contents of each
+ supplied directory to the working list of source code returned</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.String&gt;</code></td>
@@ -190,11 +195,6 @@ extends java.lang.Object</pre>
  source code files within the directories supplied by the user
  (if any).</div>
 </td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSuppliedFilesAndDirs(java.util.ArrayList)">setSuppliedFilesAndDirs</a></span>&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</code></th>
-<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -263,27 +263,24 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getEligibleExtensions</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.String&gt;&nbsp;getEligibleExtensions()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the file extensions considered as source code files in directories</dd>
+</dl>
 </li>
 </ul>
-<a id="setSuppliedFilesAndDirs(java.util.ArrayList)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setSuppliedFilesAndDirs</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setSuppliedFilesAndDirs&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</pre>
-</li>
-</ul>
-<a id="findEligibleSourceCode()">
+<a id="findEligibleSourceCode(java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>findEligibleSourceCode</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;findEligibleSourceCode()</pre>
+<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350.dupedetector">SourceCodeFile</a>&gt;&nbsp;findEligibleSourceCode&#8203;(java.util.ArrayList&lt;java.lang.String&gt;&nbsp;userInput)</pre>
+<div class="block">Attempts to add the specified files and the eligible file contents of each
+ supplied directory to the working list of source code returned</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>list of all eligible source code found for the specified directories</dd>
+<dd>list of all eligible source code found</dd>
 </dl>
 </li>
 </ul>

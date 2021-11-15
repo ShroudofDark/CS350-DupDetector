@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -162,19 +162,35 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.nio.file.Path</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFilePath()">getFilePath</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPath()">getPath</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="TokenStream.html" title="class in edu.odu.cs.cs350.dupedetector">TokenStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTokens()">getTokens</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get a TokenStream representing the file's C++ token contents.</div>
+</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTotalTokens()">getTotalTokens</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the number of tokens in the file</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tokenize()">tokenize</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Reads the file from disk and tokenizes its contents as C++ source code.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -200,6 +216,23 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="tokenize()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>tokenize</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;tokenize()
+              throws java.io.IOException</pre>
+<div class="block">Reads the file from disk and tokenizes its contents as C++ source code.
+ An instance of this class has been properly initialized after this method
+ has been called.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
+</dl>
+</li>
+</ul>
 <a id="getPath()">
 <!--   -->
 </a>
@@ -207,6 +240,19 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getPath</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getPath()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the path to this SourceCodeFile on the file system</dd>
+</dl>
+</li>
+</ul>
+<a id="getFilePath()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFilePath</h4>
+<pre class="methodSignature">public&nbsp;java.nio.file.Path&nbsp;getFilePath()</pre>
 </li>
 </ul>
 <a id="getTotalTokens()">
@@ -216,6 +262,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTotalTokens</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getTotalTokens()</pre>
+<div class="block">Gets the number of tokens in the file</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the number of tokens in the file. -1 if tokens not read in yet.</dd>
+</dl>
 </li>
 </ul>
 <a id="getTokens()">
@@ -225,6 +276,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTokens</h4>
 <pre class="methodSignature">public&nbsp;<a href="TokenStream.html" title="class in edu.odu.cs.cs350.dupedetector">TokenStream</a>&nbsp;getTokens()</pre>
+<div class="block">Get a TokenStream representing the file's C++ token contents. Will return
+ null until the `TokenStream.tokenize()` method has been called on the instance.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the tokens retrieved from the file, or null</dd>
+</dl>
 </li>
 </ul>
 <a id="equals(java.lang.Object)">
