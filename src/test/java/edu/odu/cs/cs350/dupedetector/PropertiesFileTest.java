@@ -62,7 +62,7 @@ class PropertiesFileTest {
 			throws FileNotFoundException, InvalidFileTypeException, InvalidPropertyFormatException, DuplicatePropertiesException {
 		
 		//Empty file should act like default constructor
-		String testFilePath1 = "src/test/resources/ini/empty.ini";
+		String testFilePath1 = "src/test/data/ini/empty.ini";
 		PropertiesFile propFile = new PropertiesFile(testFilePath1);
 		
 		assertThat(propFile.getMinSequenceLength(), is(10));
@@ -71,7 +71,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//Single property files should read as expected
-		String testFilePath2 = "src/test/resources/ini/cppExten1.ini";
+		String testFilePath2 = "src/test/data/ini/cppExten1.ini";
 		propFile = new PropertiesFile(testFilePath2);
 		ArrayList<String> expectedExten = new ArrayList<String>(Arrays.asList("C","cpp","h","hpp","H"));
 		
@@ -81,7 +81,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//=========
-		String testFilePath3 = "src/test/resources/ini/cppExten2.ini";
+		String testFilePath3 = "src/test/data/ini/cppExten2.ini";
 		propFile = new PropertiesFile(testFilePath3);
 		expectedExten = new ArrayList<String>(Arrays.asList("C"));
 		
@@ -91,7 +91,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//=========
-		String testFilePath4 = "src/test/resources/ini/minSeq1.ini";
+		String testFilePath4 = "src/test/data/ini/minSeq1.ini";
 		propFile = new PropertiesFile(testFilePath4);
 		
 		assertThat(propFile.getMinSequenceLength(), is(20));
@@ -100,7 +100,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//=========
-		String testFilePath5 = "src/test/resources/ini/maxSub1.ini";
+		String testFilePath5 = "src/test/data/ini/maxSub1.ini";
 		propFile = new PropertiesFile(testFilePath5);
 		
 		assertThat(propFile.getMinSequenceLength(), is(10));
@@ -109,7 +109,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//Mixed properties should be read fine ignoring order/empty lines so long as they are formatted correctly
-		String testFilePath6 = "src/test/resources/ini/mixProp1.ini";
+		String testFilePath6 = "src/test/data/ini/mixProp1.ini";
 		propFile = new PropertiesFile(testFilePath6);
 		expectedExten = new ArrayList<String>(Arrays.asList("C","cpp","h","hpp","H"));
 		
@@ -119,7 +119,7 @@ class PropertiesFileTest {
 		assertThat(propFile.getCppExtensions(), not(contains("falseCpp")));
 		
 		//========
-		String testFilePath7 = "src/test/resources/ini/mixProp2.ini";
+		String testFilePath7 = "src/test/data/ini/mixProp2.ini";
 		propFile = new PropertiesFile(testFilePath7);
 		expectedExten = new ArrayList<String>(Arrays.asList("C","cpp","h","hpp","H"));
 		
@@ -131,7 +131,7 @@ class PropertiesFileTest {
 		/**
 		 * If a file extension being added is as a repeat it is expected to ignore adding it again (letter case matters)
 		 */
-		String testFilePath8 = "src/test/resources/ini/dupeCppExten.ini";
+		String testFilePath8 = "src/test/data/ini/dupeCppExten.ini";
 		propFile = new PropertiesFile(testFilePath8);
 		expectedExten = new ArrayList<String>(Arrays.asList("C","c"));
 		
@@ -147,7 +147,7 @@ class PropertiesFileTest {
 	 */
 	@Test
 	void testPropertiesFileStringThrowsDuplicatePropertiesException() {
-		String dupeProps = "src/test/resources/ini/dupeProps.ini";
+		String dupeProps = "src/test/data/ini/dupeProps.ini";
 		assertThrows(DuplicatePropertiesException.class, ()-> {new PropertiesFile(dupeProps);});
 	}
 	
@@ -157,13 +157,13 @@ class PropertiesFileTest {
 	 */
 	@Test
 	void testPropertiesFileStringThrowsInvalidPropertyFormatException() {
-		String invalidProps1 = "src/test/resources/ini/invalidProps1.ini";
+		String invalidProps1 = "src/test/data/ini/invalidProps1.ini";
 		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps1);});
 		
-		String invalidProps2 = "src/test/resources/ini/invalidProps2.ini";
+		String invalidProps2 = "src/test/data/ini/invalidProps2.ini";
 		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps2);});
 		
-		String invalidProps3 = "src/test/resources/ini/invalidProps3.ini";
+		String invalidProps3 = "src/test/data/ini/invalidProps3.ini";
 		assertThrows(InvalidPropertyFormatException.class, ()-> {new PropertiesFile(invalidProps3);});
 	}
 	
@@ -173,7 +173,7 @@ class PropertiesFileTest {
 	 */
 	@Test
 	void testPropertiesFileStringThrowsInvalidFileTypeException() {
-		String invalidFileType = "src/test/resources/ini/invalidFileType.txt";
+		String invalidFileType = "src/test/data/ini/invalidFileType.txt";
 		assertThrows(InvalidFileTypeException.class, ()-> {new PropertiesFile(invalidFileType);});
 	}
 
@@ -183,7 +183,7 @@ class PropertiesFileTest {
 	 */
 	@Test
 	void testPropertiesFileStringThrowsFileNotFoundException() {
-		String nonExistantFile = "src/test/resources/ini/dpePops.ini";
+		String nonExistantFile = "src/test/data/ini/dpePops.ini";
 		assertThrows(FileNotFoundException.class, ()-> {new PropertiesFile(nonExistantFile);});
 	}
 

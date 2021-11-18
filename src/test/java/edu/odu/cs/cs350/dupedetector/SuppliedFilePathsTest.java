@@ -128,7 +128,7 @@ public class SuppliedFilePathsTest extends SuppliedFilePaths {
     }
 
     String getPathStringForTest(String fileName) {
-        Path path = Paths.get("src","test","resources", "cpp", fileName);
+        Path path = Paths.get("src","test","data", "cpp", fileName);
         return path.toString();
     }
 

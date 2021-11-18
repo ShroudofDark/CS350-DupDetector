@@ -54,7 +54,7 @@ public class ScannerTest {
     private BufferedReader getTestTokens(String fileName) throws IOException {
         // Courtesy https://www.baeldung.com/junit-src-test-resources-directory-path
         //  Read in the test file
-        Path path = Paths.get("src","test","resources", "cpp", fileName);
+        Path path = Paths.get("src","test","data", "cpp", fileName);
         return Files.newBufferedReader(path, StandardCharsets.US_ASCII);
     }
 
