@@ -131,7 +131,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		
 		try {
-			PropertiesFile blankProps = new PropertiesFile("src/test/resources/ini/empty.ini");
+			PropertiesFile blankProps = new PropertiesFile("src/test/data/ini/empty.ini");
 			System.out.println("Extracted CppExtensions: " + blankProps.getCppExtensions().toString());
 			System.out.println("Extracted MaxSubstitutions: " + blankProps.getMaxSubstitutions());
 			System.out.println("Extracted MinSequenceLengths: " + blankProps.getMinSequenceLength());
@@ -157,7 +157,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		
 		try {
-			PropertiesFile cppProps = new PropertiesFile("src/test/resources/ini/cppExten1.ini");
+			PropertiesFile cppProps = new PropertiesFile("src/test/data/ini/cppExten1.ini");
 			System.out.println("Extracted CppExtensions: " + cppProps.getCppExtensions().toString());
 			System.out.println("Extracted MaxSubstitutions: " + cppProps.getMaxSubstitutions());
 			System.out.println("Extracted MinSequenceLengths: " + cppProps.getMinSequenceLength());
@@ -183,7 +183,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		
 		try {
-			PropertiesFile allProps = new PropertiesFile("src/test/resources/ini/mixProp2.ini");
+			PropertiesFile allProps = new PropertiesFile("src/test/data/ini/mixProp2.ini");
 			System.out.println("Extracted CppExtensions: " +  allProps.getCppExtensions().toString());
 			System.out.println("Extracted MaxSubstitutions: " + allProps.getMaxSubstitutions());
 			System.out.println("Extracted MinSequenceLengths: " + allProps.getMinSequenceLength());
@@ -230,7 +230,7 @@ class IntegrationTest {
 		System.out.println("=========================================================");
 		System.out.println("When a file that is not an .ini is provided:\n");
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/invalidFileType.txt");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/invalidFileType.txt");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -240,7 +240,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		System.out.println("When a file that is not found:\n");
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/noExist.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/noExist.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -250,7 +250,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		System.out.println("Duplicate Declared Properties in the property file:\n");
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/dupeProps.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/dupeProps.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -260,7 +260,7 @@ class IntegrationTest {
 		System.out.println("---------------------------------------------------------");
 		System.out.println("Variety of incorrect formatting in the file:\n");
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/invalidProps1.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/invalidProps1.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -268,7 +268,7 @@ class IntegrationTest {
 		}
 		
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/invalidProps2.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/invalidProps2.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -276,7 +276,7 @@ class IntegrationTest {
 		}
 		
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/invalidProps3.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/invalidProps3.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
@@ -284,7 +284,7 @@ class IntegrationTest {
 		}
 		
 		try {
-			PropertiesFile wrongFile = new PropertiesFile("src/test/resources/ini/invalidProps4.ini");
+			PropertiesFile wrongFile = new PropertiesFile("src/test/data/ini/invalidProps4.ini");
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
