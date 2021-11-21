@@ -1,0 +1,79 @@
+> Task :dupe-detector:generateJflex UP-TO-DATE
+> Task :dupe-detector:compileJava UP-TO-DATE
+> Task :dupe-detector:compileGroovy NO-SOURCE
+> Task :dupe-detector:processResources NO-SOURCE
+> Task :dupe-detector:classes UP-TO-DATE
+> Task :dupe-detector:javadoc UP-TO-DATE
+> Task :dupe-detector:compileTestJava UP-TO-DATE
+> Task :dupe-detector:compileTestGroovy NO-SOURCE
+> Task :dupe-detector:processTestResources NO-SOURCE
+> Task :dupe-detector:testClasses UP-TO-DATE
+> Task :dupe-detector:test UP-TO-DATE
+> Task :dupe-detector:reports UP-TO-DATE
+> Task :dupe-detector:copyDocs UP-TO-DATE
+> Task :dupe-detector:copyReports UP-TO-DATE
+> Task :dupe-detector:reportStats FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Some problems were found with the configuration of task ':dupe-detector:reportStats' (type 'ReportStats').
+  - In plugin 'edu.odu.cs.report_accumulator' type 'edu.odu.cs.zeil.report_accumulator.ReportStats' property 'buildID' is missing an input or output annotation.
+    
+    Reason: A property without annotation isn't considered during up-to-date checking.
+    
+    Possible solutions:
+      1. Add an input or output annotation.
+      2. Mark it as @Internal.
+    
+    Please refer to https://docs.gradle.org/7.2/userguide/validation_problems.html#missing_annotation for more details about this problem.
+  - In plugin 'edu.odu.cs.report_accumulator' type 'edu.odu.cs.zeil.report_accumulator.ReportStats' property 'htmlDestDir' is missing an input or output annotation.
+    
+    Reason: A property without annotation isn't considered during up-to-date checking.
+    
+    Possible solutions:
+      1. Add an input or output annotation.
+      2. Mark it as @Internal.
+    
+    Please refer to https://docs.gradle.org/7.2/userguide/validation_problems.html#missing_annotation for more details about this problem.
+  - In plugin 'edu.odu.cs.report_accumulator' type 'edu.odu.cs.zeil.report_accumulator.ReportStats' property 'htmlSourceDir' is missing an input or output annotation.
+    
+    Reason: A property without annotation isn't considered during up-to-date checking.
+    
+    Possible solutions:
+      1. Add an input or output annotation.
+      2. Mark it as @Internal.
+    
+    Please refer to https://docs.gradle.org/7.2/userguide/validation_problems.html#missing_annotation for more details about this problem.
+  - In plugin 'edu.odu.cs.report_accumulator' type 'edu.odu.cs.zeil.report_accumulator.ReportStats' property 'reportsDir' is missing an input or output annotation.
+    
+    Reason: A property without annotation isn't considered during up-to-date checking.
+    
+    Possible solutions:
+      1. Add an input or output annotation.
+      2. Mark it as @Internal.
+    
+    Please refer to https://docs.gradle.org/7.2/userguide/validation_problems.html#missing_annotation for more details about this problem.
+  - In plugin 'edu.odu.cs.report_accumulator' type 'edu.odu.cs.zeil.report_accumulator.ReportStats' property 'reportsURL' is missing an input or output annotation.
+    
+    Reason: A property without annotation isn't considered during up-to-date checking.
+    
+    Possible solutions:
+      1. Add an input or output annotation.
+      2. Mark it as @Internal.
+    
+    Please refer to https://docs.gradle.org/7.2/userguide/validation_problems.html#missing_annotation for more details about this problem.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.2/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 634ms
+8 actionable tasks: 1 executed, 7 up-to-date

@@ -12,6 +12,7 @@ plugins {
     id 'groovy'
     id "org.xbib.gradle.plugin.git" version "2.0.0"
     id "org.xbib.gradle.plugin.jflex" version "1.4.0"
+    id 'edu.odu.cs.report_accumulator' version '1.3' 
 }
 
 sourceSets {
@@ -31,6 +32,10 @@ java {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+
+    ivy { // for report_accumulator
+        url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+    }
 }
 
 dependencies {
@@ -72,7 +77,11 @@ task copyReports (type: Copy, dependsOn: ['reports']) {
     into 'build/gh-pages/reports'
 }
 
-task deployReports (dependsOn: ['reports', 'copyDocs', 'copyReports' ]) {
+// Currently erroring per email to professor Zeil.
+reportStats.reportsURL = 'https://john-hix.github.io/CS350-dupe-detector/reports/'
+deployReports.deployDestination = 'build/reports/';
+
+task commitReports (dependsOn: ['reportStats', 'reports', 'copyDocs', 'copyReports' ]) {
     group = "Reporting"
     description  'Copies reports to the gh-pages build dir in preparation for a future push to GitHub'
     doLast {
