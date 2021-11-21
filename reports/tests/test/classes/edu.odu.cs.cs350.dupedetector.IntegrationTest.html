@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.240s</div>
+<div class="counter">0.212s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,17 +79,17 @@
 </thead>
 <tr>
 <td class="success">testCorrectPropertyFileDeclarations()</td>
-<td class="success">0.087s</td>
+<td class="success">0.072s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testIncorrectPropertyFileDeclarations()</td>
-<td class="success">0.009s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testReportPrintOuts()</td>
-<td class="success">0.144s</td>
+<td class="success">0.137s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -241,7 +241,7 @@ Demo on Random Refactorings
 
 Files scanned:
 
-Opportunity 132, 188 tokens
+Opportunity 181, 46 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
@@ -261,35 +261,21 @@ x y 1
 /home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
 y a y
 
-Opportunity 32, 104 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
+Opportunity 156, 83 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
 
-Opportunity 15, 96 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+Opportunity 149, 54 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
 
 Printed 3 of 4 suggestions.
 
@@ -593,7 +579,13 @@ Now Printing Sorted List3 of Suggested Refactors with nSuggestion: 100
 ------------------------------------------------------
 Files scanned:
 
-Opportunity 200, 193 tokens
+Opportunity 199, 184 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 197, 30 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -601,35 +593,145 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 199, 163 tokens
+Opportunity 196, 137 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 195, 44 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 194, 46 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 193, 134 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 192, 28 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 191, 161 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 191, 183 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 188, 103 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 187, 89 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 185, 27 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 198, 124 tokens
+Opportunity 184, 115 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 180, 136 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 179, 98 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:4
 x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:4
 a b 2
 
-Opportunity 198, 79 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+Opportunity 178, 89 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
 x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
 
-Opportunity 194, 182 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 194, 163 tokens
+Opportunity 177, 53 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 x y 1
 /home/zeil/projects/cppProject1/src/foo.cpp:156:4
@@ -637,77 +739,21 @@ x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
 a b 2
 
-Opportunity 193, 60 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 192, 78 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 191, 45 tokens
+Opportunity 177, 188 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 189, 47 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 188, 40 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
+Opportunity 177, 194 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 x y 1
 /home/zeil/projects/cppProject1/src/foo.cpp:156:4
 x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
 a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
 
-Opportunity 186, 155 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 185, 102 tokens
+Opportunity 176, 178 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
@@ -717,47 +763,21 @@ x y
 /home/zeil/projects/cppProject1/src/oops.cpp:252:1
 x t
 
-Opportunity 185, 166 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
+Opportunity 176, 65 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
 
-Opportunity 185, 191 tokens
+Opportunity 175, 153 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 184, 117 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 182, 133 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 181, 63 tokens
+Opportunity 174, 77 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
@@ -767,29 +787,45 @@ x y
 /home/zeil/projects/cppProject1/src/oops.cpp:252:1
 x t
 
-Opportunity 175, 97 tokens
+Opportunity 174, 116 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 174, 134 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 173, 61 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 168, 26 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 173, 108 tokens
+Opportunity 168, 89 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
+l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
 
-Opportunity 171, 101 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 170, 37 tokens
+Opportunity 165, 120 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
@@ -809,99 +845,55 @@ x y 1
 /home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
 y a y
 
-Opportunity 169, 104 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 169, 133 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 168, 181 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 166, 25 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-
-Opportunity 165, 79 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 165, 47 tokens
+Opportunity 163, 141 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 162, 77 tokens
+Opportunity 162, 168 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 162, 199 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 158, 182 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 158, 26 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:4
 x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:4
 a b 2
 
-Opportunity 162, 43 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 161, 172 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 159, 200 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 159, 74 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 157, 123 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 155, 192 tokens
+Opportunity 156, 46 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
@@ -911,7 +903,31 @@ x y
 /home/zeil/projects/cppProject1/src/oops.cpp:252:1
 x t
 
-Opportunity 153, 148 tokens
+Opportunity 155, 122 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 155, 53 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 154, 195 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 154, 185 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -919,119 +935,93 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 153, 186 tokens
+Opportunity 151, 129 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 147, 27 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 146, 66 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 145, 196 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 144, 88 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 143, 167 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 142, 98 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 141, 111 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 152, 111 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 151, 176 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 148, 178 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 148, 125 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c d e f g h i j
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z 3 4 5 6 7 8 9 10
-
-Opportunity 146, 74 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 144, 200 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 144, 163 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 143, 91 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 143, 138 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 138, 97 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 138, 185 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 136, 159 tokens
+Opportunity 141, 181 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -1039,37 +1029,87 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 135, 161 tokens
+Opportunity 138, 48 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 137, 72 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:4
 x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:4
 a b 2
 
-Opportunity 133, 48 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:099:0
-m n
-/home/zeil/projects/cppProject1/src/foo.cpp:123:4
-x y
-/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
-a b
-
-Opportunity 131, 182 tokens
+Opportunity 134, 109 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 127, 48 tokens
+Opportunity 134, 61 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
 
-Opportunity 127, 110 tokens
+Opportunity 133, 110 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 133, 96 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 132, 93 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:0120:0
 m n o p q l s
 /home/zeil/projects/cppProject1/src/foo.cpp:125:4
@@ -1077,7 +1117,7 @@ x y f g h n r
 /home/zeil/projects/cppProject1/src/headers/bar.h:086:8
 a b p q t l s
 
-Opportunity 127, 118 tokens
+Opportunity 130, 76 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
 x y 1
 /home/zeil/projects/cppProject1/src/foo.cpp:156:4
@@ -1085,7 +1125,7 @@ x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
 a b 2
 
-Opportunity 126, 52 tokens
+Opportunity 130, 107 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
@@ -1105,69 +1145,13 @@ x y 1
 /home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
 y a y
 
-Opportunity 126, 64 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 126, 96 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 125, 125 tokens
+Opportunity 129, 96 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 123, 193 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-
-Opportunity 122, 127 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 122, 200 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 121, 136 tokens
+Opportunity 128, 70 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -1175,47 +1159,33 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 120, 131 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 120, 58 tokens
+Opportunity 126, 141 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
 
-Opportunity 119, 138 tokens
+Opportunity 121, 118 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 118, 35 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 118, 31 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-
-Opportunity 118, 185 tokens
+Opportunity 121, 38 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -1223,27 +1193,17 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 118, 104 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
+Opportunity 119, 122 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
+l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
 
-Opportunity 118, 197 tokens
+Opportunity 116, 167 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -1251,93 +1211,63 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 115, 130 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
+Opportunity 114, 110 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
+l &quot;number&quot;
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
 
-Opportunity 115, 50 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 115, 102 tokens
+Opportunity 113, 86 tokens
 /home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
 a b c d e f g h i j
 /home/zeil/projects/cppProject1/src/grung.cpp:122:2
 &quot;blah&quot; z 3 4 5 6 7 8 9 10
 
-Opportunity 113, 69 tokens
+Opportunity 113, 35 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
 
-Opportunity 110, 141 tokens
+Opportunity 111, 180 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c d e f g h i j
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z 3 4 5 6 7 8 9 10
+
+Opportunity 108, 164 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+a b 2
 
-Opportunity 110, 140 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
+Opportunity 108, 50 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
 
-Opportunity 108, 195 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 107, 73 tokens
+Opportunity 105, 155 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:0120:0
 m n o p q l s
 /home/zeil/projects/cppProject1/src/foo.cpp:125:4
@@ -1345,211 +1275,7 @@ x y f g h n r
 /home/zeil/projects/cppProject1/src/headers/bar.h:086:8
 a b p q t l s
 
-Opportunity 106, 137 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 102, 57 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 101, 29 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 101, 161 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 98, 103 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 95, 189 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 93, 124 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 90, 103 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 89, 183 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-l &quot;number&quot;
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:156:4
-x y
-/home/zeil/projects/cppProject1/src/oops.cpp:252:1
-x t
-
-Opportunity 89, 94 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 88, 70 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z r
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
-v &quot;elaphant&quot; t
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
-x y 1
-/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
-y a y
-
-Opportunity 87, 50 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 85, 94 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 81, 142 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
-a b 2
-
-Opportunity 81, 146 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-
-Opportunity 80, 84 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:100:0
-x y 1
-/home/zeil/projects/cppProject1/src/foo.cpp:156:4
-x y 1
-/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
-a b 2
-
-Opportunity 79, 65 tokens
-/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
-m n o p q l s
-/home/zeil/projects/cppProject1/src/foo.cpp:125:4
-x y f g h n r
-/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
-a b p q t l s
-
-Opportunity 77, 41 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c d e f g h i j
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z 3 4 5 6 7 8 9 10
-
-Opportunity 74, 32 tokens
-/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
-a b c d e f g h i j
-/home/zeil/projects/cppProject1/src/grung.cpp:122:2
-&quot;blah&quot; z 3 4 5 6 7 8 9 10
-
-Opportunity 73, 161 tokens
+Opportunity 104, 99 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:099:0
 m n
 /home/zeil/projects/cppProject1/src/foo.cpp:123:4
@@ -1557,13 +1283,281 @@ x y
 /home/zeil/projects/cppProject1/src/headers/bar.h:080:8
 a b
 
-Opportunity 72, 79 tokens
+Opportunity 104, 194 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 103, 165 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 98, 31 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 96, 199 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 93, 163 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 92, 149 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c d e f g h i j
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z 3 4 5 6 7 8 9 10
+
+Opportunity 92, 88 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 91, 168 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 90, 120 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 90, 59 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 90, 70 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:0120:0
+m n o p q l s
+/home/zeil/projects/cppProject1/src/foo.cpp:125:4
+x y f g h n r
+/home/zeil/projects/cppProject1/src/headers/bar.h:086:8
+a b p q t l s
+
+Opportunity 87, 45 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 87, 30 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 86, 102 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:099:0
+m n
+/home/zeil/projects/cppProject1/src/foo.cpp:123:4
+x y
+/home/zeil/projects/cppProject1/src/headers/bar.h:080:8
+a b
+
+Opportunity 86, 156 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 86, 120 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 85, 178 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 85, 68 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 85, 162 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z r
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2
+v &quot;elaphant&quot; t
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2
+x y 1
+/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3
+y a y
+
+Opportunity 82, 142 tokens
 /home/zeil/projects/cppProject1/src/foo.cpp:100:4
 x y 1
 /home/zeil/projects/cppProject1/src/headers/bar.h:056:4
 a b 2
 
-Printed 100 of 153 suggestions.
+Opportunity 81, 180 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 77, 132 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+l &quot;number&quot;
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:156:4
+x y
+/home/zeil/projects/cppProject1/src/oops.cpp:252:1
+x t
+
+Opportunity 77, 137 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 75, 160 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 74, 119 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:4
+a b 2
+
+Opportunity 74, 59 tokens
+/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0
+a b c d e f g h i j
+/home/zeil/projects/cppProject1/src/grung.cpp:122:2
+&quot;blah&quot; z 3 4 5 6 7 8 9 10
+
+Opportunity 73, 79 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Opportunity 73, 82 tokens
+/home/zeil/projects/cppProject1/src/foo.cpp:100:0
+x y 1
+/home/zeil/projects/cppProject1/src/foo.cpp:156:4
+x y 1
+/home/zeil/projects/cppProject1/src/headers/bar.h:056:8
+a b 2
+
+Printed 100 of 155 suggestions.
 ------------------------------------------------------
 
 End of Report Output Test
@@ -1612,7 +1606,7 @@ End of Property File Integration Test: Incorrect Files
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.2</a> at Nov 21, 2021, 8:09:03 PM</p>
+<a href="http://www.gradle.org">Gradle 7.2</a> at Nov 21, 2021, 8:11:29 PM</p>
 </div>
 </div>
 </body>
