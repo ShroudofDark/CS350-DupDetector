@@ -18,22 +18,22 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x ./dupe-detector/gradlew
     - name: Fetch origin gh-pages for updates later in the gradle script
       uses: actions/checkout@v2
       with:
         repository: john-hix/CS350-dupe-detector
-        path: ./build/gh-pages
+        path: ./dupe-detector/build/gh-pages
         ref: gh-pages
         # options to support github-push action, taken from its documentation
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Build and test the project
       timeout-minutes: 5
-      run: ./gradlew build deployReports
+      run: ./dupe-detector/gradlew build deployReports
     - name: Push changes for project website to GH pages
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        directory: "./build/gh-pages"
+        directory: "./dupe-detector/build/gh-pages"
         branch: gh-pages
