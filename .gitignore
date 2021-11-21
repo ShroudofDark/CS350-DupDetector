@@ -45,3 +45,7 @@ bin
 
 # Git worktree directory for project website publish
 _site
+
+# Copied build artifact
+dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/Scanner.java~
+
