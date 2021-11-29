@@ -3,11 +3,11 @@
 
 <!-- HTML source retrieved from an example at
 https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
-<link rel="stylesheet" type="text/css" href="projectReports.css"/>
+<link rel="stylesheet" type="text/css" href="assets/projectReports.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="projectReports.js"></script>
+<script src="assets/projectReports.js"></script>
 
 <table>
     <tr>
@@ -28,7 +28,7 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     </tr>
     <tr>
     <td>
-        <a href="tests/">JUnit test report</a>
+        <a href="reports/tests/test/">JUnit test report</a>
     </td>
     <td>
         <!-- For each graph to be displayed, 
@@ -95,13 +95,6 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     // register2("spotbugsGraph", "reports/spotbugs.csv", "SpotBugs", "Warnings");
 </script>
 
-
-
-
-
-## Reports
-Test/analysis report [trends and summary page](./reports/) with `report_accumulator`
-data graphed.
 
 All reports:
 * [jUnit Tests](./reports/tests/test/)
