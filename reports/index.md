@@ -1,14 +1,13 @@
-<head>
-    <!-- HTML source retrieved from an example at
-    https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
-    <title>Project Reports</title>
-    <link rel="stylesheet" type="text/css" href="projectReports.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="projectReports.js"></script>
-</head>
-<h1>Project Reports</h1>
+
+<!-- HTML source retrieved from an example at
+https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
+<link rel="stylesheet" type="text/css" href="projectReports.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="projectReports.js"></script>
+
+<h2>Project Reports</h1>
 
 <table>
     <tr>
