@@ -18,7 +18,6 @@
     <td>
         <a href="docs/javadoc/">JavaDoc</a>
     </td>
-    <td/>
     </tr>
     <tr>
     <td>
