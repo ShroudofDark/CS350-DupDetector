@@ -36,15 +36,15 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         <div id="junitGraph" class="graph">junit</div>
     </td>
     </tr>
-    <tr>
+    <!-- <tr>
     <td>
         <a href="jacoco/test/html/index.html">Unit Test
         Coverage</a>
     </td>
-    <!-- <td>
+    <td>
         <div id="jacocoGraph" class="graph">jacoco</div>
-    </td> -->
-    </tr>
+    </td>
+    </tr> -->
     <!-- <tr>
     <th colspan="2">Analysis</th>
     </tr>
@@ -94,10 +94,3 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     // register2("findbugsGraph", "reports/findbugs.csv", "FindBugs", "Warnings");
     // register2("spotbugsGraph", "reports/spotbugs.csv", "SpotBugs", "Warnings");
 </script>
-
-
-All reports:
-* [jUnit Tests](./reports/tests/test/)
-
-## Documentation
-* [JavaDoc](./docs/javadoc/)
