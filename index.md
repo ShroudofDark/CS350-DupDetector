@@ -18,12 +18,12 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         <a href="docs/javadoc/">JavaDoc</a>
     </td>
     </tr>
-    <!-- <tr>
-    <td>
+    <tr>
+    <!-- <td>
         <a href="project/dependencies/root.html">Project
         Dependencies</a>
-    </td>
-    <tr> -->
+    </td> -->
+    <tr>
     <th colspan="2">Testing</th>
     </tr>
     <tr>
