@@ -18,7 +18,6 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         <a href="docs/javadoc/">JavaDoc</a>
     </td>
     </tr>
-    <tr>
     <!-- <td>
         <a href="project/dependencies/root.html">Project
         Dependencies</a>
