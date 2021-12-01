@@ -76,6 +76,7 @@ task copyDocs (type: Copy, dependsOn: ['reports' ]) {
     into 'build/gh-pages/docs'
 }
 
+reportStats.dependsOn 'reports'
 reportStats {
     reportsURL = 'https://john-hix.github.io/CS350-dupe-detector/reports'
     htmlSourceDir = file('src/main/html')
