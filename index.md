@@ -48,12 +48,12 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         <div id="jacocoGraph" class="graph">jacoco</div>
     </td>
     </tr>
-    <!-- <tr>
+    <tr>
     <th colspan="2">Analysis</th>
     </tr>
     <tr>
     <td>
-        <a href="checkstyle/main.html">CheckStyle</a>
+        <a href="reports/checkstyle/main.html">CheckStyle</a>
     </td>
     <td>
         <div id="checkstyleGraph" class="graph">checkstyle</div>
@@ -61,15 +61,7 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     </tr>
     <tr>
     <td>
-        <a href="findbugs/main.html">FindBugs</a>
-    </td>
-    <td>
-        <div id="findbugsGraph" class="graph">findBugs</div>
-    </td>
-    </tr>
-    <tr>
-    <td>
-        <a href="spotbugs/main.html">SpotBugs</a>
+        <a href="reports/spotbugs/main.html">SpotBugs</a>
     </td>
     <td>
         <div id="spotbugsGraph" class="graph">SpotBugs</div>
@@ -77,12 +69,12 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     </tr>
     <tr>
     <td>
-        <a href="pmd/main.html">PMD</a>
+        <a href="reports/pmd/main.html">PMD</a>
     </td>
     <td>			  
         <div id="pmdGraph" class="graph">PMD</div>
     </td>
-    </tr> -->
+    </tr>
 </table>
     
 
@@ -92,8 +84,8 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
 <script type="text/javascript">
     register2("junitGraph", "reports/tests.csv", "JUnit Tests", "Test Cases");
     register2("jacocoGraph", "reports/jacoco.csv", "Test Coverage", "# Branches");
-    // register1("pmdGraph", "reports/pmd.csv", "PMD", "Warnings");
-    // register1("checkstyleGraph", "reports/checkstyle.csv", "Checkstyle", "Warnings");
+    register1("pmdGraph", "reports/pmd.csv", "PMD", "Warnings");
+    register1("checkstyleGraph", "reports/checkstyle.csv", "Checkstyle", "Warnings");
     // register2("findbugsGraph", "reports/findbugs.csv", "FindBugs", "Warnings");
-    // register2("spotbugsGraph", "reports/spotbugs.csv", "SpotBugs", "Warnings");
+    register2("spotbugsGraph", "reports/spotbugs.csv", "SpotBugs", "Warnings");
 </script>
