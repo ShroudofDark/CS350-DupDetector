@@ -14,6 +14,9 @@ plugins {
     id "org.xbib.gradle.plugin.jflex" version "1.4.0"
     id 'edu.odu.cs.report_accumulator' version '1.4'
     id 'jacoco'
+    id 'com.github.spotbugs' version '4.7.9'
+    id 'pmd'
+    id 'checkstyle'
 }
 
 sourceSets {
@@ -65,9 +68,44 @@ tasks.named('test') {
 // Make "check" task run jacoco
 check.dependsOn jacocoTestReport
 
+// Copied from https://github.com/sjzeil/report_accumulator/blob/main/report_accumulator/build.gradle
+checkstyleMain.onlyIf {true}
+
+tasks.withType(Checkstyle) {
+    reports {
+	    //toolVersion "8.1"
+        ignoreFailures = true
+        //showViolations = false
+        html.required = true
+        configFile = file('config/checkstyle/sun_checks.xml')
+        html.destination = project.file("build/reports/checkstyle/main.html")
+    }
+}
+
+spotbugsMain {
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+pmd {
+    ignoreFailures = true
+    consoleOutput = false
+}
+
+spotbugsTest.enabled = false
+pmdTest.enabled = false
+checkstyleTest.enabled = true
+checkstyleMain.enabled = true
+// end copied code from Zeil
+
 // Code for reporting tasks adapted from course material for CS350, Zeil.
 
-task reports (dependsOn: ['javadoc', 'test', 'check']) {
+task reports (dependsOn: ['javadoc', 'test', 'check', 'checkstyleMain']) {
     description 'Generate reports for this project'
 }
 
