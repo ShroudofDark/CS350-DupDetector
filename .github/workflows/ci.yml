@@ -30,7 +30,7 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Build and test the project
       timeout-minutes: 5
-      run: ./dupe-detector/gradlew build deployReports
+      run: ./dupe-detector/gradlew build commitReports
     - name: Push changes for project website to GH pages
       uses: ad-m/github-push-action@v0.6.0
       with:
