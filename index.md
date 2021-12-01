@@ -1,5 +1,9 @@
-# W7-4 DupeDetector Project Reports
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
+layout: home
+---
 
 <!-- HTML source retrieved from an example at
 https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
@@ -35,15 +39,15 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         <div id="junitGraph" class="graph">junit</div>
     </td>
     </tr>
-    <!-- <tr>
+    <tr>
     <td>
-        <a href="jacoco/test/html/index.html">Unit Test
+        <a href="reports/jacoco/test/html/index.html">Unit Test
         Coverage</a>
     </td>
     <td>
         <div id="jacocoGraph" class="graph">jacoco</div>
     </td>
-    </tr> -->
+    </tr>
     <!-- <tr>
     <th colspan="2">Analysis</th>
     </tr>
@@ -87,7 +91,7 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
         being plotted.  -->
 <script type="text/javascript">
     register2("junitGraph", "reports/tests.csv", "JUnit Tests", "Test Cases");
-    // register2("jacocoGraph", "reports/jacoco.csv", "Test Coverage", "# Branches");
+    register2("jacocoGraph", "reports/jacoco.csv", "Test Coverage", "# Branches");
     // register1("pmdGraph", "reports/pmd.csv", "PMD", "Warnings");
     // register1("checkstyleGraph", "reports/checkstyle.csv", "Checkstyle", "Warnings");
     // register2("findbugsGraph", "reports/findbugs.csv", "FindBugs", "Warnings");
