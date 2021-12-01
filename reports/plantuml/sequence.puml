@@ -1,0 +1,40 @@
+@startuml DupeDetector main method
+actor       Programmer       as Prog
+participant App as App
+participant Cli as Cli
+participant SuppliedFilePaths as Spf
+participant SuppliedCode as Code
+' participant TokenStream as Ts
+participant FilesReport as Fr
+participant Report as Sr
+
+activate Prog
+activate App
+activate Cli
+App -> Cli : parseArgs()
+App <-- Cli : Properties
+deactivate Cli
+activate Spf
+App -> Spf : setCppExtensions()
+App -> Spf : findEligibleSourceCode(Properties.paths)
+App <-- Spf : eligibleFiles
+App -> Spf : getFiles()
+App <-- Spf : srcCodeFilesScanned
+deactivate Spf
+activate Fr
+App -> Fr : setFiles(srcCodeFilesScanned)
+App -> Fr : printReport()
+deactivate Fr
+activate Code
+App -> Code : setMinSeqLength(Properties.minSequenceLength)
+App -> Code : setFiles(eligibleFiles)
+App -> Code : produceSuggestions()
+' do stuff
+App <-- Code : ArrayList<SuggestedRefactorings> suggestions
+deactivate Code
+
+activate Sr
+App -> Sr : sortRefactorings()
+App -> Sr : printReport(Properties.numSuggestions)
+deactivate Sr
+@enduml
