@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-12-01T03:49:05.002">
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/App.java">
+<violation beginline="58" endline="58" begincolumn="21" endcolumn="34" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="App" variable="numSuggestions" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="59" endline="59" begincolumn="35" endcolumn="47" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="App" variable="suppliedPaths" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="60" endline="60" begincolumn="24" endcolumn="37" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="App" variable="propertiesFile" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="75" endline="75" begincolumn="35" endcolumn="35" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="App" method="parseArgs" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="84" endline="84" begincolumn="43" endcolumn="43" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="App" method="parseArgs" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/PropertiesFile.java">
+<violation beginline="24" endline="24" begincolumn="35" endcolumn="47" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" variable="cppExtensions" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="25" endline="25" begincolumn="21" endcolumn="37" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" variable="minSequenceLength" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="26" endline="26" begincolumn="21" endcolumn="36" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" variable="maxSubstitutions" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="83" endline="140" begincolumn="25" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readCppProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readCppProp' (lines '83'-'140').
+</violation>
+<violation beginline="84" endline="140" begincolumn="25" endcolumn="46" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readMinSeqProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readMinSeqProp' (lines '84'-'140').
+</violation>
+<violation beginline="85" endline="140" begincolumn="25" endcolumn="46" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readMaxSubProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readMaxSubProp' (lines '85'-'140').
+</violation>
+<violation beginline="88" endline="88" begincolumn="35" endcolumn="44" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="fileReader" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Scanner object are closed after use
+</violation>
+<violation beginline="102" endline="140" begincolumn="49" endcolumn="66" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readCppProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readCppProp' (lines '102'-'140').
+</violation>
+<violation beginline="114" endline="140" begincolumn="49" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readMinSeqProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readMinSeqProp' (lines '114'-'140').
+</violation>
+<violation beginline="126" endline="140" begincolumn="49" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractProperties" variable="readMaxSubProp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'readMaxSubProp' (lines '126'-'140').
+</violation>
+<violation beginline="182" endline="188" begincolumn="25" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractInteger" variable="retValue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'retValue' (lines '182'-'188').
+</violation>
+<violation beginline="201" endline="226" begincolumn="35" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractExtensions" variable="retValueList" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'retValueList' (lines '201'-'226').
+</violation>
+<violation beginline="210" endline="226" begincolumn="33" endcolumn="61" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="PropertiesFile" method="extractExtensions" variable="dupeChecker" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'dupeChecker' (lines '210'-'226').
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/Report.java">
+<violation beginline="21" endline="21" begincolumn="49" endcolumn="63" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Report" variable="refactoringList" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="22" endline="22" begincolumn="43" endcolumn="56" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Report" variable="sourceFileList" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="238" endline="238" begincolumn="24" endcolumn="41" rule="OverrideBothEqualsAndHashcode" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Report" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#overridebothequalsandhashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/Scanner.java">
+<violation beginline="89" endline="91" begincolumn="5" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackcmap_top" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '89'-'91').
+</violation>
+<violation beginline="332" endline="334" begincolumn="5" endcolumn="73" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackcmap_blocks" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '332'-'334').
+</violation>
+<violation beginline="398" endline="400" begincolumn="5" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackAction" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '398'-'400').
+</violation>
+<violation beginline="506" endline="508" begincolumn="5" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackRowMap" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '506'-'508').
+</violation>
+<violation beginline="552" endline="552" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\2\12\11\0\1\12\13\0\12\12\6\0\6\12\4\0" appears 21 times in this file; the first occurrence is on line 552
+</violation>
+<violation beginline="556" endline="556" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\13\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 5 times in this file; the first occurrence is on line 556
+</violation>
+<violation beginline="584" endline="584" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\4\0\2\12\11\0\1\12\13\0\12\12\6\0\6\12" appears 71 times in this file; the first occurrence is on line 584
+</violation>
+<violation beginline="600" endline="600" begincolumn="5" endcolumn="50" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\11\0\1\126\1\127\1\130\4\0\1\260\47\0\1\115" appears 7 times in this file; the first occurrence is on line 600
+</violation>
+<violation beginline="624" endline="624" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\6\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 5 times in this file; the first occurrence is on line 624
+</violation>
+<violation beginline="643" endline="643" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\10\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 4 times in this file; the first occurrence is on line 643
+</violation>
+<violation beginline="669" endline="669" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\11\0\1\12\13\0\12\12\6\0\6\12\4\0\1\12" appears 5 times in this file; the first occurrence is on line 669
+</violation>
+<violation beginline="741" endline="741" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\7\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 4 times in this file; the first occurrence is on line 741
+</violation>
+<violation beginline="744" endline="744" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\24\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 6 times in this file; the first occurrence is on line 744
+</violation>
+<violation beginline="788" endline="788" begincolumn="5" endcolumn="45" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\11\0\1\12\13\0\12\12\6\0\6\12\4\0\5\12" appears 7 times in this file; the first occurrence is on line 788
+</violation>
+<violation beginline="794" endline="794" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\11\0\1\12\13\0\12\12\6\0\6\12\4\0\23\12" appears 6 times in this file; the first occurrence is on line 794
+</violation>
+<violation beginline="804" endline="804" begincolumn="5" endcolumn="51" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\7\0\1\126\1\127\1\130\1\260\11\0\1\126\1\127" appears 5 times in this file; the first occurrence is on line 804
+</violation>
+<violation beginline="904" endline="904" begincolumn="5" endcolumn="51" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\1\130\1\260\11\0\1\126\1\127\1\130\4\0\1\260" appears 7 times in this file; the first occurrence is on line 904
+</violation>
+<violation beginline="928" endline="928" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\14\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 5 times in this file; the first occurrence is on line 928
+</violation>
+<violation beginline="937" endline="937" begincolumn="5" endcolumn="46" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\26\12\4\0\2\12\11\0\1\12\13\0\12\12\6\0" appears 4 times in this file; the first occurrence is on line 937
+</violation>
+<violation beginline="989" endline="989" begincolumn="5" endcolumn="51" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\2\125\7\0\1\126\1\127\1\130\1\260\11\0\1\126" appears 5 times in this file; the first occurrence is on line 989
+</violation>
+<violation beginline="1053" endline="1053" begincolumn="5" endcolumn="53" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "\1\126\1\127\1\130\1\260\11\0\1\126\1\127\1\130" appears 4 times in this file; the first occurrence is on line 1,053
+</violation>
+<violation beginline="1246" endline="1248" begincolumn="5" endcolumn="61" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackTrans" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '1,246'-'1,248').
+</violation>
+<violation beginline="1256" endline="1257" begincolumn="7" endcolumn="13" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackTrans" variable="value" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'value' (lines '1,256'-'1,257').
+</violation>
+<violation beginline="1303" endline="1305" begincolumn="5" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzUnpackAttribute" variable="offset" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'offset' (lines '1,303'-'1,305').
+</violation>
+<violation beginline="1320" endline="1320" begincolumn="26" endcolumn="33" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzReader" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1323" endline="1323" begincolumn="15" endcolumn="21" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzState" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1326" endline="1326" begincolumn="15" endcolumn="28" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzLexicalState" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1332" endline="1332" begincolumn="16" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzBuffer" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1335" endline="1335" begincolumn="15" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzMarkedPos" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1338" endline="1338" begincolumn="15" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzCurrentPos" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1341" endline="1341" begincolumn="15" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzStartRead" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1344" endline="1344" begincolumn="15" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzEndRead" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1350" endline="1350" begincolumn="19" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzAtEOF" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1358" endline="1358" begincolumn="15" endcolumn="34" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzFinalHighSurrogate" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1361" endline="1361" begincolumn="15" endcolumn="20" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="yyline" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1364" endline="1364" begincolumn="15" endcolumn="22" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="yycolumn" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1368" endline="1368" begincolumn="16" endcolumn="21" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="yychar" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1372" endline="1372" begincolumn="19" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzAtBOL" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1376" endline="1376" begincolumn="19" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="zzEOFDone" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1379" endline="1379" begincolumn="17" endcolumn="22" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" variable="string" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="1626" endline="1628" begincolumn="7" endcolumn="46" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="zzScanError" variable="message" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'message' (lines '1,626'-'1,628').
+</violation>
+<violation beginline="1677" endline="1693" begincolumn="11" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzR" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'zzR' (lines '1,677'-'1,693').
+</violation>
+<violation beginline="1684" endline="1684" begincolumn="9" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzCharCount" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'zzCharCount' (lines '1,684'-'1,684').
+</violation>
+<violation beginline="1684" endline="2681" begincolumn="9" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzCharCount" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'zzCharCount' (lines '1,684'-'2,681').
+</violation>
+<violation beginline="1685" endline="1711" begincolumn="9" endcolumn="9" rule="MissingBreakInSwitch" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingbreakinswitch" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="1734" endline="1743" begincolumn="9" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'zzAction' (lines '1,734'-'1,743').
+</violation>
+<violation beginline="1742" endline="1742" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="1743" endline="1783" begincolumn="13" endcolumn="30" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'zzAction' (lines '1,743'-'1,783').
+</violation>
+<violation beginline="1743" endline="2681" begincolumn="9" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'zzAction' (lines '1,743'-'2,681').
+</violation>
+<violation beginline="1782" endline="1782" begincolumn="38" endcolumn="38" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="1783" endline="2681" begincolumn="13" endcolumn="30" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" variable="zzAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'zzAction' (lines '1,783'-'2,681').
+</violation>
+<violation beginline="1785" endline="1785" begincolumn="40" endcolumn="40" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="1801" endline="2678" begincolumn="9" endcolumn="9" rule="MissingBreakInSwitch" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingbreakinswitch" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="1809" endline="1810" begincolumn="13" endcolumn="13" rule="EmptyStatementBlock" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Scanner" method="yylex" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptystatementblock" priority="3">
+Avoid empty block statements.
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/SourceCodeFile.java">
+<violation beginline="17" endline="17" begincolumn="25" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SourceCodeFile" variable="tokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="20" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SourceCodeFile" variable="path" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="19" endline="19" begincolumn="17" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SourceCodeFile" variable="totalTokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="89" endline="89" begincolumn="24" endcolumn="41" rule="OverrideBothEqualsAndHashcode" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SourceCodeFile" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#overridebothequalsandhashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/SuggestedRefactoring.java">
+<violation beginline="14" endline="14" begincolumn="21" endcolumn="37" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuggestedRefactoring" variable="opportunityAmount" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="36" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuggestedRefactoring" variable="totalTokenAmount" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="21" endcolumn="38" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuggestedRefactoring" variable="totalSubstitutions" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="24" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuggestedRefactoring" variable="refactorSuggestion" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="64" endline="64" begincolumn="24" endcolumn="41" rule="OverrideBothEqualsAndHashcode" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuggestedRefactoring" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#overridebothequalsandhashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/SuppliedCode.java">
+<violation beginline="31" endline="135" begincolumn="16" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence1" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence1' (lines '31'-'135').
+</violation>
+<violation beginline="33" endline="33" begincolumn="15" endcolumn="25" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal "x y 1\r\n" appears 7 times in this file; the first occurrence is on line 33
+</violation>
+<violation beginline="38" endline="135" begincolumn="16" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence2" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence2' (lines '38'-'135').
+</violation>
+<violation beginline="43" endline="135" begincolumn="16" endcolumn="23" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence3" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence3' (lines '43'-'135').
+</violation>
+<violation beginline="50" endline="135" begincolumn="16" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence4" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence4' (lines '50'-'135').
+</violation>
+<violation beginline="57" endline="135" begincolumn="16" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence5" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence5' (lines '57'-'135').
+</violation>
+<violation beginline="62" endline="135" begincolumn="16" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence6" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence6' (lines '62'-'135').
+</violation>
+<violation beginline="71" endline="135" begincolumn="16" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="sequence7" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sequence7' (lines '71'-'135').
+</violation>
+<violation beginline="92" endline="135" begincolumn="16" endcolumn="34" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="rand" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'rand' (lines '92'-'135').
+</violation>
+<violation beginline="95" endline="135" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="upperbound" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'upperbound' (lines '95'-'135').
+</violation>
+<violation beginline="97" endline="135" begincolumn="13" endcolumn="32" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="switchUpperbound" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'switchUpperbound' (lines '97'-'135').
+</violation>
+<violation beginline="102" endline="102" begincolumn="21" endcolumn="66" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randTotalTokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'randTotalTokens' (lines '102'-'102').
+</violation>
+<violation beginline="102" endline="135" begincolumn="21" endcolumn="66" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randTotalTokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'randTotalTokens' (lines '102'-'135').
+</violation>
+<violation beginline="103" endline="103" begincolumn="21" endcolumn="66" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randOpportunity" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'randOpportunity' (lines '103'-'103').
+</violation>
+<violation beginline="103" endline="135" begincolumn="21" endcolumn="66" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randOpportunity" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'randOpportunity' (lines '103'-'135').
+</violation>
+<violation beginline="104" endline="104" begincolumn="21" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randTotalSubs" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'randTotalSubs' (lines '104'-'104').
+</violation>
+<violation beginline="104" endline="135" begincolumn="21" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedCode" method="produceSuggestions" variable="randTotalSubs" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'randTotalSubs' (lines '104'-'135').
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/SuppliedFilePaths.java">
+<violation beginline="19" endline="19" begincolumn="29" endcolumn="33" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedFilePaths" variable="files" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="29" endcolumn="32" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedFilePaths" variable="dirs" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="99" endline="101" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedFilePaths" method="attemptToAddEligibleFilesFromDirsTo" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="141" endline="143" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="SuppliedFilePaths" method="attemptToGatherTokenizedFile" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/Token.java">
+<violation beginline="15" endline="15" begincolumn="24" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" variable="kind" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="20" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" variable="lexeme" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="25" endline="25" begincolumn="17" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" variable="lineNumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="30" endline="30" begincolumn="17" endcolumn="28" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" variable="columnNumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="121" endline="121" begincolumn="20" endcolumn="37" rule="OverrideBothEqualsAndHashcode" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#overridebothequalsandhashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+<violation beginline="134" endline="136" begincolumn="18" endcolumn="5" rule="ProperCloneImplementation" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" method="clone" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#propercloneimplementation" priority="2">
+Object clone() should be implemented with super.clone()
+</violation>
+<violation beginline="134" endline="136" begincolumn="18" endcolumn="5" rule="CloneThrowsCloneNotSupportedException" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="Token" method="clone" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#clonethrowsclonenotsupportedexception" priority="3">
+clone() method should throw CloneNotSupportedException
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/TokenKinds.java">
+<violation beginline="177" endline="177" begincolumn="2" endcolumn="2" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenKinds" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/TokenSequence.java">
+<violation beginline="16" endline="16" begincolumn="31" endcolumn="45" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenSequence" variable="printableTokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="17" endline="17" begincolumn="17" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenSequence" variable="numTokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="19" endline="19" begincolumn="17" endcolumn="28" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenSequence" variable="startingLine" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="17" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenSequence" variable="startingColumn" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/CS350-dupe-detector/CS350-dupe-detector/dupe-detector/src/main/java/edu/odu/cs/cs350/dupedetector/TokenStream.java">
+<violation beginline="24" endline="24" begincolumn="25" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenStream" variable="tokens" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="41" endline="43" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="edu.odu.cs.cs350.dupedetector" class="TokenStream" method="TokenStream" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>
