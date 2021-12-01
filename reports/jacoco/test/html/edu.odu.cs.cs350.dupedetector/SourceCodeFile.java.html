@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SourceCodeFile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dupe-detector</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.dupedetector</a> &gt; <span class="el_source">SourceCodeFile.java</span></div><h1>SourceCodeFile.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.dupedetector;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+/**
+ * Represents the source code file
+ * 
+ * Currently stubbed
+ * 
+ * @author John Hicks
+ */
+public class SourceCodeFile {
+<span class="pc" id="L17">    private TokenStream tokens = null;</span>
+    private String path;
+<span class="pc" id="L19">    private int totalTokens = -1;</span>
+    
+    /**
+     * Sets the file's path and does no more -- @see SourceCodeFile.tokenize()
+     * for initializing an instance of this class.
+     * @param thePath
+     */
+<span class="fc" id="L26">    SourceCodeFile(String thePath) {</span>
+<span class="fc" id="L27">        this.path = thePath;</span>
+<span class="fc" id="L28">    }</span>
+
+<span class="nc" id="L30">    SourceCodeFile(Path thePath) {</span>
+<span class="nc" id="L31">        this.path = thePath.toString();</span>
+<span class="nc" id="L32">    }</span>
+
+    /**
+     * Reads the file from disk and tokenizes its contents as C++ source code.
+     * An instance of this class has been properly initialized after this method
+     * has been called.
+     * @throws IOException
+     */
+    public void tokenize() throws IOException {
+     // Courtesy https://www.baeldung.com/junit-src-test-resources-directory-path
+           //  Read in the file from disk
+<span class="fc" id="L43">        Path path = Paths.get(this.path);</span>
+<span class="fc" id="L44">        tokens = new TokenStream(</span>
+<span class="fc" id="L45">            Files.newBufferedReader(path, StandardCharsets.US_ASCII)</span>
+        );
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * @return the path to this SourceCodeFile on the file system
+     */
+    public String getPath() {
+<span class="fc" id="L53">        return path;</span>
+    }
+
+    public Path getFilePath() {
+<span class="nc" id="L57">        return Path.of(this.path);</span>
+    }
+
+    /**
+     * Gets the number of tokens in the file
+     * @return the number of tokens in the file. -1 if tokens not read in yet.
+     */
+    public int getTotalTokens() {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if (tokens == null) {</span>
+<span class="fc" id="L66">            return -1;</span>
+        }
+<span class="nc" id="L68">        return tokens.size();</span>
+    }
+
+    /**
+     * Get a TokenStream representing the file's C++ token contents. Will return
+     * null until the `TokenStream.tokenize()` method has been called on the instance.
+     * @return the tokens retrieved from the file, or null
+     */
+    public TokenStream getTokens() {
+<span class="nc" id="L77">        return tokens; // TODO: deep copy</span>
+    }
+
+
+    
+	/**
+	 * Compares source code files to see if they are equal. They are considered
+	 * equal if all functions on them return equal
+	 * 
+	 * @param obj object to be compared to this suggested refactoring
+	 * @return true if provided object is equal to this one
+	 */
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (obj.getClass() != this.getClass()) {</span>
+<span class="fc" id="L91">            return false;</span>
+        }
+<span class="fc" id="L93">		SourceCodeFile other = (SourceCodeFile)obj;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if(other == this)</span>
+<span class="fc" id="L95">            return true;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		if(path != other.path)</span>
+<span class="fc" id="L97">			return false;</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">		if(totalTokens != other.totalTokens)</span>
+<span class="nc" id="L99">			return false;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">		if(tokens != other.tokens)</span>
+<span class="nc" id="L101">			return false;</span>
+		
+<span class="fc" id="L103">		return true;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

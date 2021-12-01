@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Report.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dupe-detector</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.dupedetector</a> &gt; <span class="el_source">Report.java</span></div><h1>Report.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.dupedetector;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+/**
+ *  The report is where information is compiled together and printed out. It is
+ * divided into 3 primary sections of: 
+ * 
+ * Source files read
+ * Suggested refactorings
+ * Possible number of refactorings
+ * 
+ * @author Jacob McFadden
+ */
+
+public class Report {	
+	
+	private ArrayList&lt;SuggestedRefactoring&gt; refactoringList;
+	private ArrayList&lt;SourceCodeFile&gt; sourceFileList;
+	
+	/**
+	 * Creates a report object with a list of Refactorings
+	 * 
+	 * @param providedSourceFiles a list of source code files that are deep copied
+	 * @param providedRefactorings a list of suggested refactorings that are deep copied
+	 */
+<span class="fc" id="L30">	public Report(ArrayList&lt;SourceCodeFile&gt; providedSourceFiles, ArrayList&lt;SuggestedRefactoring&gt; providedRefactorings) {</span>
+		
+		/**
+		 * Deep copy the refactorings
+		 * 
+		 * https://www.javaprogramto.com/2020/04/java-arraylist-clone-deep-copy.html
+		 */
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		if (providedSourceFiles == null) {</span>
+<span class="fc" id="L38">			sourceFileList = new ArrayList&lt;SourceCodeFile&gt;();</span>
+		} else {
+<span class="fc" id="L40">			sourceFileList = providedSourceFiles;</span>
+		}
+		// Commented by John 11/14.
+		// sourceFileList = new ArrayList&lt;SourceCodeFile&gt;();
+		// if(providedSourceFiles != null) {
+		// 	Iterator&lt;SourceCodeFile&gt; sourceIt = providedSourceFiles.iterator();
+		// 	while(sourceIt.hasNext()) {
+		// 		SourceCodeFile curr = sourceIt.next();
+		// 		SourceCodeFile newSource = 
+		// 				new SourceCodeFile(curr.getPath());
+		// 		sourceFileList.add(newSource);
+		// 	}
+		// }
+		
+<span class="fc" id="L54">		refactoringList = new ArrayList&lt;SuggestedRefactoring&gt;();</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">		if(providedRefactorings != null) {</span>
+			//Get iterator from original list
+<span class="fc" id="L57">			Iterator&lt;SuggestedRefactoring&gt; refIt = providedRefactorings.iterator();</span>
+			//Iterate through and start adding suggestions to new list
+<span class="fc bfc" id="L59" title="All 2 branches covered.">			while (refIt.hasNext()) {</span>
+<span class="fc" id="L60">				SuggestedRefactoring curr = refIt.next();</span>
+<span class="fc" id="L61">				SuggestedRefactoring newRef </span>
+<span class="fc" id="L62">					= new SuggestedRefactoring(curr.getTotalTokens(),curr.getOpportunity(), curr.getTotalSubs(), curr.toString());</span>
+<span class="fc" id="L63">				refactoringList.add(newRef);</span>
+<span class="fc" id="L64">			}</span>
+		}
+<span class="fc" id="L66">	}</span>
+	
+	/**
+	 * Prints the entire report for the program when called.
+	 * 
+	 * Wrapper for:
+	 * printSourceFileReport
+	 * printRefactoringReport
+	 * 
+	 * @param nSuggestions how many total suggestions should be printed in the report
+	 */
+	public void printReport(int nSuggestions) {
+<span class="fc" id="L78">		printSourceFileReport();</span>
+<span class="fc" id="L79">		printRefactoringReport(nSuggestions);</span>
+<span class="fc" id="L80">	}</span>
+	
+	/**
+	 * Prints the source code files for the project.
+	 */
+	private void printSourceFileReport() {
+		
+<span class="fc" id="L87">		System.out.println(&quot;Files scanned:&quot;);</span>
+		
+<span class="fc" id="L89">		Iterator&lt;SourceCodeFile&gt; it = sourceFileList.iterator();</span>
+		
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		while(it.hasNext()) {</span>
+<span class="fc" id="L92">			SourceCodeFile curr = it.next();</span>
+<span class="fc" id="L93">			System.out.println(&quot;   &quot; + curr.getPath() + &quot;, &quot; + curr.getTotalTokens());</span>
+<span class="fc" id="L94">		}</span>
+		
+<span class="fc" id="L96">		System.out.println();</span>
+<span class="fc" id="L97">	}</span>
+	
+	/**
+	 * Prints the report the by printing the refactoring suggestions and 
+	 * notes how many could have been printed if more could of been printed
+	 * 
+	 * @param nSuggestions how many total suggestions should be printed in the report
+	 */
+	private void printRefactoringReport(int nSuggestions) {
+		
+		//Get the iterator for the ArrayList
+<span class="fc" id="L108">		Iterator&lt;SuggestedRefactoring&gt; it = refactoringList.iterator();</span>
+		//This acts a sentinel 
+<span class="fc" id="L110">		int count = 0;</span>
+<span class="fc bfc" id="L111" title="All 4 branches covered.">		while(it.hasNext() &amp;&amp; count &lt; nSuggestions) {</span>
+<span class="fc" id="L112">			SuggestedRefactoring curr = it.next();</span>
+			/**
+			 * Count will iterate after check, so say count is 2 nSug is 3, count is now 3 and this is third loop
+			 * thus it should no longer print. Which is why we have &lt; instead of &lt;=.
+			 */
+<span class="fc" id="L117">			count++;</span>
+			
+			//Print out the information about the current suggestion
+<span class="fc" id="L120">			System.out.println(&quot;Opportunity &quot; + curr.getOpportunity() + &quot;, &quot; + curr.getTotalTokens() + &quot; tokens&quot;);</span>
+<span class="fc" id="L121">			System.out.print(curr.toString());</span>
+			//new line to break the suggestions apart
+<span class="fc" id="L123">			System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L124">		}</span>
+		
+		/**
+		 * count is total suggestions printed, which is going to be either nSuggestions or the list size
+		 * and the list size is always going to be the possible amount of suggestions that could of been printed
+		 */
+<span class="fc" id="L130">		System.out.println(&quot;Printed &quot; + count + &quot; of &quot; + refactoringList.size() + &quot; suggestions.&quot;);	</span>
+<span class="fc" id="L131">	}</span>
+	
+	/**
+	 * Sorts the source files of the report alphabetically
+	 */
+	public void sortSourceFiles() {
+<span class="pc bpc" id="L137" title="1 of 4 branches missed.">		if(!(sourceFileList.size() == 0 || sourceFileList.size() == 1)) {</span>
+			
+<span class="fc" id="L139">			Comparator&lt;SourceCodeFile&gt; sourceFileSorter </span>
+<span class="fc" id="L140">				= (firstRef, secondRef) -&gt; firstRef.getPath().compareTo(secondRef.getPath());</span>
+<span class="fc" id="L141">			Collections.sort(sourceFileList, sourceFileSorter);</span>
+		}
+<span class="fc" id="L143">	}</span>
+	
+	/**
+	 * Removes suggestions that don't meet criteria to be printed as defined by the parameters.
+	 * 
+	 * @param maxSubs if the refactoring exceeds this number of lexeme substituions, will not be printed
+	 * @param minSeqLength if the refactoring total sequence tokens is under this number, will not be printed
+	 */
+	public void trimRefactorings(int maxSubs, int minSeqLength) {
+		
+		//Get the iterator for the ArrayList
+<span class="fc" id="L154">		Iterator&lt;SuggestedRefactoring&gt; it = refactoringList.iterator();</span>
+		
+<span class="fc bfc" id="L156" title="All 2 branches covered.">		while(it.hasNext()) {</span>
+<span class="fc" id="L157">			SuggestedRefactoring curr = it.next();</span>
+			
+<span class="fc bfc" id="L159" title="All 4 branches covered.">			if(curr.getTotalSubs() &gt; maxSubs || curr.getTotalTokens() &lt; minSeqLength) {</span>
+				/**
+				 * Found this while researching array lists and figure it would be best to implement it:
+				 * 
+				 * https://www.java67.com/2018/12/how-to-remove-objects-or-elements-while-iterating-Arraylist-java.html
+				 */
+<span class="fc" id="L165">				it.remove();</span>
+			}
+<span class="fc" id="L167">		}</span>
+<span class="fc" id="L168">	}</span>
+	
+	/**
+	 * Sorts the refactorings from greatest opportunity to least opportunity
+	 */
+	public void sortRefactorings() {	
+		//Don't bother if the list size is 0 or 1, it is already technically sorted
+<span class="pc bpc" id="L175" title="2 of 4 branches missed.">		if(!(refactoringList.size() == 0 || refactoringList.size() == 1)) {</span>
+			/**
+			 * Below is a example of a lambda way of making a comparator without making an entire class
+			 * for the function. Also includes helpful link about lambdas in Java.
+			 * 
+			 * https://howtodoinjava.com/java-sorting-guide/
+			 * https://howtodoinjava.com/java8/lambda-expressions/
+			 * 
+			 * Also had assistance from:
+			 * https://www.baeldung.com/java-comparator-comparable
+			 */
+<span class="fc" id="L186">			Comparator&lt;SuggestedRefactoring&gt; refactorSorter </span>
+<span class="fc" id="L187">				= (firstRef, secondRef) -&gt; Integer.compare(firstRef.getOpportunity(), secondRef.getOpportunity());</span>
+			
+			//Because the above comparator uses default Integer compare, it will sort lowest to go greatest, so we reverse
+<span class="fc" id="L190">			Collections.sort(refactoringList, refactorSorter.reversed());</span>
+		}
+<span class="fc" id="L192">	}</span>
+	
+	/**
+	 * Get a source code file from specified location in list.
+	 * 
+	 * @param loc specified part of list
+	 * @return a SourceCodeFile
+	 */
+	public SourceCodeFile getSourceCodeFile(int loc) {
+<span class="fc" id="L201">		return sourceFileList.get(loc);</span>
+	}
+	/**
+	 * Get number of source code files provided by the report class.
+	 * 
+	 * @return size of source code file list as int
+	 */
+	public int totalSourceCodeFiles( ) {
+<span class="fc" id="L209">		return sourceFileList.size();</span>
+	}
+	
+	/**
+	 * Get a refactored suggestion at specified location in the list.
+	 * 
+	 * @param loc specified part of list
+	 * @return a SuggestedRefactoring
+	 */
+	public SuggestedRefactoring getRefactoring(int loc) {
+<span class="fc" id="L219">		return refactoringList.get(loc);</span>
+	}
+	
+	/**
+	 * Get number of refactorings provided to the report class.
+	 * 
+	 * @return size of refactoring list as int
+	 */
+	public int totalRefactorings() {
+<span class="fc" id="L228">		return refactoringList.size();</span>
+	}
+	
+	/**
+	 * Compares reports to see if they are equal. They are considered
+	 * equal if all functions on them return equal
+	 * 
+	 * @param obj object to be compared to this suggested refactoring
+	 * @return true if provided object is equal to this one
+	 */
+	public boolean equals(Object obj) {
+<span class="fc" id="L239">		Report other = (Report)obj;</span>
+		
+		//!= does not work here as found out in tests, need to use .equals
+<span class="fc bfc" id="L242" title="All 2 branches covered.">		if(!(sourceFileList.equals(other.sourceFileList))) {</span>
+<span class="fc" id="L243">			return false;</span>
+		}
+<span class="fc bfc" id="L245" title="All 2 branches covered.">		if(!(refactoringList.equals(other.refactoringList))) {</span>
+<span class="fc" id="L246">			return false;</span>
+		}
+		
+<span class="fc" id="L249">		return true;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

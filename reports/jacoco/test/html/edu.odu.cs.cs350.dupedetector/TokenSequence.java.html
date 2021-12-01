@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenSequence.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dupe-detector</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.dupedetector</a> &gt; <span class="el_source">TokenSequence.java</span></div><h1>TokenSequence.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.dupedetector;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+/**
+ * @author John Hicks
+ * To hold a sequence of tokens, as part of a SuggestedRefactoring.
+ * Distinct from the `TokenStream`, which reads tokens from source code.
+ * @see TokenStream
+ * @see SuggestedRefactoring
+ */
+public class TokenSequence {
+    // Implementation: this LinkedList will hold only printable Tokens, ie those
+    // that are either constants or identifiers.
+    private LinkedList&lt;Token&gt; printableTokens;
+    private int numTokens; // The actual number of tokens in the detected sequence
+    private String filePath;
+    private int startingLine;
+    private int startingColumn;
+
+<span class="nc" id="L22">    public TokenSequence() {</span>
+<span class="nc" id="L23">        numTokens = 0;</span>
+<span class="nc" id="L24">        startingLine = -1;</span>
+<span class="nc" id="L25">        startingColumn = -1;</span>
+<span class="nc" id="L26">        filePath = &quot;No File path specified.&quot;; // shouldn't ever need this.</span>
+<span class="nc" id="L27">        printableTokens = new LinkedList&lt;Token&gt;();</span>
+<span class="nc" id="L28">    }</span>
+
+    public String getFilePath() {
+<span class="nc" id="L31">        return filePath;</span>
+    }
+
+    public void setFilePath(String theFilePath) {
+<span class="nc" id="L35">        filePath = theFilePath;</span>
+<span class="nc" id="L36">    }</span>
+
+    public int getNumTokens() {
+<span class="nc" id="L39">        return numTokens;</span>
+    }
+
+    /**
+     * 
+     * @param t the token to add.
+     */
+    public void add(Token t) {
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (printableTokens.isEmpty()) {</span>
+<span class="nc" id="L48">            startingLine = t.getLineNumber();</span>
+<span class="nc" id="L49">            startingColumn = t.getColumnNumber();</span>
+        }
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (shouldAddToList(t)) {</span>
+<span class="nc" id="L52">            printableTokens.add(t);</span>
+        }
+<span class="nc" id="L54">        numTokens++;</span>
+<span class="nc" id="L55">    }</span>
+
+    private boolean shouldAddToList(Token t) {
+<span class="nc" id="L58">        TokenKinds k = t.getKind();</span>
+<span class="nc bnc" id="L59" title="All 14 branches missed.">        if (</span>
+            k == TokenKinds.IDENTIFIER ||
+            k == TokenKinds.CHARACTER_LITERAL ||
+            k == TokenKinds.STRING_LITERAL ||
+            k == TokenKinds.INTEGER_LITERAL ||
+            k == TokenKinds.FLOATING_POINT_LITERAL ||
+            k == TokenKinds.BOOLEAN_LITERAL ||
+            k == TokenKinds.NULL_LITERAL
+        )
+        {
+<span class="nc" id="L69">            return true;</span>
+        }
+<span class="nc" id="L71">        return false;</span>
+    }
+    
+    /**
+     * 
+     * @return -1 if no tokens in the sequence
+     */
+    public int getStartingLine() {
+<span class="nc" id="L79">        return startingLine;</span>
+    }
+
+    /**
+     * 
+     * @return -1 if no tokens in the sequence
+     */
+    public int getStartingColumn() {
+<span class="nc" id="L87">        return startingColumn;</span>
+    }
+
+    public String toString() {
+<span class="nc" id="L91">        StringBuilder out = new StringBuilder();</span>
+<span class="nc" id="L92">        out.append(filePath);</span>
+<span class="nc" id="L93">        out.append(':');</span>
+<span class="nc" id="L94">        out.append(Integer.toString(getStartingLine()));</span>
+<span class="nc" id="L95">        out.append(':');</span>
+<span class="nc" id="L96">        out.append(Integer.toString(getStartingLine()));</span>
+<span class="nc" id="L97">        out.append(&quot;\r\n&quot;);</span>
+        // print tokens separated by spaces
+<span class="nc" id="L99">        Iterator&lt;Token&gt; it = printableTokens.iterator();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        while(it.hasNext()) {</span>
+<span class="nc" id="L101">            Token t = it.next();</span>
+<span class="nc" id="L102">            out.append(t.getLexemeQuoted());</span>
+<span class="nc" id="L103">            out.append(' ');</span>
+<span class="nc" id="L104">        }</span>
+<span class="nc" id="L105">        out.append(&quot;\r\n&quot;);</span>
+<span class="nc" id="L106">        return out.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

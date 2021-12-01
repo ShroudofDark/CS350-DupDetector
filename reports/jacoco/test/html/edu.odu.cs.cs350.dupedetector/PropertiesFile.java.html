@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PropertiesFile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dupe-detector</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.dupedetector</a> &gt; <span class="el_source">PropertiesFile.java</span></div><h1>PropertiesFile.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.dupedetector;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+
+/**
+ * Holds and process's data that are used for the programs properties. These are
+ * either provided by an .ini file on the CLI or resorts to defaults if not provided. 
+ * They follow a format of propertyName = propertyValue
+ * There exist three primary properties in: 
+ * 
+ * CppExtensions
+ * MinSequenceLength
+ * MaxSubstitutions
+ * 
+ * @author Jacob
+ */
+public class PropertiesFile {
+	
+	private ArrayList&lt;String&gt; cppExtensions;
+	private int minSequenceLength;
+	private int maxSubstitutions;
+	
+	/**
+	 * Creates a property file with no .ini file.
+	 * Provides default values.
+	 */
+<span class="fc" id="L32">	public PropertiesFile() {</span>
+<span class="fc" id="L33">		cppExtensions = new ArrayList&lt;String&gt;(Arrays.asList(&quot;cpp&quot;,&quot;h&quot;));</span>
+<span class="fc" id="L34">		minSequenceLength = 10;</span>
+<span class="fc" id="L35">		maxSubstitutions = 8;</span>
+<span class="fc" id="L36">	}</span>
+	
+	/**
+	 * Creates a property file with values provided by .ini file.
+	 * Will provide default values if a property is not found.
+	 * 
+	 * @param propFilePath path of file with defined property values.
+	 * 
+	 * @throws FileNotFoundException when the ini file cannot be found
+	 * @throws InvalidFileTypeException when the file is not properties file
+	 * @throws InvalidPropertyFormatException  when the properties file has an invalid format
+	 * @throws DuplicatePropertiesException when the properties file has duplicate entries
+	 */
+	public PropertiesFile(String propFilePath) 
+<span class="fc" id="L50">			throws FileNotFoundException, InvalidFileTypeException, InvalidPropertyFormatException, DuplicatePropertiesException {</span>
+		//https://stackoverflow.com/questions/30913799/is-there-a-new-java-8-way-of-retrieving-the-file-extension
+<span class="fc" id="L52">		String extCheck = propFilePath.substring(propFilePath.lastIndexOf('.') + 1);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		if(extCheck.equals(&quot;ini&quot;)) {</span>
+<span class="fc" id="L54">			File testFile1 = new File(propFilePath);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">			if(testFile1.exists()) {</span>
+<span class="fc" id="L56">				extractProperties(testFile1);</span>
+			}
+			else {
+<span class="fc" id="L59">				throw new FileNotFoundException(&quot;File &quot; + testFile1.getAbsolutePath() + &quot; does not exist.&quot;);</span>
+			}
+<span class="fc" id="L61">		}</span>
+		else {
+<span class="fc" id="L63">			throw new InvalidFileTypeException(&quot;File path &quot; + propFilePath + &quot; does not lead to an .ini file.&quot;);</span>
+		}
+<span class="fc" id="L65">	}</span>
+	
+	/**
+	 * Pulls the properties from the file and sets them
+	 * 
+	 * @param propFile file to extract data from
+	 * 
+	 * @throws FileNotFoundException 
+	 * @throws InvalidPropertyFormatException 
+	 * @throws DuplicatePropertiesException 
+	 */
+	private void extractProperties(File propFile) throws FileNotFoundException, InvalidPropertyFormatException, DuplicatePropertiesException {
+		//Sets defaults so at minimum they are set if something isn't found in the file.
+<span class="fc" id="L78">		cppExtensions = new ArrayList&lt;String&gt;(Arrays.asList(&quot;cpp&quot;,&quot;h&quot;));</span>
+<span class="fc" id="L79">		minSequenceLength = 10;</span>
+<span class="fc" id="L80">		maxSubstitutions = 8;</span>
+		
+		//Used for multiple property error checking
+<span class="fc" id="L83">		boolean readCppProp = false;</span>
+<span class="fc" id="L84">		boolean readMinSeqProp = false;</span>
+<span class="fc" id="L85">		boolean readMaxSubProp = false;</span>
+		
+		//Forces to use the java.util.Scanenr
+<span class="fc" id="L88">		java.util.Scanner fileReader = new java.util.Scanner(propFile);</span>
+		
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		while (fileReader.hasNextLine()) {</span>
+<span class="fc" id="L91">			String originalLine = fileReader.nextLine();</span>
+<span class="fc" id="L92">			String currLine = originalLine.trim();</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">			if(!currLine.isEmpty()) {</span>
+				/**
+				 * If we accept different types of properties or other lines of text, can add another else if.
+				 * Currently case sensitive.
+				 */
+<span class="fc bfc" id="L98" title="All 2 branches covered.">				if(currLine.startsWith(&quot;CppExtensions&quot;)) {</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">					if(!readCppProp) {</span>
+<span class="fc" id="L100">						currLine = extractPropertyValue(currLine, &quot;CppExtensions&quot;);</span>
+<span class="fc" id="L101">						cppExtensions = extractExtensions(currLine);</span>
+<span class="fc" id="L102">						readCppProp = true;</span>
+					}
+					else {
+<span class="nc" id="L105">						fileReader.close();</span>
+<span class="nc" id="L106">						throw new DuplicatePropertiesException(&quot;Duplicate CppExtensions detected. Please define a property only once.&quot;);</span>
+					}
+				}
+				
+<span class="fc bfc" id="L110" title="All 2 branches covered.">				else if (currLine.startsWith(&quot;MinSequenceLength&quot;)) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">					if(!readMinSeqProp) {</span>
+<span class="fc" id="L112">						currLine = extractPropertyValue(currLine, &quot;MinSequenceLength&quot;);</span>
+<span class="fc" id="L113">						minSequenceLength = extractInteger(currLine);</span>
+<span class="fc" id="L114">						readMinSeqProp = true;</span>
+					}
+					else {
+<span class="fc" id="L117">						fileReader.close();</span>
+<span class="fc" id="L118">						throw new DuplicatePropertiesException(&quot;Duplicate MinSubstitutions detected. Please define a property only once.&quot;);</span>
+					}
+				}
+				
+<span class="fc bfc" id="L122" title="All 2 branches covered.">				else if (currLine.startsWith(&quot;MaxSubstitutions&quot;)) {</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">					if (!readMaxSubProp) {</span>
+<span class="fc" id="L124">						currLine = extractPropertyValue(currLine, &quot;MaxSubstitutions&quot;);</span>
+<span class="fc" id="L125">						maxSubstitutions = extractInteger(currLine);</span>
+<span class="fc" id="L126">						readMaxSubProp = true;</span>
+					}
+					else {
+<span class="nc" id="L129">						fileReader.close();</span>
+<span class="nc" id="L130">						throw new DuplicatePropertiesException(&quot;Duplicate MaxSubstitutions detected. Please define a property only once.&quot;);</span>
+					}
+				}
+				else {
+<span class="fc" id="L134">					fileReader.close();</span>
+<span class="fc" id="L135">					throw new InvalidPropertyFormatException(&quot;The line \&quot;&quot; + originalLine + &quot;\&quot; is not an accepted Property.&quot;);</span>
+				}
+			}
+<span class="fc" id="L138">		}</span>
+<span class="fc" id="L139">		fileReader.close();</span>
+<span class="fc" id="L140">	}</span>
+	
+	/**
+	 * Will take a correctly declared property, check for equals sign, then extracts if there is one.
+	 * 
+	 * @param propertyStatement valid property string to extract values from
+	 * @param propertyDecLength the property declaration that is to be removed
+	 * 
+	 * @return String values that occur after an equal sign
+	 * 
+	 * @throws InvalidPropertyFormatException 
+	 */
+	private String extractPropertyValue(String propertyStatement, String declaredProperty) throws InvalidPropertyFormatException {
+		//Remove the property name and leading spaces if any
+<span class="fc" id="L154">		String retValue = propertyStatement.substring(declaredProperty.length()).trim();</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">		if(retValue.startsWith(&quot;=&quot;)) {</span>
+			//Remove the equal sign and leading spaces
+<span class="fc" id="L157">			retValue = retValue.substring(1).trim();</span>
+			
+			//If only white spaces or empty, no property listed
+<span class="pc bpc" id="L160" title="1 of 4 branches missed.">			if(retValue.isBlank() || retValue.isEmpty()) {</span>
+<span class="fc" id="L161">				throw new InvalidPropertyFormatException(&quot;Expected value after = sign in property declaration.&quot;);</span>
+			}
+		}
+		else {
+<span class="nc" id="L165">			throw new InvalidPropertyFormatException(&quot;Expected = sign after property name.&quot;);</span>
+		}
+<span class="fc" id="L167">		return retValue;</span>
+	}
+	
+	/**
+	 * Takes a string that is assumed to be an integer and converts it to an actual int.
+	 * 
+	 * @param intAsString string that we want to convert into integer
+	 * 
+	 * @return int where int interpreted from the string
+	 * 
+	 * @throws InvalidPropertyFormatException when the value cannot be interpreted as integer.
+	 */
+	private int extractInteger(String intAsString) throws InvalidPropertyFormatException {
+		int retValue;
+		try {
+<span class="fc" id="L182">			retValue = Integer.parseInt(intAsString);</span>
+		}
+<span class="fc" id="L184">		catch(NumberFormatException e){</span>
+<span class="fc" id="L185">			throw new InvalidPropertyFormatException(intAsString + &quot; is not an integer.&quot;);</span>
+<span class="fc" id="L186">		}</span>
+<span class="fc" id="L187">		return retValue;</span>
+	}
+	
+	/**
+	 * Extracts the extensions and ignores duplicates. Extensions are separated by a comma.
+	 * Ignores multiple empty commas and trailing commas.
+	 * 
+	 * @param extenValuesAsString The string of values that needs to be broken into individual components
+	 * 
+	 * @return ArrayList&lt;String&gt; Individual extension components
+	 * 
+	 * @throws InvalidPropertyFormatException 
+	 */
+	private ArrayList&lt;String&gt; extractExtensions(String extenValuesAsString) throws InvalidPropertyFormatException {
+<span class="fc" id="L201">		ArrayList&lt;String&gt; retValueList = new ArrayList&lt;String&gt;();</span>
+		//https://www.geeksforgeeks.org/split-string-java-examples/
+<span class="fc" id="L203">		String[] splitValuesArray = extenValuesAsString.split(&quot;,&quot;, 0);</span>
+		/**
+		 * This is so we can maintain an ArrayList usage, but check for duplicates at an o(n)
+		 * instead of o(n^2) complexity.
+		 * 
+		 * https://www.geeksforgeeks.org/how-to-prevent-the-addition-of-duplicate-elements-to-the-java-arraylist/
+		 */
+<span class="fc" id="L210">		HashSet&lt;String&gt; dupeChecker = new HashSet&lt;&gt;();</span>
+		
+<span class="fc bfc" id="L212" title="All 2 branches covered.">		if(splitValuesArray.length == 0) {</span>
+<span class="fc" id="L213">			throw new InvalidPropertyFormatException(&quot;Invalid property type after CppExtensions. &quot;</span>
+					+ &quot;Indicates a string of commas, but no listed extensions.&quot;);
+		}
+		
+<span class="fc bfc" id="L217" title="All 2 branches covered.">		for(String extenValue : splitValuesArray) {</span>
+			//Remove leading / trailing white spaces from extension for conistency checking
+<span class="fc" id="L219">			extenValue = extenValue.trim();</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">			if(!dupeChecker.contains(extenValue)) {</span>
+<span class="fc" id="L221">				dupeChecker.add(extenValue);</span>
+<span class="fc" id="L222">				retValueList.add(extenValue);</span>
+			}
+		}
+<span class="fc" id="L225">		return retValueList;</span>
+	}
+	
+	//=============== Accessors ============
+	
+	public ArrayList&lt;String&gt; getCppExtensions() {
+		//We want to return a deep copy of the List provided by this object as to not modify it
+<span class="fc" id="L232">		ArrayList&lt;String&gt; returnList = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L233">		Iterator&lt;String&gt; it = cppExtensions.iterator();</span>
+<span class="fc bfc" id="L234" title="All 2 branches covered.">		while (it.hasNext()) {</span>
+<span class="fc" id="L235">			String curr = it.next();</span>
+<span class="fc" id="L236">			returnList.add(curr);</span>
+<span class="fc" id="L237">		}</span>
+<span class="fc" id="L238">		return returnList;</span>
+	}
+	
+	public int getMinSequenceLength() {
+<span class="fc" id="L242">		return minSequenceLength;</span>
+	}
+	
+	public int getMaxSubstitutions() {
+<span class="fc" id="L246">		return maxSubstitutions;</span>
+	}
+}
+
+/**
+ * Set of custom exceptions that can be thrown by the class and be used.
+ * 
+ * https://www.javatpoint.com/custom-exception
+ */
+class InvalidFileTypeException extends Exception {
+	private static final long serialVersionUID = 1L; //Removes warning / default generated
+
+	public InvalidFileTypeException(String str) {
+<span class="fc" id="L259">		super(str);</span>
+<span class="fc" id="L260">	}</span>
+}
+
+class DuplicatePropertiesException extends Exception {
+	private static final long serialVersionUID = 1L;
+
+	public DuplicatePropertiesException(String str) {
+<span class="fc" id="L267">		super(str);</span>
+<span class="fc" id="L268">	}</span>
+}
+
+class InvalidPropertyFormatException extends Exception {
+	private static final long serialVersionUID = 1L;
+
+	public InvalidPropertyFormatException(String str) {
+<span class="fc" id="L275">		super(str);</span>
+<span class="fc" id="L276">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

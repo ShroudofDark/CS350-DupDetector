@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SuppliedCode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dupe-detector</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.dupedetector</a> &gt; <span class="el_source">SuppliedCode.java</span></div><h1>SuppliedCode.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.dupedetector;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+
+/**
+ * @author Jacob McFadden
+ * @author John Hicks
+ */
+<span class="nc" id="L11">public class SuppliedCode {</span>
+
+    private int numSuggestions;
+    // private ArrayList&lt;SourceCodeFile&gt; files; // TODO: implement class
+
+    public int getNumSuggestions() {
+<span class="nc" id="L17">        return numSuggestions;</span>
+    }
+
+    public void setNumSuggestions(int nSuggestions) {
+<span class="nc" id="L21">        numSuggestions = nSuggestions;</span>
+<span class="nc" id="L22">    }</span>
+
+
+    public ArrayList&lt;SuggestedRefactoring&gt; produceSuggestions(ArrayList&lt;SourceCodeFile&gt; files) {
+<span class="nc" id="L26">        ArrayList&lt;SuggestedRefactoring&gt; refactoringList3 = new ArrayList&lt;SuggestedRefactoring&gt;(); //Init empty to be filled randomly later</span>
+
+        // TODO: Temporary, until we merge with ftr-eligible-cpp-tokens
+        // https://github.com/john-hix/CS350-dupe-detector/pull/4
+        //Initialize a bunch of strings to be used for Refactoring Suggestions (can repeat use if needed)
+<span class="nc" id="L31">    	String sequence1 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n&quot;
+            + &quot;x y 1\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/foo.cpp:156:4\r\n&quot;
+            + &quot;x y 1\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:056:8\r\n&quot;
+            + &quot;a b 2\r\n&quot;;
+<span class="nc" id="L38">        String sequence2 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/foo.cpp:100:4\r\n&quot;
+            + &quot;x y 1\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:056:4\r\n&quot;
+            + &quot;a b 2\r\n&quot;;
+<span class="nc" id="L43">        String sequence3 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/foo.cpp:099:0\r\n&quot;
+            + &quot;m n\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/foo.cpp:123:4\r\n&quot;
+            + &quot;x y\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:080:8\r\n&quot;
+            + &quot;a b\r\n&quot;;
+<span class="nc" id="L50">        String sequence4 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/foo.cpp:0120:0\r\n&quot;
+            + &quot;m n o p q l s\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/foo.cpp:125:4\r\n&quot;
+            + &quot;x y f g h n r\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:086:8\r\n&quot;
+            + &quot;a b p q t l s\r\n&quot;;
+<span class="nc" id="L57">        String sequence5 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0\r\n&quot;
+                + &quot;a b c d e f g h i j\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/grung.cpp:122:2\r\n&quot;
+                + &quot;\&quot;blah\&quot; z 3 4 5 6 7 8 9 10\r\n&quot;;
+<span class="nc" id="L62">        String sequence6 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n&quot;
+                + &quot;l \&quot;number\&quot;\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:056:8\r\n&quot;
+                + &quot;x y\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/oops.cpp:156:4\r\n&quot;
+                + &quot;x y\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/oops.cpp:252:1\r\n&quot;
+                + &quot;x t\r\n&quot;;
+<span class="nc" id="L71">        String sequence7 = </span>
+                &quot;/home/zeil/projects/cppProject1/src/alphabet.cpp:200:0\r\n&quot;
+                + &quot;a b c\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n&quot;
+                + &quot;x y 1\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/foo.cpp:156:4\r\n&quot;
+                + &quot;x y 1\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/grung.cpp:122:2\r\n&quot;
+                + &quot;\&quot;blah\&quot; z r\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/headers/bar.h:056:8\r\n&quot;
+                + &quot;a b 2\r\n&quot;
+                + &quot;/home/zeil/projects/cppProject1/src/headers/zoo.h:015:2\r\n&quot;
+                + &quot;v \&quot;elaphant\&quot; t\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:156:4\r\n&quot;
+            + &quot;x y 1\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:211:2\r\n&quot;
+            + &quot;x y 1\r\n&quot;
+            + &quot;/home/zeil/projects/cppProject1/src/JacobWasHere.cpp:317:3\r\n&quot;
+            + &quot;y a y\r\n&quot;;
+           	
+    	//Random generator https://www.educative.io/edpresso/how-to-generate-random-numbers-in-java
+<span class="nc" id="L92">    	Random rand = new Random();</span>
+    	
+    	//0-199 + 1
+<span class="nc" id="L95">    	int upperbound = 200;</span>
+    	//0-6
+<span class="nc" id="L97">    	int switchUpperbound = 7;</span>
+    	
+<span class="nc bnc" id="L99" title="All 2 branches missed.">    	for(int i=0; i &lt; numSuggestions; i++) { // use suggested refactorings limit</span>
+    		
+            
+<span class="nc" id="L102">    		int randTotalTokens = 1 + rand.nextInt(upperbound);</span>
+<span class="nc" id="L103">    		int randOpportunity = 1 + rand.nextInt(upperbound);</span>
+<span class="nc" id="L104">    		int randTotalSubs = 1 + rand.nextInt(upperbound);</span>
+    		
+    		//Randomly generated refactor suggestion
+    		SuggestedRefactoring randRefactor;
+    		
+<span class="nc" id="L109">    		int randData = rand.nextInt(switchUpperbound);</span>
+<span class="nc bnc" id="L110" title="All 8 branches missed.">    		switch(randData) {</span>
+<span class="nc" id="L111">    			case 0: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence1);</span>
+<span class="nc" id="L112">    					break;</span>
+<span class="nc" id="L113">    			case 1: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence2);</span>
+<span class="nc" id="L114">						break;</span>
+<span class="nc" id="L115">    			case 2: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence3);</span>
+<span class="nc" id="L116">						break;</span>
+<span class="nc" id="L117">    			case 3: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence4);</span>
+<span class="nc" id="L118">						break;</span>
+<span class="nc" id="L119">    			case 4: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence5);</span>
+<span class="nc" id="L120">						break;</span>
+<span class="nc" id="L121">    			case 5: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence6);</span>
+<span class="nc" id="L122">						break;</span>
+<span class="nc" id="L123">    			case 6: randRefactor = new SuggestedRefactoring(randTotalTokens, randOpportunity, randTotalSubs, sequence7);</span>
+<span class="nc" id="L124">						break;</span>
+<span class="nc" id="L125">				default: System.out.println(&quot;Error Generating Random Suggestion. Setting default.&quot;);</span>
+<span class="nc" id="L126">						randRefactor = new SuggestedRefactoring(0, 0, 0, &quot;Default on loop: &quot; + i);</span>
+						break;
+    		}
+    		
+    		//Add the randomly generated suggestion to the refactoring list
+<span class="nc" id="L131">    		refactoringList3.add(randRefactor);</span>
+    	}
+
+<span class="nc" id="L134">        return refactoringList3;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
