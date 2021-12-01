@@ -7,6 +7,11 @@ Team W7-4
 * [Project Website on GH Pages](https://john-hix.github.io/CS350-dupe-detector/)
 * [Stories](https://trello.com/b/XxTMxuGT/refactor-project-management)
 
+# Website
+To develop the project website locally, you must first clone the gh-pages branch
+to the build dir. This should be temporary, or later handled by a Gradle task.
+From the project root, run
+`git clone --branch gh-pages git@github.com:john-hix/CS350-dupe-detector.git dupe-detector/build/gh-pages/`.
 
 # Attributions
 
