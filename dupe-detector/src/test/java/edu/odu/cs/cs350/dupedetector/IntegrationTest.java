@@ -2,6 +2,8 @@ package edu.odu.cs.cs350.dupedetector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -20,9 +22,8 @@ import org.junit.jupiter.api.Test;
 class IntegrationTest {
 	
 	//Data usage / values may need to be changed or shifted as systems are updated.
-	SuppliedFilePaths project = new SuppliedFilePaths();
-	// TODO: make sure findEligibleSourceCode is passed some "user" input
-	ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(new ArrayList<String>());
+	ArrayList<String> userFileInput = new ArrayList<String>(
+			Arrays.asList(getPathStringForTest("test-recursion"), getPathStringForTest("test-filter-files")));
 	
 	String sequence1 = 
 			  "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"
@@ -94,6 +95,19 @@ class IntegrationTest {
 	SuggestedRefactoring refactoring6 = new SuggestedRefactoring(16, 16, 3, sequence6);
 	SuggestedRefactoring refactoring7 = new SuggestedRefactoring(18, 64, 10, sequence7);
 	
+	//Set Data for File Path Inputs to do integration without reliance on actual directories being read
+	String filePath1 = "/home/zeil/projects/cppProject1/src/foo.cpp";
+	String filePath2 = "/home/zeil/projects/cppProject1/src/headers/bar.h";
+	String filePath3 = "H:\\cygwin\\home\\Jacob\\someCpp.cpp";
+	String filePath4 = "/home/fakeZeil/projects/cppProject1/src/foo.cpp";
+	String filePath5 = "/coolhome/fakeZeil/cppProject1/src/tool.cpp";
+	
+	SourceCodeFile file1 = new SourceCodeFile(filePath1);
+	SourceCodeFile file2 = new SourceCodeFile(filePath2);
+	SourceCodeFile file3 = new SourceCodeFile(filePath3);
+	SourceCodeFile file4 = new SourceCodeFile(filePath4);
+	SourceCodeFile file5 = new SourceCodeFile(filePath5);
+	
 	/**
 	 * Outputs to console, shows effect of property values with correct input, if any.
 	 */
@@ -114,10 +128,20 @@ class IntegrationTest {
 		
 		System.out.println("Demo on Controlled Refactorings");
 		System.out.println("---------------------------------------------------------\n");
-		int numSuggestions = 3; //Simulates console input
-    	ArrayList<SuggestedRefactoring> refListControlled
+		
+		//Simulate Console Input with set information
+		int numSuggestions = 3;
+		
+		//Apply extensions from Property File  
+		SuppliedFilePaths project = new SuppliedFilePaths();
+		project.setEligibleExtensions(defaultProps.getCppExtensions());
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(userFileInput);
+    	
+		//When show integration of prop file, what the suggested refactorings are exactly does not matter.
+		ArrayList<SuggestedRefactoring> refListControlled
 			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4, 
-					refactoring5, refactoring6, refactoring7));
+					refactoring5, refactoring6, refactoring7));	
+    	
 		
     	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
     	Report unpreppedRep = new Report(projectFiles, refListControlled);
@@ -139,6 +163,12 @@ class IntegrationTest {
 			
 			System.out.println("Demo on Controlled Refactorings");
 			System.out.println("---------------------------------------------------------\n");
+			
+			//Apply extensions from Property File  
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(blankProps.getCppExtensions());
+			projectFiles.clear();
+			projectFiles = project.findEligibleSourceCode(userFileInput);
 			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
 	    	unpreppedRep = new Report(projectFiles, refListControlled);
@@ -166,6 +196,12 @@ class IntegrationTest {
 			System.out.println("Demo on Controlled Refactorings");
 			System.out.println("---------------------------------------------------------\n");
 			
+			//Apply extensions from Property File  
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(cppProps.getCppExtensions());
+			projectFiles.clear();
+			projectFiles = project.findEligibleSourceCode(userFileInput);
+			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
 	    	unpreppedRep = new Report(projectFiles, refListControlled);
 			preppedRep = prepReport(unpreppedRep,
@@ -192,6 +228,12 @@ class IntegrationTest {
 			System.out.println("Demo on Controlled Refactorings");
 			System.out.println("---------------------------------------------------------\n");
 			
+			//Apply extensions from Property File  
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(allProps.getCppExtensions());
+			projectFiles.clear();
+			projectFiles = project.findEligibleSourceCode(userFileInput);
+			
 	    	//Removes refactoring3, refactoring5, and refactoring7 (then one is not printed)
 	    	unpreppedRep = new Report(projectFiles, refListControlled);
 			preppedRep = prepReport(unpreppedRep,
@@ -201,6 +243,13 @@ class IntegrationTest {
 			
 	    	System.out.println("\nDemo on Random Refactorings");
 			System.out.println("---------------------------------------------------------\n");
+			
+			//Apply extensions from Property File  
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(allProps.getCppExtensions());
+			projectFiles.clear();
+			projectFiles = project.findEligibleSourceCode(userFileInput);
+			
 			ArrayList<SuggestedRefactoring> refListRand = randRefactoringList(200); //Simulate refactor list
 			numSuggestions = 3;
 			unpreppedRep = new Report(projectFiles, refListRand);
@@ -297,11 +346,22 @@ class IntegrationTest {
 		System.out.println();
 	}
 	
+	/**
+	 * Outputs to console to show a report being printed with provided set information
+	 */
 	@Test
 	void testReportPrintOuts() {
 		
 		System.out.println("Performing Report Output Test");
 		System.out.println("=========================================================");
+		
+		//Provides set list of files to print
+		ArrayList<SourceCodeFile> projectFiles = new ArrayList<SourceCodeFile>();
+		
+		/*ArrayList<String> setFiles = 
+				new ArrayList<String>(Arrays.asList(
+						"/home/zeil/projects/cppProject1/src/foo.cpp",
+				)); */
 		
 		//Initialize a few list of refactoring suggestions
     	ArrayList<SuggestedRefactoring> refactoringList1
@@ -469,4 +529,16 @@ class IntegrationTest {
 		
 		return retReport;
 	}
+	
+	/**
+	 * Takes a fileName and appends the path information for the data folder the files should reside in
+	 * at a top level. In this case the test files will reside in src/test/data/cpp/[filename]
+	 * 
+	 * @param fileName name of file to be converted to string
+	 * @return string of the file name
+	 */
+    String getPathStringForTest(String fileName) {
+        Path path = Paths.get("src","test","data", "cpp", fileName);
+        return path.toString();
+    }
 }
