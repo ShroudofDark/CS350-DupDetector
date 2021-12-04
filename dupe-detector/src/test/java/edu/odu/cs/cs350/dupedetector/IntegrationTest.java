@@ -11,13 +11,6 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 /**
- * TODO:
- * 
- * Make a integration test with report and playing around with what files are getting pulled from directory (kind of like with the 
- * prop file testing, but provide set extensions instead of extracting)
- */
-
-/**
  * Location where we can compile the tests that interact with multiple systems.
  * Some of these tests may perform to the output, others using standard assertions.
  * 
@@ -119,6 +112,8 @@ class IntegrationTest {
 	
 	/**
 	 * Outputs to console, shows effect of property values with correct input, if any.
+	 * 
+	 * Tests integration between Property Files, Supplied Paths, Source Code Files, Suggested Refactorings and Reports
 	 */
 	@Test 
 	void testCorrectPropertyFileDeclarations() {
@@ -281,6 +276,8 @@ class IntegrationTest {
 	
 	/**
 	 * Outputs to console, shows error messages when an issue occurs.
+	 * 
+	 * Tests integration of Property Files (shows error outputs)
 	 */
 	@Test 
 	void testIncorrectPropertyFileDeclarations() {
@@ -357,14 +354,67 @@ class IntegrationTest {
 	
 	/**
 	 * Outputs to console, shows effect of source files being read on report
+	 * 
+	 * Tests integration between Supplied Paths, Source Code Files and Reports
 	 */
 	@Test
 	void testSourceFilesReadReported() {
+		System.out.println("Performing Source Files Read In and Reported");
+		System.out.println("=========================================================");
+		System.out.println("Default Extensions of cpp and h");
+		System.out.println("---------------------------------------------------------");
 		
+		//Provide extensions
+		ArrayList<String> defaultExten = new ArrayList<String>(Arrays.asList("cpp", "h"));
+		SuppliedFilePaths project = new SuppliedFilePaths();
+		project.setEligibleExtensions(defaultExten);
+		
+		//Read in files from directory
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(anotherDirectoryUserInput);
+		
+		//Default refactoring list as this is not being tested
+    	ArrayList<SuggestedRefactoring> refactoringList1
+			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4));
+		
+		Report defaultExtenRep = new Report(projectFiles, refactoringList1);		
+		Report preppedRep = prepReport(defaultExtenRep, 8, 10);
+		preppedRep.printReport(20);
+		
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Only cpp extensions");
+		System.out.println("---------------------------------------------------------");
+		ArrayList<String> cppExten = new ArrayList<String>(Arrays.asList("cpp"));
+		project = new SuppliedFilePaths();
+		project.setEligibleExtensions(cppExten);
+		
+		projectFiles.clear();
+		projectFiles = project.findEligibleSourceCode(anotherDirectoryUserInput);
+		
+		Report cppOnlyRep = new Report(projectFiles, refactoringList1);
+		preppedRep = prepReport(cppOnlyRep, 8, 10);
+		preppedRep.printReport(20);
+		
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Wild Files: txt, csv, exe, h");
+		System.out.println("---------------------------------------------------------");
+		ArrayList<String> wildExten = new ArrayList<String>(Arrays.asList("h", "txt", "csv", "exe"));
+		project = new SuppliedFilePaths();
+		project.setEligibleExtensions(wildExten);
+		
+		projectFiles.clear();
+		projectFiles = project.findEligibleSourceCode(anotherDirectoryUserInput);
+		
+		Report wildRep = new Report(projectFiles, refactoringList1);
+		preppedRep = prepReport(wildRep, 8, 10);
+		preppedRep.printReport(20);
+		
+		System.out.println("=========================================================");
 	}
 	
 	/**
 	 * Outputs to console to show a report being printed with provided set information
+	 * 
+	 * Tests integration of Source Code Files, Suggested Refactorings, and Reports with various outcomes.
 	 */
 	@Test
 	void testReportPrintOuts() {
@@ -532,7 +582,7 @@ class IntegrationTest {
     	return randRefactorList;
 	}
 	
-	//Follows set pattern if not testing inidivdual qualities.
+	//Follows set pattern if not testing individual qualities.
 	private Report prepReport(Report unpreppedReport, int maxSubs, int minSeqLength) {
 		Report retReport = unpreppedReport;
 		
