@@ -192,6 +192,77 @@ public class SuppliedFilePathsTest extends SuppliedFilePaths {
         		getPathStringForTest("test-filter-files/hello-world.h")
         )));       
     }
+    
+    /**
+     * Tests the function findEligibleSourceCode
+     * 
+     * More explicitly tests that duplicates won't be added
+     */
+    @Test
+    void testDuplicateFileNotAdded() {
+        SuppliedFilePaths suppFiles = new SuppliedFilePaths();
+        
+        //Start with expected basic defaults
+        ArrayList<String> startExtens = new ArrayList<String>(Arrays.asList("cpp", "h"));
+        suppFiles.setEligibleExtensions(startExtens);
+        
+        //Get files from specified file
+        ArrayList<String> userInput = new ArrayList<String>(Arrays.asList(
+        		getPathStringForTest("hello-world.cpp"),
+        		getPathStringForTest("hello-world.cpp"),
+        		getPathStringForTest("invalid.cpp")));
+        ArrayList<SourceCodeFile> files = suppFiles.findEligibleSourceCode(userInput);
+        
+        ArrayList<String> filePaths = new ArrayList<String>();
+        for (SourceCodeFile f : files) {
+        	filePaths.add(f.getPath());
+        }
+         
+        //Confirm that above didn't edit eligible extensions
+        assertThat(suppFiles.getEligibleExtensions(), contains("cpp","h"));
+        assertThat(suppFiles.getEligibleExtensions(), not(contains("java", "CPP", "txt")));
+        
+        assertThat(filePaths, containsInAnyOrder(
+                getPathStringForTest("hello-world.cpp"),
+                getPathStringForTest("invalid.cpp")
+            ));
+        
+        //Repeat for directory
+        
+        //Reset appropriate lists
+        files.clear();
+        filePaths.clear();
+        
+        //Get file paths from test folder
+        ArrayList<String> userInputDirectory = new ArrayList<String>(Arrays.asList(
+        		getPathStringForTest("test-filter-files"),
+        		getPathStringForTest("test-filter-files")));
+        files = suppFiles.findEligibleSourceCode(userInputDirectory);
+        
+        filePaths = new ArrayList<String>();
+        for (SourceCodeFile f : files) {
+        	filePaths.add(f.getPath());
+        }
+         
+        //Confirm that above didn't edit eligible extensions
+        assertThat(suppFiles.getEligibleExtensions(), contains("cpp","h"));
+        assertThat(suppFiles.getEligibleExtensions(), not(contains("java", "CPP", "txt")));
+       
+        //Confirm that only contains cpp and h files
+        assertThat(filePaths, containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/hello-world.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world1.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world.h")
+        ));
+        
+        assertThat(filePaths, not(containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/empty.txt"),
+        		getPathStringForTest("test-filter-files/oopsJava.java"),
+        		getPathStringForTest("test-filter-files/anotherCpp.CPP")
+        )));
+        
+
+    }
 
     String getPathStringForTest(String fileName) {
         Path path = Paths.get("src","test","data", "cpp", fileName);
