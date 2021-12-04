@@ -169,7 +169,24 @@ public class SuppliedFilePaths {
         else return Files.isRegularFile(path);
     }
 
+    //Checks against eligible Extensions
     private boolean hasCorrectExtension(Path file) {
-        return true; // TODO: evaluate against the list
+    	
+    	//Extract the extension of current file
+    	String fileName = file.toString();
+    	String fileExt = fileName.substring(fileName.lastIndexOf('.') + 1);
+    	
+    	//Compare to eligible extensions
+    	Iterator<String> it = eligibleExtensions.iterator();   	
+    	while(it.hasNext()) {
+    		String currExten = it.next();
+    		//Matches with eligible extension
+    		if(currExten.equals(fileExt)) {
+    			return true;
+    		}
+    	}
+    	
+    	//Doesn't match eligible extension
+        return false;
     }
 }

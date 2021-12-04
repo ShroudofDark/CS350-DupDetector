@@ -8,6 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.Matchers.*;
 import org.hamcrest.collection.IsEmptyCollection;
@@ -122,9 +123,74 @@ public class SuppliedFilePathsTest extends SuppliedFilePaths {
         ));
     }
 
+    /**
+     * Tests the function findEligibleSourceCode
+     * 
+     * More explicitly tests to make sure the files of a set of extensions
+     * are the only ones added.
+     */
     @Test
     void includesOnlySpecified() {
-        fail("Implementation stubbed");
+        
+        SuppliedFilePaths suppFiles = new SuppliedFilePaths();
+    
+        //Start with expected basic defaults
+        ArrayList<String> startExtens = new ArrayList<String>(Arrays.asList("cpp", "h"));
+        suppFiles.setEligibleExtensions(startExtens);
+        
+        //Get file paths from test folder
+        ArrayList<String> userInput = new ArrayList<String>(Arrays.asList(getPathStringForTest("test-filter-files")));
+        ArrayList<SourceCodeFile> files = suppFiles.findEligibleSourceCode(userInput);
+        
+        ArrayList<String> filePaths = new ArrayList<String>();
+        for (SourceCodeFile f : files) {
+        	filePaths.add(f.getPath());
+        }
+         
+        //Confirm that above didn't edit eligible extensions
+        assertThat(suppFiles.getEligibleExtensions(), contains("cpp","h"));
+        assertThat(suppFiles.getEligibleExtensions(), not(contains("java", "CPP", "txt")));
+       
+        //Confirm that only contains cpp and h files
+        assertThat(filePaths, containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/hello-world.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world1.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world.h")
+        ));
+        
+        assertThat(filePaths, not(containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/empty.txt"),
+        		getPathStringForTest("test-filter-files/oopsJava.java"),
+        		getPathStringForTest("test-filter-files/anotherCpp.CPP")
+        )));
+        
+        //Reset appropriate lists
+        files.clear();
+        filePaths.clear();
+        
+        //Check variation of allowed extensions to make sure it doesn't assume always cpp and h
+        ArrayList<String> strangeExtens = new ArrayList<String>(Arrays.asList("java", "CPP"));
+        suppFiles.setEligibleExtensions(strangeExtens);
+        
+        files = suppFiles.findEligibleSourceCode(userInput);
+        for (SourceCodeFile f: files) {
+        	filePaths.add(f.getPath());
+        }
+        
+        assertThat(suppFiles.getEligibleExtensions(), contains("java", "CPP"));
+        assertThat(suppFiles.getEligibleExtensions(), not(contains("cpp","h", "txt")));
+        
+        assertThat(filePaths, containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/anotherCpp.CPP"),
+        		getPathStringForTest("test-filter-files/oopsJava.java")
+        ));
+        
+        assertThat(filePaths, not(containsInAnyOrder(
+        		getPathStringForTest("test-filter-files/empty.txt"),
+        		getPathStringForTest("test-filter-files/hello-world.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world1.cpp"),
+        		getPathStringForTest("test-filter-files/hello-world.h")
+        )));       
     }
 
     String getPathStringForTest(String fileName) {
