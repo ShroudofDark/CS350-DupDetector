@@ -19,14 +19,18 @@ App - Expected (Empty Property File)
 50  src/test/data/ini/empty.ini src/test/data/cpp/another-directory
 
 
+//Normal input, with high amount of suggestions not having a baring on ouput
+App - Expected (High Suggestions)
+3905987  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+
+
 //Normal input expected, but numSuggestions is low to examine the result of the last line of the report
 App - Expected (Low Suggestions)
 5  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
 
 
-//Normal input, with high amount of suggestions not having a baring on ouput
-App - Expected (High Suggestions)
-3905987  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+//Normal input, but only one file instead of a directory
+App - Expected Individual File
 
 
 //Normal input expected, provides multiple optional directories
@@ -71,3 +75,34 @@ App - No Property File
 //User only provides suggestion amount, should throw error
 App - Only numSuggestions
 50
+
+
+//Property file provided doesn't exist, should throw error
+App - Property File Doesn't Exist
+50  src/test/data/ini/noExist.ini src/test/data/cpp/test-recursion
+
+
+//Tests that if individual file is added to list it still is scanned, as CppExtensions should only effect directory searching
+App - Property File vs Individual File
+50  src/test/data/ini/cppExten2.ini src/test/data/cpp/hello-world.cpp src/test/data/cpp/test-recursion
+
+
+//Tests when directory doesn't exist, should throw error
+App - Source File Directory Doesn't Exist
+50  src/test/data/ini/demoPropFile.ini not/an/actual/directory/
+
+# Same issue as with source file doesn't exist
+
+
+//Tests when individual file provided doesn't exist, should throw error
+App - Source File Doesn't Exist
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-worldNoExist.cpp
+
+# As of typing up this test, it doesn't seem to throw an error. Program continues as normal, so report prints no file scanned
+
+
+//Tests when an individual file provided doesn't exist while there exist a file that does, should throw error
+App - Source File Doesn't Exist with Source File That Does
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-worldNoExist.cpp src/test/data/cpp/hello-world.cpp
+
+# Given an error is not being thrown, only the existing file is actually scanned. 
