@@ -8,20 +8,65 @@ App - Duplicate Directory
 
 # Currently duplicates will be read twice in regards to the print report. Should probably add lock to prevent duplicates.
 
+
 //Normal input expected with numSuggestions, a property file, and at least a code file
 App - Expected
 50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+
+
+//Normal input, property file is empty so it should be using defaults
+App - Expected (Empty Property File)
+50  src/test/data/ini/empty.ini src/test/data/cpp/another-directory
+
+
+//Normal input expected, but numSuggestions is low to examine the result of the last line of the report
+App - Expected (Low Suggestions)
+5  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+
+
+//Normal input, with high amount of suggestions not having a baring on ouput
+App - Expected (High Suggestions)
+3905987  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+
 
 //Normal input expected, provides multiple optional directories
 App - Expected MultiDirectory
 50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory  src/test/data/cpp/test-filter-files
 
+
+//Property file input should throw error about text being supplied where number expected
+App - Invalid Property File #1
+50  src/test/data/ini/invalidProps1.ini src/test/data/cpp/another-directory
+
+
+//Property file input should throw error about a found property not being accepted
+App - Invalid Property File #2
+50  src/test/data/ini/invalidProps2.ini src/test/data/cpp/another-directory
+
+
+//Property file input should throw error about a string being found, but no extensions (all commas for example)
+App - Invalid Property File #3
+50  src/test/data/ini/invalidProps3.ini src/test/data/cpp/another-directory
+
+
+//Property file input should throw error about a declaration of properety but no value after
+App - Invalid Property File #4
+50  src/test/data/ini/invalidProps4.ini src/test/data/cpp/another-directory
+
+
+//Property file input should throw error about a duplicate property
+App - Invalid Property File #5
+50  src/test/data/ini/dupeProps.ini src/test/data/cpp/another-directory
+
+
 //User provides no arguments, should throw error
 App - No Args
+
 
 //User provides no property file, should use defaults
 App - No Property File
 50 src/test/data/cpp/another-directory
+
 
 //User only provides suggestion amount, should throw error
 App - Only numSuggestions
