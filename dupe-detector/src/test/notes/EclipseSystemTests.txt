@@ -9,6 +9,11 @@ App - Duplicate Directory
 # Currently duplicates will be read twice in regards to the print report. Should probably add lock to prevent duplicates.
 
 
+//Basically same as duplicate directory above but check to see if it causes any problems scanning in many more files
+App - Duplicate Directory (Many)
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory
+
+
 //Normal input expected with numSuggestions, a property file, and at least a code file
 App - Expected
 50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
@@ -63,6 +68,11 @@ App - Invalid Property File #5
 50  src/test/data/ini/dupeProps.ini src/test/data/cpp/another-directory
 
 
+//Inputs two property files, the first one should be the accepted as property file while second should be treated as source file
+App - Multiple Property File
+50  src/test/data/ini/demoPropFile.ini src/test/data/ini/cppExten2.ini src/test/data/cpp/another-directory
+
+
 //User provides no arguments, should throw error
 App - No Args
 
@@ -70,6 +80,11 @@ App - No Args
 //User provides no property file, should use defaults
 App - No Property File
 50 src/test/data/cpp/another-directory
+
+
+//Reads in some weird extension files and treats like normal source files
+App - Not Typical C++ File Extensions
+50  src/test/data/ini/weirdExten.ini src/test/data/cpp/another-directory
 
 
 //User only provides suggestion amount, should throw error
