@@ -11,6 +11,13 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 /**
+ * TODO:
+ * 
+ * Make a integration test with report and playing around with what files are getting pulled from directory (kind of like with the 
+ * prop file testing, but provide set extensions instead of extracting)
+ */
+
+/**
  * Location where we can compile the tests that interact with multiple systems.
  * Some of these tests may perform to the output, others using standard assertions.
  * 
@@ -356,12 +363,8 @@ class IntegrationTest {
 		System.out.println("=========================================================");
 		
 		//Provides set list of files to print
-		ArrayList<SourceCodeFile> projectFiles = new ArrayList<SourceCodeFile>();
-		
-		/*ArrayList<String> setFiles = 
-				new ArrayList<String>(Arrays.asList(
-						"/home/zeil/projects/cppProject1/src/foo.cpp",
-				)); */
+		ArrayList<SourceCodeFile> projectFiles = new ArrayList<SourceCodeFile>(
+				Arrays.asList(file1, file2, file3, file4, file5));
 		
 		//Initialize a few list of refactoring suggestions
     	ArrayList<SuggestedRefactoring> refactoringList1
