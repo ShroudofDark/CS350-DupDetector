@@ -31,6 +31,8 @@ class IntegrationTest {
 	//Data usage / values may need to be changed or shifted as systems are updated.
 	ArrayList<String> userFileInput = new ArrayList<String>(
 			Arrays.asList(getPathStringForTest("test-recursion"), getPathStringForTest("test-filter-files")));
+	ArrayList<String> anotherDirectoryUserInput = new ArrayList<String>(
+			Arrays.asList(getPathStringForTest("another-directory")));
 	
 	String sequence1 = 
 			  "/home/zeil/projects/cppProject1/src/foo.cpp:100:0\r\n"
@@ -351,6 +353,14 @@ class IntegrationTest {
 		System.out.println("End of Property File Integration Test: Incorrect Files");
 		System.out.println();
 		System.out.println();
+	}
+	
+	/**
+	 * Outputs to console, shows effect of source files being read on report
+	 */
+	@Test
+	void testSourceFilesReadReported() {
+		
 	}
 	
 	/**
