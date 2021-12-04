@@ -34,7 +34,7 @@ App - Expected (Low Suggestions)
 
 //Normal input, but only one file instead of a directory
 App - Expected Individual File
-
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-world.cpp
 
 //Normal input expected, provides multiple optional directories
 App - Expected MultiDirectory
