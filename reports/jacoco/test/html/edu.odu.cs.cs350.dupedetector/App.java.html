@@ -46,11 +46,11 @@ public class App {
 
 		// TODO: print files read report here, using projectFiles variable.
 		
-		// Report
+		// Report creation and preparation
 <span class="nc" id="L50">		Report report = new Report(projectFiles, refactorings);</span>
 <span class="nc" id="L51">		report.sortSourceFiles();</span>
 <span class="nc" id="L52">		report.trimRefactorings(propFile.getMaxSubstitutions(), propFile.getMinSequenceLength());</span>
-<span class="nc" id="L53">		report.sortRefactorings(); // TODO: make this a private concern of the class</span>
+<span class="nc" id="L53">		report.sortRefactorings();</span>
 <span class="nc" id="L54">		report.printReport(app.numSuggestions);</span>
   
 <span class="nc" id="L56">    }</span>
