@@ -1,0 +1,28 @@
+# These are the notes for command line arguments provided for system testing when using Eclipse. 
+# These same arguments can be applied to normal command line interface, although file execution is expected.
+# Will include any observations or possible errors if necessary.
+
+//User provides duplicate directory
+App - Duplicate Directory
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory src/test/data/cpp/another-directory
+
+# Currently duplicates will be read twice in regards to the print report. Should probably add lock to prevent duplicates.
+
+//Normal input expected with numSuggestions, a property file, and at least a code file
+App - Expected
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+
+//Normal input expected, provides multiple optional directories
+App - Expected MultiDirectory
+50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory  src/test/data/cpp/test-filter-files
+
+//User provides no arguments, should throw error
+App - No Args
+
+//User provides no property file, should use defaults
+App - No Property File
+50 src/test/data/cpp/another-directory
+
+//User only provides suggestion amount, should throw error
+App - Only numSuggestions
+50
