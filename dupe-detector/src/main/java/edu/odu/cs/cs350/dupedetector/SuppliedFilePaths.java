@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 
 /**
@@ -81,9 +82,16 @@ public class SuppliedFilePaths {
 
         // serialize
         ArrayList<Path> userInputAsPaths = new ArrayList<Path>();
-        for(String inputStr : userInput)
-            userInputAsPaths.add( Path.of(inputStr) );
-
+        
+        //Used to check if example file is already scanned
+        HashSet<String> dupeChecker = new HashSet<>();
+        
+        for(String inputStr : userInput) {
+        	if(!dupeChecker.contains(inputStr)) {
+        		dupeChecker.add(inputStr);
+        		userInputAsPaths.add( Path.of(inputStr));
+        	}
+        }
         // set values
         splitFilesAndDirsFromList(userInputAsPaths, files, dirs);
         return;
@@ -117,6 +125,7 @@ public class SuppliedFilePaths {
                 throws IOException
             {
                 if (!Files.isDirectory(file) && hasCorrectExtension(file)) {
+                	
                     attemptToGatherTokenizedFile(file, allSourceCode);
                 }
                 return FileVisitResult.CONTINUE;
