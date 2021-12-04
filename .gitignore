@@ -42,6 +42,9 @@ bin
 .settings/org.eclipse.buildship.core.prefs
 .settings/org.eclipse.jdt.core.prefs
 
+#added to reflect new file directory
+dupe-detector/.settings/org.eclipse.buildship.core.prefs
+dupe-detector/.settings/org.eclipse.jdt.core.prefs
 
 # Git worktree directory for project website publish
 _site
