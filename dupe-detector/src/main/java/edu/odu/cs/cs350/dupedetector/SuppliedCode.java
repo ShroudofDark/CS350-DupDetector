@@ -96,7 +96,7 @@ public class SuppliedCode {
     	//0-6
     	int switchUpperbound = 7;
     	
-    	for(int i=0; i < numSuggestions; i++) { // use suggested refactorings limit
+    	for(int i=0; i < 100; i++) { // use suggested refactorings limit
     		
             
     		int randTotalTokens = 1 + rand.nextInt(upperbound);

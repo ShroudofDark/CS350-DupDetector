@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 
 /**
@@ -81,9 +82,16 @@ public class SuppliedFilePaths {
 
         // serialize
         ArrayList<Path> userInputAsPaths = new ArrayList<Path>();
-        for(String inputStr : userInput)
-            userInputAsPaths.add( Path.of(inputStr) );
-
+        
+        //Used to check if example file is already scanned
+        HashSet<String> dupeChecker = new HashSet<>();
+        
+        for(String inputStr : userInput) {
+        	if(!dupeChecker.contains(inputStr)) {
+        		dupeChecker.add(inputStr);
+        		userInputAsPaths.add( Path.of(inputStr));
+        	}
+        }
         // set values
         splitFilesAndDirsFromList(userInputAsPaths, files, dirs);
         return;
@@ -117,6 +125,7 @@ public class SuppliedFilePaths {
                 throws IOException
             {
                 if (!Files.isDirectory(file) && hasCorrectExtension(file)) {
+                	
                     attemptToGatherTokenizedFile(file, allSourceCode);
                 }
                 return FileVisitResult.CONTINUE;
@@ -169,7 +178,24 @@ public class SuppliedFilePaths {
         else return Files.isRegularFile(path);
     }
 
+    //Checks against eligible Extensions
     private boolean hasCorrectExtension(Path file) {
-        return true; // TODO: evaluate against the list
+    	
+    	//Extract the extension of current file
+    	String fileName = file.toString();
+    	String fileExt = fileName.substring(fileName.lastIndexOf('.') + 1);
+    	
+    	//Compare to eligible extensions
+    	Iterator<String> it = eligibleExtensions.iterator();   	
+    	while(it.hasNext()) {
+    		String currExten = it.next();
+    		//Matches with eligible extension
+    		if(currExten.equals(fileExt)) {
+    			return true;
+    		}
+    	}
+    	
+    	//Doesn't match eligible extension
+        return false;
     }
 }
