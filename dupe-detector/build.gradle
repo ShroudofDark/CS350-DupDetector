@@ -17,6 +17,7 @@ plugins {
     id 'com.github.spotbugs' version '4.7.9'
     id 'pmd'
     id 'checkstyle'
+    id 'org.unbroken-dome.test-sets' version '3.0.1'
 }
 
 sourceSets {
@@ -63,6 +64,31 @@ tasks.named('test') {
 	ignoreFailures = true
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+testSets {
+    iTest {
+        dirName = 'itest'
+    }
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+check.dependsOn iTest
+
+iTest.mustRunAfter test
+
+spotbugsITest {
+    ignoreFailures = true
+}
+
+iTest {
+    ignoreFailures = true
 }
 
 // Make "check" task run jacoco
