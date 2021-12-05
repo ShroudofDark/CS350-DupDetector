@@ -86,6 +86,9 @@ class ReportIntegrationTest {
 	SuggestedRefactoring refactoring6 = new SuggestedRefactoring(16, 16, 3, sequence6);
 	SuggestedRefactoring refactoring7 = new SuggestedRefactoring(18, 64, 10, sequence7);
 	
+	/**
+	 * Tests how supplied file paths interacts with reports without dependency from properties file
+	 */
 	@Test
 	void testSuppliedFilePathsWithReport() {
 		
