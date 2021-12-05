@@ -86,6 +86,84 @@ class ReportIntegrationTest {
 	SuggestedRefactoring refactoring6 = new SuggestedRefactoring(16, 16, 3, sequence6);
 	SuggestedRefactoring refactoring7 = new SuggestedRefactoring(18, 64, 10, sequence7);
 	
+	@Test
+	void testSuppliedFilePathsWithReport() {
+		
+		ArrayList<String> eligibleExtensions = new ArrayList<String>(Arrays.asList("h","cpp"));
+		
+		SuppliedFilePaths project = new SuppliedFilePaths();
+		project.setEligibleExtensions(eligibleExtensions);		
+		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(userFileInput);
+		
+		//Only Stubbed because this is not a major test factor in this test/class still not developed
+		ArrayList<SuggestedRefactoring> stubbedRefList
+			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4, 
+					refactoring5, refactoring6, refactoring7));
+		
+		Report newReport = new Report(projectFiles, stubbedRefList);
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(projectFiles.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(projectFiles.get(0)));
+		assertThat(newReport.getSourceCodeFile(1), is(projectFiles.get(1)));
+		assertThat(newReport.getSourceCodeFile(2), is(projectFiles.get(2)));
+		assertThat(newReport.getSourceCodeFile(3), is(projectFiles.get(3)));
+		
+		assertThat(newReport.getSourceCodeFile(0).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(1).getFilePath().toString(),
+				containsString("invalid.cpp"));
+		assertThat(newReport.getSourceCodeFile(2).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(3).getFilePath().toString(),
+				containsString("hello-world.h"));
+		assertThat(newReport.getSourceCodeFile(4).getFilePath().toString(),
+				containsString("hello-world1.cpp"));
+		
+		assertThat(newReport.totalRefactorings(), is(stubbedRefList.size()));
+		assertThat(newReport.getRefactoring(0), is(stubbedRefList.get(0)));
+		assertThat(newReport.getRefactoring(1), is(stubbedRefList.get(1)));
+		assertThat(newReport.getRefactoring(2), is(stubbedRefList.get(2)));
+		assertThat(newReport.getRefactoring(3), is(stubbedRefList.get(3)));
+		
+		newReport.trimRefactorings(8, 10);
+		newReport.sortRefactorings();
+		
+		assertThat(newReport.totalRefactorings(), not(is(stubbedRefList.size())));
+		
+		eligibleExtensions = new ArrayList<String>(Arrays.asList("h","cpp","H","hpp"));
+		
+		project = new SuppliedFilePaths();
+		project.setEligibleExtensions(eligibleExtensions);
+		projectFiles = project.findEligibleSourceCode(userFileInput);
+		
+		newReport = new Report(projectFiles, stubbedRefList);
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(projectFiles.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(projectFiles.get(0)));
+		assertThat(newReport.getSourceCodeFile(1), is(projectFiles.get(1)));
+		assertThat(newReport.getSourceCodeFile(2), is(projectFiles.get(2)));
+		assertThat(newReport.getSourceCodeFile(3), is(projectFiles.get(3)));
+		
+		assertThat(newReport.getSourceCodeFile(0).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(1).getFilePath().toString(),
+				containsString("invalid.cpp"));
+		assertThat(newReport.getSourceCodeFile(2).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(3).getFilePath().toString(),
+				containsString("hello-world.h"));
+		assertThat(newReport.getSourceCodeFile(4).getFilePath().toString(),
+				containsString("hello-world1.cpp"));
+		assertThat(newReport.getSourceCodeFile(5).getFilePath().toString(),
+				containsString("moreTestFiles.hpp"));
+		
+		assertThat(newReport.totalRefactorings(), is(stubbedRefList.size()));
+		assertThat(newReport.getRefactoring(0), is(stubbedRefList.get(0)));
+		assertThat(newReport.getRefactoring(1), is(stubbedRefList.get(1)));
+		assertThat(newReport.getRefactoring(2), is(stubbedRefList.get(2)));
+		assertThat(newReport.getRefactoring(3), is(stubbedRefList.get(3)));
+	}
+	
 	/**
 	 * Not entirely convinced this right here is exactly an integration test, as its very
 	 * similar to what I did in the UnitTest. Though its possible what I did in the
