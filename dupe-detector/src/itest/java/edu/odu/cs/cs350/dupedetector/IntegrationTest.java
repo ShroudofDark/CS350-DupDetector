@@ -19,6 +19,12 @@ import org.junit.jupiter.api.Test;
  * @author Jacob
  */
 
+/**
+ * 
+ * Outdated Test stuff, will be adjusted for automation 
+ *
+ */
+
 class IntegrationTest {
 	
 	//Data usage / values may need to be changed or shifted as systems are updated.
