@@ -17,6 +17,7 @@ plugins {
     id 'com.github.spotbugs' version '4.7.9'
     id 'pmd'
     id 'checkstyle'
+    id 'org.unbroken-dome.test-sets' version '3.0.1'
 }
 
 sourceSets {
@@ -32,6 +33,7 @@ java {
 	sourceCompatibility = JavaVersion.toVersion(11)
     targetCompatibility = JavaVersion.toVersion(11)
 }
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -58,11 +60,48 @@ application {
     mainClass = 'edu.odu.cs.cs350.dupedetector.App'
 }
 
+jar {
+    baseName = "DupDetector"
+    manifest {
+        attributes 'Main-Class': 'edu.odu.cs.cs350.dupedetector.App'
+    }
+}
+
 tasks.named('test') {
 	//Continue the build even if tests fail
 	ignoreFailures = true
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+testSets {
+    iTest {
+        dirName = 'itest'
+    }
+    sTest {
+        dirName = 'stest'
+    }
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+check.dependsOn iTest
+check.dependsOn sTest
+
+iTest.mustRunAfter test
+sTest.mustRunAfter iTest
+
+iTest {
+    ignoreFailures = true
+}
+
+sTest {
+    ignoreFailures = true
 }
 
 // Make "check" task run jacoco
@@ -98,8 +137,14 @@ pmd {
 }
 
 spotbugsTest.enabled = false
+spotbugsITest.enabled = false
+spotbugsSTest.enabled = false
 pmdTest.enabled = false
-checkstyleTest.enabled = true
+pmdITest.enabled = false
+pmdSTest.enabled = false
+checkstyleTest.enabled = false
+checkstyleITest.enabled = false
+checkstyleSTest.enabled = false
 checkstyleMain.enabled = true
 // end copied code from Zeil
 
