@@ -86,14 +86,71 @@ class ReportIntegrationTest {
 	SuggestedRefactoring refactoring6 = new SuggestedRefactoring(16, 16, 3, sequence6);
 	SuggestedRefactoring refactoring7 = new SuggestedRefactoring(18, 64, 10, sequence7);
 	
+	/**
+	 * Not entirely convinced this right here is exactly an integration test, as its very
+	 * similar to what I did in the UnitTest. Though its possible what I did in the
+	 * unit test is an integration test and needs less dependancy.
+	 */
 	@Test
 	void testSourceCodeFilesWithReport() {
-		fail("Not implemented");
+		String filePath1 = "/home/zeil/projects/cppProject1/src/foo.cpp";
+		String filePath2 = "/home/zeil/projects/cppProject1/src/headers/bar.h";
+		String filePath3 = "H:\\cygwin\\home\\Jacob\\someCpp.cpp";
+		String filePath4 = "/home/fakeZeil/projects/cppProject1/src/foo.cpp";
+		String filePath5 = "/coolhome/fakeZeil/cppProject1/src/tool.cpp";
+		
+		SourceCodeFile file1 = new SourceCodeFile(filePath1);
+		SourceCodeFile file2 = new SourceCodeFile(filePath2);
+		SourceCodeFile file3 = new SourceCodeFile(filePath3);
+		SourceCodeFile file4 = new SourceCodeFile(filePath4);
+		SourceCodeFile file5 = new SourceCodeFile(filePath5);
+		
+		ArrayList<SourceCodeFile> sourceFileList1 = 
+				new ArrayList<SourceCodeFile>(Arrays.asList(file1, file2, file3));
+		ArrayList<SourceCodeFile> sourceFileList2 =
+				new ArrayList<SourceCodeFile>(Arrays.asList(file1, file2, file3, file4, file5));
+		
+		//Only Stubbed because this is not a major test factor in this test/class still not developed
+		ArrayList<SuggestedRefactoring> stubbedRefList
+			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4, 
+					refactoring5, refactoring6, refactoring7));
+		
+		Report newReport = new Report(sourceFileList1, stubbedRefList);
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(sourceFileList1.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(file1));
+		assertThat(newReport.getSourceCodeFile(1), is(file2));
+		assertThat(newReport.getSourceCodeFile(2), is(file3));
+		
+		newReport.sortSourceFiles();
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(sourceFileList1.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(file1));
+		assertThat(newReport.getSourceCodeFile(1), is(file2));
+		assertThat(newReport.getSourceCodeFile(2), is(file3));
+		
+		newReport = new Report(sourceFileList2, stubbedRefList);
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(sourceFileList2.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(file1));
+		assertThat(newReport.getSourceCodeFile(1), is(file2));
+		assertThat(newReport.getSourceCodeFile(2), is(file3));
+		assertThat(newReport.getSourceCodeFile(3), is(file4));
+		assertThat(newReport.getSourceCodeFile(4), is(file5));
+		
+		newReport.sortSourceFiles();
+		
+		assertThat(newReport.totalSourceCodeFiles(), is(sourceFileList2.size()));
+		assertThat(newReport.getSourceCodeFile(0), is(file5));
+		assertThat(newReport.getSourceCodeFile(1), is(file4));
+		assertThat(newReport.getSourceCodeFile(2), is(file1));
+		assertThat(newReport.getSourceCodeFile(3), is(file2));
+		assertThat(newReport.getSourceCodeFile(4), is(file3));
 	}
 	
 	@Test
 	void testSuggestedRefactoringsWithReport() {
-		fail("Not implemented");
+		fail("Suggested refactoring is still a stub class.");
 	}
 	
 	/**
