@@ -155,7 +155,28 @@ public final class TestBaseline {
      */
     @Test
     void testMultipleDirectories() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/");
+    	paths.add("src/stest/data/test-project3/");
+    	
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/expectedProperty.ini", paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/faculty.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.h,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir1/countingDir/cellMap.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\cellMap.cpp,")));
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project3/hello-world.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project3\\hello-world.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project3/hello-world.h,"))
+    			.or(containsString("src\\stest\\data\\test-project3\\hello-world.h,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project2/manyFiles/hello-world1.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project2\\manyFiles\\hello-world1.cpp,"))));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project2/manyFiles/hello-world.h,"))
+    			.or(containsString("src\\stest\\data\\test-project2\\manyFiles\\hello-world.h,"))));
     }
     
     /**
