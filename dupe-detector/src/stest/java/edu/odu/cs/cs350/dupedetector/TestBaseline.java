@@ -231,8 +231,20 @@ public final class TestBaseline {
      * Tests when multiple property files are provided, 2nd one should be read in as source file
      */
     @Test
-    void testMultiplePropertyFiles() {
-    	fail("Not Implemented");
+    void testMultiplePropertyFiles() {   	
+    	//Using RAW runner which will build out the args in order 
+    	LinkedList<String> clientArgs = new LinkedList<String>();
+    	clientArgs.add("50");
+    	clientArgs.add("src/stest/data/propertyFiles/expectedProperty.ini");
+    	clientArgs.add("src/stest/data/propertyFiles/expectedProperty.ini");
+    	
+    	String output = SysTestHelper.runJarRaw(clientArgs);
+    	
+    	assertThat(output, either(containsString("src/stest/data/propertyFiles/expectedProperty.ini,"))
+    			.or(containsString("src\\stest\\data\\propertyFiles\\expectedProperty.ini,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
     }
     
     /**
