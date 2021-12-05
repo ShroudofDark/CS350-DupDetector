@@ -4,77 +4,82 @@
 
 //User provides duplicate directory
 App - Duplicate Directory
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1 src/stest/data/test-project1
 
 
 //Basically same as duplicate directory above but check to see if it causes any problems scanning in many more files
 App - Duplicate Directory (Many)
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1
+
+
+//Empty directory is provided, still runs as intended just assumes nothing scanned
+App - Empty Directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project4
 
 
 //Normal input expected with numSuggestions, a property file, and at least a code file
 App - Expected
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1
 
 
 //Normal input, property file is empty so it should be using defaults
 App - Expected (Empty Property File)
-50  src/test/data/ini/empty.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/emptyProperty.ini src/stest/data/test-project1
 
 
 //Normal input, with high amount of suggestions not having a baring on ouput
 App - Expected (High Suggestions)
-3905987  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+3905987 src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1
 
 
 //Normal input expected, but numSuggestions is low to examine the result of the last line of the report
 App - Expected (Low Suggestions)
-5  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory
+5  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1
 
 
 //Normal input, but only one file instead of a directory
 App - Expected Individual File
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-world.cpp
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1/dir1/Cylinder.cpp
 
 
 //Normal input expected, provides multiple optional directories
 App - Expected MultiDirectory
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/another-directory  src/test/data/cpp/test-filter-files
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1 src/stest/data/test-project3
 
 
 //Property file input should throw error about text being supplied where number expected
 App - Invalid Property File #1
-50  src/test/data/ini/invalidProps1.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/invalidNumProperty.ini src/stest/data/test-project1
 
 
 //Property file input should throw error about a found property not being accepted
 App - Invalid Property File #2
-50  src/test/data/ini/invalidProps2.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/typoInProperty.ini src/stest/data/test-project1
 
 
 //Property file input should throw error about a string being found, but no extensions (all commas for example)
 App - Invalid Property File #3
-50  src/test/data/ini/invalidProps3.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/commasOnlyProperty.ini src/stest/data/test-project1
 
 
 //Property file input should throw error about a declaration of properety but no value after
 App - Invalid Property File #4
-50  src/test/data/ini/invalidProps4.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/notInitializedProperty.ini src/stest/data/test-project1
 
 
 //Property file input should throw error about a duplicate property
 App - Invalid Property File #5
-50  src/test/data/ini/dupeProps.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/duplicateProperty.ini src/stest/data/test-project1
 
 
 //Checks if system can handle reading many files without issues
 App- Many Files
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/manyFiles
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project2
 
 
 //Inputs two property files, the first one should be the accepted as property file while second should be treated as source file
 App - Multiple Property File
-50  src/test/data/ini/demoPropFile.ini src/test/data/ini/cppExten2.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1
 
 
 //User provides no arguments, should throw error
@@ -83,12 +88,12 @@ App - No Args
 
 //User provides no property file, should use defaults
 App - No Property File
-50 src/test/data/cpp/another-directory
+50  src/stest/data/test-project1
 
 
 //Reads in some weird extension files and treats like normal source files
 App - Not Typical C++ File Extensions
-50  src/test/data/ini/weirdExten.ini src/test/data/cpp/another-directory
+50  src/stest/data/propertyFiles/weirdExtensionsProperty.ini src/stest/data/test-project1 src/stest/data/test-project3/
 
 
 //User only provides suggestion amount, should throw error
@@ -98,30 +103,30 @@ App - Only numSuggestions
 
 //Property file provided doesn't exist, should throw error
 App - Property File Doesn't Exist
-50  src/test/data/ini/noExist.ini src/test/data/cpp/test-recursion
+50  src/stest/data/propertyFiles/noExistProperty.ini src/stest/data/test-project1
 
 
 //Tests that if individual file is added to list it still is scanned, as CppExtensions should only effect directory searching
 App - Property File vs Individual File
-50  src/test/data/ini/cppExten2.ini src/test/data/cpp/hello-world.cpp src/test/data/cpp/test-recursion
+50  src/stest/data/propertyFiles/oneExtensionProperty.ini src/stest/data/test-project1 src/stest/data/test-project1/faculty.cpp
 
 
 //Tests when directory doesn't exist, should throw error
 App - Source File Directory Doesn't Exist
-50  src/test/data/ini/demoPropFile.ini not/an/actual/directory/
+50  src/stest/data/propertyFiles/expectedProperty.ini not/an/actual/directory/
 
 # Same issue as with source file doesn't exist
 
 
 //Tests when individual file provided doesn't exist, should throw error
 App - Source File Doesn't Exist
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-worldNoExist.cpp
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1/hello-worldNoExist.cpp
 
 # As of typing up this test, it doesn't seem to throw an error. Program continues as normal, so report prints no file scanned
 
 
 //Tests when an individual file provided doesn't exist while there exist a file that does, should throw error
 App - Source File Doesn't Exist with Source File That Does
-50  src/test/data/ini/demoPropFile.ini src/test/data/cpp/hello-worldNoExist.cpp src/test/data/cpp/hello-world.cpp
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1/hello-worldNoExist.cpp src/stest/data/test-project1/cellIndex.cpp
 
 # Given an error is not being thrown, only the existing file is actually scanned. 
