@@ -184,7 +184,47 @@ public final class TestBaseline {
      */
     @Test
     void testInvalidPropertyFiles() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/");
+    	
+    	//Invalid Test 1
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/invalidNumProperty.ini", paths);
+    	
+    	assertThat(output, containsString("edu.odu.cs.cs350.dupedetector.InvalidPropertyFormatException: Fifty is not an integer."));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
+    	
+    	//Invalid Test 2
+    	output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/typoInProperty.ini", paths);
+    	
+    	assertThat(output, containsString("edu.odu.cs.cs350.dupedetector.InvalidPropertyFormatException:"
+    			+ " The line \"MxSubstitutions = 50\" is not an accepted Property."));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
+    	
+    	//Invalid Test 3
+    	output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/commasOnlyProperty.ini", paths);
+    	
+    	assertThat(output, containsString("edu.odu.cs.cs350.dupedetector.InvalidPropertyFormatException:"
+    			+ " Invalid property type after CppExtensions. Indicates a string of commas, but no listed extensions."));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
+    	
+    	//Invalid Test 4
+    	output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/notInitializedProperty.ini", paths);
+    	
+    	assertThat(output, containsString("edu.odu.cs.cs350.dupedetector.InvalidPropertyFormatException:"
+    			+ " Expected value after = sign in property declaration."));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
+    	
+    	//Invalid Test 5
+    	output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/duplicateProperty.ini", paths);
+    	
+    	assertThat(output, containsString("edu.odu.cs.cs350.dupedetector.DuplicatePropertiesException:"
+    			+ " Duplicate CppExtensions detected. Please define a property only once."));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
     }
     
     /**
