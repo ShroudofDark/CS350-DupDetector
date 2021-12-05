@@ -8,10 +8,24 @@ Team W7-4
 * [Stories](https://trello.com/b/XxTMxuGT/refactor-project-management)
 
 # Website
-To develop the project website locally, you must first clone the gh-pages branch
-to the build dir. This should be temporary, or later handled by a Gradle task.
-From the project root, run
-`git clone --branch gh-pages git@github.com:john-hix/CS350-dupe-detector.git dupe-detector/build/gh-pages/`.
+
+## Install Jekyll
+Since GitHub Pages uses Jekyll themes, it was fastest to get local dev set up
+by using Jekyll.
+
+Follow the installation instructions for Jekyll [here](https://jekyllrb.com/docs/installation/).
+
+## Running Jekyll server locally
+
+To view updated report stats and view the website locally, do the following:
+
+- `git clone --branch gh-pages git@github.com:john-hix/CS350-dupe-detector.git dupe-detector/build/gh-pages/`
+- `./gradlew build reports` 
+- `cd dupe-detector/build/gh-pages`
+- `bundle exec jekyll serve`
+- Navigate in your browser to [127.0.0.1:4000/CS350-dupe-detector/](http://127.0.0.1:4000/CS350-dupe-detector/).
+
+Updating markdown files will cause the site to be rebuilt automatically.
 
 # Attributions
 
