@@ -260,7 +260,24 @@ public final class TestBaseline {
      */
     @Test
     void testBizzareExtensions() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/");
+    	paths.add("src/stest/data/test-project3/");
+
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/weirdExtensionsProperty.ini", paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir1/Cylinder.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\Cylinder.h,"))); 	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir1/countingDir/schedule_medium.csv,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\schedule_medium.csv,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project3/Information.data,"))
+    			.or(containsString("src\\stest\\data\\test-project3\\Information.data,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project3/empty.txt,"))
+    			.or(containsString("src\\stest\\data\\test-project3\\empty.txt,")));
+    	
+    	//cpp not listed extension
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
     }
     
     /**
@@ -268,7 +285,13 @@ public final class TestBaseline {
      */
     @Test
     void testNumSuggestionsOnly() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	String output = SysTestHelper.runJar("50", null, paths);
+    	
+    	assertThat(output, containsString("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]"));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
     }
     
     /**

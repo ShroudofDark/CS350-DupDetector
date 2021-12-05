@@ -88,7 +88,7 @@ App - No Property File
 
 //Reads in some weird extension files and treats like normal source files
 App - Not Typical C++ File Extensions
-50  src/stest/data/propertyFiles/weirdExtensionsProperty.ini src/stest/data/test-project1
+50  src/stest/data/propertyFiles/weirdExtensionsProperty.ini src/stest/data/test-project1 src/stest/data/test-project3/
 
 
 //User only provides suggestion amount, should throw error
