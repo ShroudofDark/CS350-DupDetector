@@ -157,8 +157,8 @@ public class PropertiesFile {
 <span class="fc" id="L157">			retValue = retValue.substring(1).trim();</span>
 			
 			//If only white spaces or empty, no property listed
-<span class="pc bpc" id="L160" title="1 of 4 branches missed.">			if(retValue.isBlank() || retValue.isEmpty()) {</span>
-<span class="fc" id="L161">				throw new InvalidPropertyFormatException(&quot;Expected value after = sign in property declaration.&quot;);</span>
+<span class="pc bpc" id="L160" title="2 of 4 branches missed.">			if(retValue.isBlank() || retValue.isEmpty()) {</span>
+<span class="nc" id="L161">				throw new InvalidPropertyFormatException(&quot;Expected value after = sign in property declaration.&quot;);</span>
 			}
 		}
 		else {

@@ -1779,7 +1779,7 @@ public class Scanner {
 <span class="fc" id="L1779">          zzState = zzNext;</span>
 
 <span class="fc" id="L1781">          zzAttributes = zzAttrL[zzState];</span>
-<span class="fc bfc" id="L1782" title="All 2 branches covered.">          if ( (zzAttributes &amp; 1) == 1 ) {</span>
+<span class="pc bpc" id="L1782" title="1 of 2 branches missed.">          if ( (zzAttributes &amp; 1) == 1 ) {</span>
 <span class="fc" id="L1783">            zzAction = zzState;</span>
 <span class="fc" id="L1784">            zzMarkedPosL = zzCurrentPosL;</span>
 <span class="fc bfc" id="L1785" title="All 2 branches covered.">            if ( (zzAttributes &amp; 8) == 8 ) break zzForAction;</span>
@@ -1798,9 +1798,9 @@ public class Scanner {
               }
       }
       else {
-<span class="pc bpc" id="L1801" title="265 of 350 branches missed.">        switch (zzAction &lt; 0 ? zzAction : ZZ_ACTION[zzAction]) {</span>
+<span class="pc bpc" id="L1801" title="322 of 350 branches missed.">        switch (zzAction &lt; 0 ? zzAction : ZZ_ACTION[zzAction]) {</span>
           case 1:
-<span class="fc" id="L1803">            { throw new RuntimeException(&quot;Illegal character \&quot;&quot;+yytext()+</span>
+<span class="nc" id="L1803">            { throw new RuntimeException(&quot;Illegal character \&quot;&quot;+yytext()+</span>
                                                               &quot;\&quot; at line &quot;+yyline+&quot;, column &quot;+yycolumn);
             }
             // fall through
@@ -1811,7 +1811,7 @@ public class Scanner {
             // fall through
 <span class="fc" id="L1812">          case 176: break;</span>
           case 3:
-<span class="fc" id="L1814">            { return symbol(TokenKinds.NOT);</span>
+<span class="nc" id="L1814">            { return symbol(TokenKinds.NOT);</span>
             }
             // fall through
 <span class="nc" id="L1817">          case 177: break;</span>
@@ -1836,15 +1836,15 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1837">          case 181: break;</span>
           case 8:
-<span class="fc" id="L1839">            { return symbol(TokenKinds.BITAND);</span>
+<span class="nc" id="L1839">            { return symbol(TokenKinds.BITAND);</span>
             }
             // fall through
 <span class="nc" id="L1842">          case 182: break;</span>
           case 9:
-<span class="fc" id="L1844">            { yybegin(CHARLITERAL);</span>
+<span class="nc" id="L1844">            { yybegin(CHARLITERAL);</span>
             }
             // fall through
-<span class="fc" id="L1847">          case 183: break;</span>
+<span class="nc" id="L1847">          case 183: break;</span>
           case 10:
 <span class="fc" id="L1849">            { return symbol(TokenKinds.LPAREN);</span>
             }
@@ -1861,7 +1861,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1862">          case 186: break;</span>
           case 13:
-<span class="fc" id="L1864">            { return symbol(TokenKinds.PLUS);</span>
+<span class="nc" id="L1864">            { return symbol(TokenKinds.PLUS);</span>
             }
             // fall through
 <span class="nc" id="L1867">          case 187: break;</span>
@@ -1871,17 +1871,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1872">          case 188: break;</span>
           case 15:
-<span class="fc" id="L1874">            { return symbol(TokenKinds.MINUS);</span>
+<span class="nc" id="L1874">            { return symbol(TokenKinds.MINUS);</span>
             }
             // fall through
 <span class="nc" id="L1877">          case 189: break;</span>
           case 16:
-<span class="fc" id="L1879">            { return symbol(TokenKinds.DOT);</span>
+<span class="nc" id="L1879">            { return symbol(TokenKinds.DOT);</span>
             }
             // fall through
 <span class="nc" id="L1882">          case 190: break;</span>
           case 17:
-<span class="fc" id="L1884">            { return symbol(TokenKinds.DIV);</span>
+<span class="nc" id="L1884">            { return symbol(TokenKinds.DIV);</span>
             }
             // fall through
 <span class="nc" id="L1887">          case 191: break;</span>
@@ -1891,7 +1891,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1892">          case 192: break;</span>
           case 19:
-<span class="fc" id="L1894">            { return symbol(TokenKinds.COLON);</span>
+<span class="nc" id="L1894">            { return symbol(TokenKinds.COLON);</span>
             }
             // fall through
 <span class="nc" id="L1897">          case 193: break;</span>
@@ -1906,7 +1906,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1907">          case 195: break;</span>
           case 22:
-<span class="fc" id="L1909">            { return symbol(TokenKinds.EQ);</span>
+<span class="nc" id="L1909">            { return symbol(TokenKinds.EQ);</span>
             }
             // fall through
 <span class="nc" id="L1912">          case 196: break;</span>
@@ -1951,7 +1951,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1952">          case 204: break;</span>
           case 31:
-<span class="fc" id="L1954">            { return symbol(TokenKinds.COMPL);</span>
+<span class="nc" id="L1954">            { return symbol(TokenKinds.COMPL);</span>
             }
             // fall through
 <span class="nc" id="L1957">          case 205: break;</span>
@@ -1976,7 +1976,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1977">          case 209: break;</span>
           case 36:
-<span class="fc" id="L1979">            { return symbol(TokenKinds.NOTEQ);</span>
+<span class="nc" id="L1979">            { return symbol(TokenKinds.NOTEQ);</span>
             }
             // fall through
 <span class="nc" id="L1982">          case 210: break;</span>
@@ -1986,7 +1986,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1987">          case 211: break;</span>
           case 38:
-<span class="fc" id="L1989">            { return symbol(TokenKinds.AND);</span>
+<span class="nc" id="L1989">            { return symbol(TokenKinds.AND);</span>
             }
             // fall through
 <span class="nc" id="L1992">          case 212: break;</span>
@@ -1996,22 +1996,22 @@ public class Scanner {
             // fall through
 <span class="nc" id="L1997">          case 213: break;</span>
           case 40:
-<span class="fc" id="L1999">            { return symbol(TokenKinds.MULTEQ);</span>
+<span class="nc" id="L1999">            { return symbol(TokenKinds.MULTEQ);</span>
             }
             // fall through
 <span class="nc" id="L2002">          case 214: break;</span>
           case 41:
-<span class="fc" id="L2004">            { return symbol(TokenKinds.PLUSPLUS);</span>
+<span class="nc" id="L2004">            { return symbol(TokenKinds.PLUSPLUS);</span>
             }
             // fall through
 <span class="nc" id="L2007">          case 215: break;</span>
           case 42:
-<span class="fc" id="L2009">            { return symbol(TokenKinds.PLUSEQ);</span>
+<span class="nc" id="L2009">            { return symbol(TokenKinds.PLUSEQ);</span>
             }
             // fall through
 <span class="nc" id="L2012">          case 216: break;</span>
           case 43:
-<span class="fc" id="L2014">            { return symbol(TokenKinds.MINUSMINUS);</span>
+<span class="nc" id="L2014">            { return symbol(TokenKinds.MINUSMINUS);</span>
             }
             // fall through
 <span class="nc" id="L2017">          case 217: break;</span>
@@ -2021,7 +2021,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2022">          case 218: break;</span>
           case 45:
-<span class="fc" id="L2024">            { return symbol(TokenKinds.DEREF);</span>
+<span class="nc" id="L2024">            { return symbol(TokenKinds.DEREF);</span>
             }
             // fall through
 <span class="nc" id="L2027">          case 219: break;</span>
@@ -2056,7 +2056,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2057">          case 225: break;</span>
           case 52:
-<span class="fc" id="L2059">            { return symbol(TokenKinds.SCOPE);</span>
+<span class="nc" id="L2059">            { return symbol(TokenKinds.SCOPE);</span>
             }
             // fall through
 <span class="nc" id="L2062">          case 226: break;</span>
@@ -2066,22 +2066,22 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2067">          case 227: break;</span>
           case 54:
-<span class="fc" id="L2069">            { return symbol(TokenKinds.LTEQ);</span>
+<span class="nc" id="L2069">            { return symbol(TokenKinds.LTEQ);</span>
             }
             // fall through
 <span class="nc" id="L2072">          case 228: break;</span>
           case 55:
-<span class="fc" id="L2074">            { return symbol(TokenKinds.EQEQ);</span>
+<span class="nc" id="L2074">            { return symbol(TokenKinds.EQEQ);</span>
             }
             // fall through
 <span class="nc" id="L2077">          case 229: break;</span>
           case 56:
-<span class="fc" id="L2079">            { return symbol(TokenKinds.GTEQ);</span>
+<span class="nc" id="L2079">            { return symbol(TokenKinds.GTEQ);</span>
             }
             // fall through
 <span class="nc" id="L2082">          case 230: break;</span>
           case 57:
-<span class="fc" id="L2084">            { return symbol(TokenKinds.RSHIFT);</span>
+<span class="nc" id="L2084">            { return symbol(TokenKinds.RSHIFT);</span>
             }
             // fall through
 <span class="nc" id="L2087">          case 231: break;</span>
@@ -2096,12 +2096,12 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2097">          case 233: break;</span>
           case 60:
-<span class="fc" id="L2099">            { return symbol(TokenKinds.IF);</span>
+<span class="nc" id="L2099">            { return symbol(TokenKinds.IF);</span>
             }
             // fall through
 <span class="nc" id="L2102">          case 234: break;</span>
           case 61:
-<span class="fc" id="L2104">            { return symbol(TokenKinds.OR);</span>
+<span class="nc" id="L2104">            { return symbol(TokenKinds.OR);</span>
             }
             // fall through
 <span class="nc" id="L2107">          case 235: break;</span>
@@ -2147,10 +2147,10 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2148">          case 243: break;</span>
           case 70:
-<span class="fc" id="L2150">            { string.append( '\n' );</span>
+<span class="nc" id="L2150">            { string.append( '\n' );</span>
             }
             // fall through
-<span class="fc" id="L2153">          case 244: break;</span>
+<span class="nc" id="L2153">          case 244: break;</span>
           case 71:
 <span class="nc" id="L2155">            { string.append( '\r' );</span>
             }
@@ -2162,7 +2162,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2163">          case 246: break;</span>
           case 73:
-<span class="fc" id="L2165">            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, yytext().charAt(0));</span>
+<span class="nc" id="L2165">            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, yytext().charAt(0));</span>
             }
             // fall through
 <span class="nc" id="L2168">          case 247: break;</span>
@@ -2197,7 +2197,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2198">          case 253: break;</span>
           case 80:
-<span class="fc" id="L2200">            { return symbol(TokenKinds.FOR);</span>
+<span class="nc" id="L2200">            { return symbol(TokenKinds.FOR);</span>
             }
             // fall through
 <span class="nc" id="L2203">          case 254: break;</span>
@@ -2207,7 +2207,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2208">          case 255: break;</span>
           case 82:
-<span class="fc" id="L2210">            { return symbol(TokenKinds.NEW);</span>
+<span class="nc" id="L2210">            { return symbol(TokenKinds.NEW);</span>
             }
             // fall through
 <span class="nc" id="L2213">          case 256: break;</span>
@@ -2274,17 +2274,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2275">          case 268: break;</span>
           case 95:
-<span class="fc" id="L2277">            { return symbol(TokenKinds.AUTO);</span>
+<span class="nc" id="L2277">            { return symbol(TokenKinds.AUTO);</span>
             }
             // fall through
 <span class="nc" id="L2280">          case 269: break;</span>
           case 96:
-<span class="fc" id="L2282">            { return symbol(TokenKinds.BOOL);</span>
+<span class="nc" id="L2282">            { return symbol(TokenKinds.BOOL);</span>
             }
             // fall through
 <span class="nc" id="L2285">          case 270: break;</span>
           case 97:
-<span class="fc" id="L2287">            { return symbol(TokenKinds.CASE);</span>
+<span class="nc" id="L2287">            { return symbol(TokenKinds.CASE);</span>
             }
             // fall through
 <span class="nc" id="L2290">          case 271: break;</span>
@@ -2294,7 +2294,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2295">          case 272: break;</span>
           case 99:
-<span class="fc" id="L2297">            { return symbol(TokenKinds.ELSE);</span>
+<span class="nc" id="L2297">            { return symbol(TokenKinds.ELSE);</span>
             }
             // fall through
 <span class="nc" id="L2300">          case 273: break;</span>
@@ -2309,7 +2309,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2310">          case 275: break;</span>
           case 102:
-<span class="fc" id="L2312">            { return symbol(TokenKinds.LONG);</span>
+<span class="nc" id="L2312">            { return symbol(TokenKinds.LONG);</span>
             }
             // fall through
 <span class="nc" id="L2315">          case 276: break;</span>
@@ -2319,17 +2319,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2320">          case 277: break;</span>
           case 104:
-<span class="fc" id="L2322">            { return symbol(TokenKinds.BOOLEAN_LITERAL, true);</span>
+<span class="nc" id="L2322">            { return symbol(TokenKinds.BOOLEAN_LITERAL, true);</span>
             }
             // fall through
 <span class="nc" id="L2325">          case 278: break;</span>
           case 105:
-<span class="fc" id="L2327">            { return symbol(TokenKinds.VOID);</span>
+<span class="nc" id="L2327">            { return symbol(TokenKinds.VOID);</span>
             }
             // fall through
 <span class="nc" id="L2330">          case 279: break;</span>
           case 106:
-<span class="fc" id="L2332">            { return symbol(TokenKinds.BREAK);</span>
+<span class="nc" id="L2332">            { return symbol(TokenKinds.BREAK);</span>
             }
             // fall through
 <span class="nc" id="L2335">          case 280: break;</span>
@@ -2339,7 +2339,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2340">          case 281: break;</span>
           case 108:
-<span class="fc" id="L2342">            { return symbol(TokenKinds.CLASS);</span>
+<span class="nc" id="L2342">            { return symbol(TokenKinds.CLASS);</span>
             }
             // fall through
 <span class="nc" id="L2345">          case 282: break;</span>
@@ -2349,7 +2349,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2350">          case 283: break;</span>
           case 110:
-<span class="fc" id="L2352">            { return symbol(TokenKinds.BOOLEAN_LITERAL, false);</span>
+<span class="nc" id="L2352">            { return symbol(TokenKinds.BOOLEAN_LITERAL, false);</span>
             }
             // fall through
 <span class="nc" id="L2355">          case 284: break;</span>
@@ -2364,7 +2364,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2365">          case 286: break;</span>
           case 113:
-<span class="fc" id="L2367">            { return symbol(TokenKinds.THROW);</span>
+<span class="nc" id="L2367">            { return symbol(TokenKinds.THROW);</span>
             }
             // fall through
 <span class="nc" id="L2370">          case 287: break;</span>
@@ -2379,17 +2379,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2380">          case 289: break;</span>
           case 116:
-<span class="fc" id="L2382">            { return symbol(TokenKinds.WHILE);</span>
+<span class="nc" id="L2382">            { return symbol(TokenKinds.WHILE);</span>
             }
             // fall through
 <span class="nc" id="L2385">          case 290: break;</span>
           case 117:
-<span class="fc" id="L2387">            { return symbol(TokenKinds.DELETE);</span>
+<span class="nc" id="L2387">            { return symbol(TokenKinds.DELETE);</span>
             }
             // fall through
 <span class="nc" id="L2390">          case 291: break;</span>
           case 118:
-<span class="fc" id="L2392">            { return symbol(TokenKinds.DOUBLE);</span>
+<span class="nc" id="L2392">            { return symbol(TokenKinds.DOUBLE);</span>
             }
             // fall through
 <span class="nc" id="L2395">          case 292: break;</span>
@@ -2404,17 +2404,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2405">          case 294: break;</span>
           case 121:
-<span class="fc" id="L2407">            { return symbol(TokenKinds.FRIEND);</span>
+<span class="nc" id="L2407">            { return symbol(TokenKinds.FRIEND);</span>
             }
             // fall through
 <span class="nc" id="L2410">          case 295: break;</span>
           case 122:
-<span class="fc" id="L2412">            { return symbol(TokenKinds.INLINE);</span>
+<span class="nc" id="L2412">            { return symbol(TokenKinds.INLINE);</span>
             }
             // fall through
 <span class="nc" id="L2415">          case 296: break;</span>
           case 123:
-<span class="fc" id="L2417">            { return symbol(TokenKinds.PUBLIC);</span>
+<span class="nc" id="L2417">            { return symbol(TokenKinds.PUBLIC);</span>
             }
             // fall through
 <span class="nc" id="L2420">          case 297: break;</span>
@@ -2434,17 +2434,17 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2435">          case 300: break;</span>
           case 127:
-<span class="fc" id="L2437">            { return symbol(TokenKinds.STATIC);</span>
+<span class="nc" id="L2437">            { return symbol(TokenKinds.STATIC);</span>
             }
             // fall through
 <span class="nc" id="L2440">          case 301: break;</span>
           case 128:
-<span class="fc" id="L2442">            { return symbol(TokenKinds.STRUCT);</span>
+<span class="nc" id="L2442">            { return symbol(TokenKinds.STRUCT);</span>
             }
             // fall through
 <span class="nc" id="L2445">          case 302: break;</span>
           case 129:
-<span class="fc" id="L2447">            { return symbol(TokenKinds.SWITCH);</span>
+<span class="nc" id="L2447">            { return symbol(TokenKinds.SWITCH);</span>
             }
             // fall through
 <span class="nc" id="L2450">          case 303: break;</span>
@@ -2474,7 +2474,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2475">          case 308: break;</span>
           case 135:
-<span class="fc" id="L2477">            { return symbol(TokenKinds.DEFAULT);</span>
+<span class="nc" id="L2477">            { return symbol(TokenKinds.DEFAULT);</span>
             }
             // fall through
 <span class="nc" id="L2480">          case 309: break;</span>
@@ -2484,12 +2484,12 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2485">          case 310: break;</span>
           case 137:
-<span class="fc" id="L2487">            { return symbol(TokenKinds.NULLPTR);</span>
+<span class="nc" id="L2487">            { return symbol(TokenKinds.NULLPTR);</span>
             }
             // fall through
 <span class="nc" id="L2490">          case 311: break;</span>
           case 138:
-<span class="fc" id="L2492">            { return symbol(TokenKinds.PRIVATE);</span>
+<span class="nc" id="L2492">            { return symbol(TokenKinds.PRIVATE);</span>
             }
             // fall through
 <span class="nc" id="L2495">          case 312: break;</span>
@@ -2499,7 +2499,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2500">          case 313: break;</span>
           case 140:
-<span class="fc" id="L2502">            { return symbol(TokenKinds.VIRTUAL);</span>
+<span class="nc" id="L2502">            { return symbol(TokenKinds.VIRTUAL);</span>
             }
             // fall through
 <span class="nc" id="L2505">          case 314: break;</span>
@@ -2544,12 +2544,12 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2545">          case 322: break;</span>
           case 149:
-<span class="fc" id="L2547">            { return symbol(TokenKinds.NOEXCEPT);</span>
+<span class="nc" id="L2547">            { return symbol(TokenKinds.NOEXCEPT);</span>
             }
             // fall through
 <span class="nc" id="L2550">          case 323: break;</span>
           case 150:
-<span class="fc" id="L2552">            { return symbol(TokenKinds.OPERATOR);</span>
+<span class="nc" id="L2552">            { return symbol(TokenKinds.OPERATOR);</span>
             }
             // fall through
 <span class="nc" id="L2555">          case 324: break;</span>
@@ -2569,7 +2569,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2570">          case 327: break;</span>
           case 154:
-<span class="fc" id="L2572">            { return symbol(TokenKinds.TEMPLATE);</span>
+<span class="nc" id="L2572">            { return symbol(TokenKinds.TEMPLATE);</span>
             }
             // fall through
 <span class="nc" id="L2575">          case 328: break;</span>
@@ -2579,7 +2579,7 @@ public class Scanner {
             // fall through
 <span class="nc" id="L2580">          case 329: break;</span>
           case 156:
-<span class="fc" id="L2582">            { return symbol(TokenKinds.UNSIGNED);</span>
+<span class="nc" id="L2582">            { return symbol(TokenKinds.UNSIGNED);</span>
             }
             // fall through
 <span class="nc" id="L2585">          case 330: break;</span>
