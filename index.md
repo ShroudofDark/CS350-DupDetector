@@ -31,7 +31,7 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     </tr>
     <tr>
     <td>
-        <a href="reports/tests/test/">JUnit test report</a>
+        <a href="reports/tests/test/">JUnit unit test report</a>
     </td>
     <td>
         <!-- For each graph to be displayed, 
@@ -47,6 +47,18 @@ https://www.cs.odu.edu/~zeil/gitlab/reportAccumulator/reports/ -->
     <td>
         <div id="jacocoGraph" class="graph">jacoco</div>
     </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="reports/tests/iTest/index.html">Integration test report</a>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <a href="reports/tests/sTest/index.html">System test report</a>
+        </td>
+        <td></td>
     </tr>
     <tr>
     <th colspan="2">Analysis</th>
