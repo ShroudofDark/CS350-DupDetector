@@ -106,12 +106,13 @@ class ReportIntegrationTest {
 		ArrayList<String> expectedExtensions = new ArrayList<String>(Arrays.asList("h","cpp"));
 		
 		assertThat(defaultProps.getCppExtensions(), containsInAnyOrder(expectedExtensions.toArray()));
-		assertThat(defaultProps.getMaxSubstitutions(), is(5));
-		assertThat(defaultProps.getMinSequenceLength(), is(5));
+		assertThat(defaultProps.getMaxSubstitutions(), is(8));
+		assertThat(defaultProps.getMinSequenceLength(), is(10));
 		
 		SuppliedFilePaths project = new SuppliedFilePaths();
 		project.setEligibleExtensions(defaultProps.getCppExtensions());		
 		ArrayList<SourceCodeFile> projectFiles = project.findEligibleSourceCode(userFileInput);
+		
 		//Only Stubbed because this is not a major test factor in this test/class still not developed
 		ArrayList<SuggestedRefactoring> stubbedRefList
 			= new ArrayList<SuggestedRefactoring>(Arrays.asList(refactoring1, refactoring2, refactoring3, refactoring4, 
@@ -119,13 +120,108 @@ class ReportIntegrationTest {
 		
 		Report newReport = new Report(projectFiles, stubbedRefList);
 		
+		assertThat(newReport.totalSourceCodeFiles(), is(projectFiles.size()));
 		assertThat(newReport.getSourceCodeFile(0), is(projectFiles.get(0)));
+		assertThat(newReport.getSourceCodeFile(1), is(projectFiles.get(1)));
+		assertThat(newReport.getSourceCodeFile(2), is(projectFiles.get(2)));
+		assertThat(newReport.getSourceCodeFile(3), is(projectFiles.get(3)));
 		
+		assertThat(newReport.getSourceCodeFile(0).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(1).getFilePath().toString(),
+				containsString("invalid.cpp"));
+		assertThat(newReport.getSourceCodeFile(2).getFilePath().toString(),
+				containsString("hello-world.cpp"));
+		assertThat(newReport.getSourceCodeFile(3).getFilePath().toString(),
+				containsString("hello-world.h"));
+		assertThat(newReport.getSourceCodeFile(4).getFilePath().toString(),
+				containsString("hello-world1.cpp"));
+		
+		assertThat(newReport.totalRefactorings(), is(stubbedRefList.size()));
+		assertThat(newReport.getRefactoring(0), is(stubbedRefList.get(0)));
+		assertThat(newReport.getRefactoring(1), is(stubbedRefList.get(1)));
+		assertThat(newReport.getRefactoring(2), is(stubbedRefList.get(2)));
+		assertThat(newReport.getRefactoring(3), is(stubbedRefList.get(3)));
+		
+		newReport.trimRefactorings(defaultProps.getMaxSubstitutions(), defaultProps.getMinSequenceLength());
+		newReport.sortRefactorings();
+		
+		assertThat(newReport.totalRefactorings(), not(is(stubbedRefList.size())));
 		
 		try {
-			PropertiesFile normalProps = new PropertiesFile("src/itest/data/propertyFile/expectedProperty.ini");
-			
+			PropertiesFile normalProps = new PropertiesFile("src/itest/data/propertyFile/expectedProperty.ini");	
 			expectedExtensions = new ArrayList<String>(Arrays.asList("h","cpp","H","hpp"));
+			
+			assertThat(normalProps.getCppExtensions(), containsInAnyOrder(expectedExtensions.toArray()));
+			assertThat(normalProps.getMaxSubstitutions(), is(5));
+			assertThat(normalProps.getMinSequenceLength(), is(20));
+			
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(normalProps.getCppExtensions());
+			projectFiles = project.findEligibleSourceCode(userFileInput);
+			
+			newReport = new Report(projectFiles, stubbedRefList);
+			
+			assertThat(newReport.totalSourceCodeFiles(), is(projectFiles.size()));
+			assertThat(newReport.getSourceCodeFile(0), is(projectFiles.get(0)));
+			assertThat(newReport.getSourceCodeFile(1), is(projectFiles.get(1)));
+			assertThat(newReport.getSourceCodeFile(2), is(projectFiles.get(2)));
+			assertThat(newReport.getSourceCodeFile(3), is(projectFiles.get(3)));
+			
+			assertThat(newReport.getSourceCodeFile(0).getFilePath().toString(),
+					containsString("hello-world.cpp"));
+			assertThat(newReport.getSourceCodeFile(1).getFilePath().toString(),
+					containsString("invalid.cpp"));
+			assertThat(newReport.getSourceCodeFile(2).getFilePath().toString(),
+					containsString("hello-world.cpp"));
+			assertThat(newReport.getSourceCodeFile(3).getFilePath().toString(),
+					containsString("hello-world.h"));
+			assertThat(newReport.getSourceCodeFile(4).getFilePath().toString(),
+					containsString("hello-world1.cpp"));
+			assertThat(newReport.getSourceCodeFile(5).getFilePath().toString(),
+					containsString("moreTestFiles.hpp"));
+			
+			assertThat(newReport.totalRefactorings(), is(stubbedRefList.size()));
+			assertThat(newReport.getRefactoring(0), is(stubbedRefList.get(0)));
+			assertThat(newReport.getRefactoring(1), is(stubbedRefList.get(1)));
+			assertThat(newReport.getRefactoring(2), is(stubbedRefList.get(2)));
+			assertThat(newReport.getRefactoring(3), is(stubbedRefList.get(3)));
+		}
+		catch(Exception e) {
+			fail("Error was not expected: " + e);
+		}
+		
+		try {
+			PropertiesFile diffProps = new PropertiesFile("src/itest/data/propertyFile/differentExtensions.ini");	
+			expectedExtensions = new ArrayList<String>(Arrays.asList("txt","java","data"));
+			
+			assertThat(diffProps.getCppExtensions(), containsInAnyOrder(expectedExtensions.toArray()));
+			assertThat(diffProps.getMaxSubstitutions(), is(8));
+			assertThat(diffProps.getMinSequenceLength(), is(10));
+			
+			project = new SuppliedFilePaths();
+			project.setEligibleExtensions(diffProps.getCppExtensions());
+			projectFiles = project.findEligibleSourceCode(userFileInput);
+			
+			newReport = new Report(projectFiles, stubbedRefList);
+			
+			assertThat(newReport.totalSourceCodeFiles(), is(projectFiles.size()));
+			assertThat(newReport.getSourceCodeFile(0), is(projectFiles.get(0)));
+			assertThat(newReport.getSourceCodeFile(1), is(projectFiles.get(1)));
+			assertThat(newReport.getSourceCodeFile(2), is(projectFiles.get(2)));
+			
+			assertThat(newReport.getSourceCodeFile(0).getFilePath().toString(),
+					containsString("empty.txt"));
+			assertThat(newReport.getSourceCodeFile(1).getFilePath().toString(),
+					containsString("Information.data"));
+			assertThat(newReport.getSourceCodeFile(2).getFilePath().toString(),
+					containsString("oopsJava.java"));
+			
+			assertThat(newReport.totalRefactorings(), is(stubbedRefList.size()));
+			assertThat(newReport.getRefactoring(0), is(stubbedRefList.get(0)));
+			assertThat(newReport.getRefactoring(1), is(stubbedRefList.get(1)));
+			assertThat(newReport.getRefactoring(2), is(stubbedRefList.get(2)));
+			assertThat(newReport.getRefactoring(3), is(stubbedRefList.get(3)));
 		}
 		catch(Exception e) {
 			fail("Error was not expected: " + e);
