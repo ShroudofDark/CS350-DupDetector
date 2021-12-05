@@ -100,7 +100,24 @@ public final class TestBaseline {
      */
     @Test
     void testExpectedInput() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1");
+    	
+    	String output = SysTestHelper.runJar("20", "src/stest/data/propertyFiles/expectedProperty.ini", paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/cellIndex.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\cellIndex.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/Composite.H,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\Composite.H,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/directory With Spaces/File With Spaces.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\directory With Spaces\\File With Spaces.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/cellIndex.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\cellIndex.h,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/cellmap_cpp.txt,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\cellmap_cpp.txt,"))));
+    	
+    	fail("Partially Implemented, however not up to full coverage. Due to output on section being random, cannot test for exactness.");
     }
     
     /**
@@ -108,7 +125,24 @@ public final class TestBaseline {
      */
     @Test
     void testEmptyPropertyFile() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1");
+    	
+    	String output = SysTestHelper.runJar("20", "src/stest/data/propertyFiles/emptyProperty.ini", paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/cellIndex.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\cellIndex.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/directory With Spaces/File With Spaces.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\directory With Spaces\\File With Spaces.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/cellIndex.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\cellIndex.h,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/cellmap_cpp.txt,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\cellmap_cpp.txt,"))));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/Composite.H,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\Composite.H,"))));
+    	
+    	fail("Partially Implemented, however not up to full coverage. Due to output on section being random, cannot test for exactness.");
     }
     
     /**
@@ -252,7 +286,24 @@ public final class TestBaseline {
      */
     @Test
     void testNoPropertyFile() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1");
+    	
+    	String output = SysTestHelper.runJar("20", null, paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/cellIndex.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\cellIndex.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/directory With Spaces/File With Spaces.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\directory With Spaces\\File With Spaces.cpp,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/dir2/cellIndex.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir2\\cellIndex.h,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/cellmap_cpp.txt,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\cellmap_cpp.txt,"))));
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/dir1/countingDir/1Deep/2Deep/Composite.H,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\dir1\\countingDir\\1Deep\\2Deep\\Composite.H,"))));
+    	
+    	fail("Partially Implemented, however not up to full coverage. Due to output on section being random, cannot test for exactness.");
     }
     
     /**
@@ -316,7 +367,19 @@ public final class TestBaseline {
      */
     @Test
     void testIndividualFilesAddedWhenExtensionDoesNotMatchPropertyFile() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/");
+    	paths.add("src/stest/data/test-project1/faculty.cpp");
+    	
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/oneExtensionProperty.ini", paths);
+    	
+    	assertThat(output, either(containsString("src/stest/data/test-project1/faculty.h,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.h,")));
+    	assertThat(output, either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/cellIndex.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\cellIndex.cpp,"))));
     }
     
     /**
