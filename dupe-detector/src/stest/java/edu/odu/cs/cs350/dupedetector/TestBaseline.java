@@ -1,7 +1,8 @@
+package edu.odu.cs.cs350.dupedetector;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.odu.cs.cs350.dupedetector.test.SysTestHelper;
+import edu.odu.cs.cs350.dupedetector.SysTestHelper;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
