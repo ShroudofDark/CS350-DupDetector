@@ -34,7 +34,6 @@ java {
     targetCompatibility = JavaVersion.toVersion(11)
 }
 
-jar.baseName = "DupDetector"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -59,6 +58,13 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'edu.odu.cs.cs350.dupedetector.App'
+}
+
+jar {
+    baseName = "DupDetector"
+    manifest {
+        attributes 'Main-Class': 'edu.odu.cs.cs350.dupedetector.App'
+    }
 }
 
 tasks.named('test') {
