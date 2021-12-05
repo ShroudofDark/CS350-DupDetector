@@ -16,6 +16,9 @@ import org.junit.jupiter.api.Test;
  * Current note, can only test certain parts of the output report as suggestions
  * are randomly defined and thus there is no consistency in what might occur.
  * 
+ * The either from hamcrest matchers allows us to check the two possible variations of a path
+ * depending on what system the file is found. Checking for either / or \ possible path strings.
+ * 
  * @author Jacob
  * @author John
  */
@@ -48,8 +51,6 @@ public final class TestBaseline {
     	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/expectedProperty.ini", paths);
     	
     	/**
-    	 * Either allows for checking both, helps avoid issues with different filepaths for different systems
-    	 * 
     	 * It is important to check for the comma after given the expected output of a file report should have a comma
     	 * after the file path is listed then the number of tokens. The file could appear again in the suggested refactoring
     	 * report, however it won't have a comma following it. We don't care for it reappearing there.
@@ -115,6 +116,9 @@ public final class TestBaseline {
      */
     @Test
     void testHighNumSuggestions() {
+    	/**
+    	 * Can't properly test as output currently provides randomly generated suggestions and the amount removed is random
+    	 */
     	fail("Not Implemented");
     }
     
@@ -123,6 +127,9 @@ public final class TestBaseline {
      */
     @Test
     void testLowNumSuggestions() {
+    	/**
+    	 * Can't properly test as output currently provides randomly generated suggestions and the amount removed is random
+    	 */
     	fail("Not Implemented");
     }
     
@@ -131,7 +138,16 @@ public final class TestBaseline {
      */
     @Test
     void testSingleSourceFile() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/faculty.cpp");
+    	
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/expectedProperty.ini", paths);
+    
+    	assertThat(output, either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,")));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/cellIndex.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\cellIndex.cpp,"))));
     }
     
     /**
