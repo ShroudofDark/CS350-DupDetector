@@ -78,6 +78,9 @@ testSets {
     iTest {
         dirName = 'itest'
     }
+    sTest {
+        dirName = 'stest'
+    }
 }
 
 tasks.withType(Test) {
@@ -88,14 +91,16 @@ tasks.withType(Test) {
 }
 
 check.dependsOn iTest
+check.dependsOn sTest
 
 iTest.mustRunAfter test
+sTest.mustRunAfter iTest
 
-spotbugsITest {
+iTest {
     ignoreFailures = true
 }
 
-iTest {
+sTest {
     ignoreFailures = true
 }
 
@@ -132,8 +137,14 @@ pmd {
 }
 
 spotbugsTest.enabled = false
+spotbugsITest.enabled = false
+spotbugsSTest.enabled = false
 pmdTest.enabled = false
-checkstyleTest.enabled = true
+pmdITest.enabled = false
+pmdSTest.enabled = false
+checkstyleTest.enabled = false
+checkstyleITest.enabled = false
+checkstyleSTest.enabled = false
 checkstyleMain.enabled = true
 // end copied code from Zeil
 
