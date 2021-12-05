@@ -12,6 +12,11 @@ App - Duplicate Directory (Many)
 50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1 src/stest/data/test-project1
 
 
+//Empty directory is provided, still runs as intended just assumes nothing scanned
+App - Empty Directory
+50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project4
+
+
 //Normal input expected with numSuggestions, a property file, and at least a code file
 App - Expected
 50  src/stest/data/propertyFiles/expectedProperty.ini src/stest/data/test-project1

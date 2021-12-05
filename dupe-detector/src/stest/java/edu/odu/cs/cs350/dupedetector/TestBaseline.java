@@ -299,7 +299,16 @@ public final class TestBaseline {
      */
     @Test
     void testPropertyFileNotFound() {
-    	fail("Not Implemented");
+    	LinkedList<String> paths = new LinkedList<String>();
+    	paths.add("src/stest/data/test-project1/");
+    	
+    	String output = SysTestHelper.runJar("50", "src/stest/data/propertyFiles/noExistProperty.ini", paths);
+    	
+    	assertThat(output, containsString("java.io.FileNotFoundException: File "));
+    	assertThat(output, containsString("noExistProperty.ini does not exist."));
+    	
+    	assertThat(output, not(either(containsString("src/stest/data/test-project1/faculty.cpp,"))
+    			.or(containsString("src\\stest\\data\\test-project1\\faculty.cpp,"))));
     }
     
     /**
