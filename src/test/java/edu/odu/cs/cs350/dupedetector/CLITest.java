@@ -14,8 +14,8 @@ public class CLITest {
      void TestCLI(){
     	//Test CLI constructor parseArgs
     	CLI passArg = new CLI();
-    	passArg(String[] args) = new String[]{"3", ".ini", "hello-world.cpp", "hello2-world.cpp"};
-    	passArg(String[] args_2) = new String[]{"2", ".h", "hello-world.java", "hello2-world.cpp"};
+    	String[] args = new String[]{"3", ".ini", "hello-world.cpp", "hello2-world.cpp"};
+    	String[] args_2 = new String[]{"2", ".h", "hello-world.java", "hello2-world.cpp"};
     	
     	String filepath1 = "hello-world.cpp";
     	String filepath2 = "hello2-world.cpp";
