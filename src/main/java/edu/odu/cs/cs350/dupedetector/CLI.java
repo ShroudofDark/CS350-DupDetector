@@ -38,6 +38,7 @@ public class CLI {
 				if (args.length < 2) { // holds with or without properties file
 					throw new Exception("Too few arguments.");
 				}
+				
 
 				int startPathindex = 3;
 				if (args[1].endsWith(".ini"))
@@ -54,10 +55,11 @@ public class CLI {
 					suppliedPaths.add(args[i]);
 				}
 				
+				
 			
 			}
 
 			public void printForInvalidInvocation() {
 				System.out.println("usage: java -jar DupDetector.jar nSuggestions [ properties ] path1 [ path2 … ]");
-			}
+			} 
 }
