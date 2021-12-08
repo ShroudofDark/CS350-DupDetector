@@ -22,7 +22,7 @@ title: W7-4 DupeDetector Project Reports
 email: ""
 description: >- # this means to ignore newlines until "baseurl:"
   Project site for a team of ODU students in CS350.
-  jhick046@odu.edu, jmcfa001@odu.edu, and another student
+  jhick046@odu.edu, jmcfa001@odu.edu, and an anonymous student
 baseurl: "/CS350-dupe-detector" # the subpath of your site, e.g. /blog
 url: "https://john-hix.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
