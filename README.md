@@ -1,10 +1,25 @@
 # DupeDetector
 
+Some information below may not properly display as it links off to the private version of the repo, such as the github pages that were created during the project life time.
+
+The overall goal of this project was to first introduce the team to software development on a larger scale and within groups. We worked through a small scale development cycle and integrated a variety of ideas such as version control, continous integration, testing, and so forth in one semester.
+
+The actual code that was being developed was a program that would read in a file, one that had code for example, and determine common tokens in order to provide suggestions on how to refactor the code in order to make it more efficient. Ultimately the project was not finished, but that was not the goal of the class.
+
+A full description of the project can be found here: https://github.com/ShroudofDark/CS350-DupDetector/blob/main/project-description.md
+
+My overall contribution was primarily focused on creating the factoring report output, correlating them to the correct files, creating the properties files and code that reads in the files, and create the suggested refactoring class (although we did not get far enough to ultimately define duplicate tokens).
+
+This can be further seen within the story board and commits. 
+
+Original Information
+***
+
 CS350, Old Dominion Univ., Fall 2021
 
 Team W7-4
 
-* [Project Website on GH Pages](https://john-hix.github.io/CS350-dupe-detector/)
+* [Project Website on GH Pages](https://shroudofdark.github.io/CS350-DupDetector/)
 * [Stories](https://trello.com/b/XxTMxuGT/refactor-project-management)
 
 # Website
